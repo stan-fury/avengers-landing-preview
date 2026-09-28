@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Morning compact variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3eee4;--ink:#16201c;--forest:#2f5d46;--teal:#3f8f84;--mut:#5b675f;--line:rgba(22,32,28,.1)}
+*{box-sizing:border-box}html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.rv{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:rgba(243,238,228,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:500 13px Geist}
+.rv a{color:var(--mut);text-decoration:none;padding:6px 10px;border-radius:9px}.rv a:hover{background:rgba(22,32,28,.06);color:var(--ink)}
+.rv b{margin-right:8px}
+.intro{max-width:1180px;margin:0 auto;padding:34px 32px 6px;font:500 15px/1.5 Geist;color:var(--mut)}
+.intro b{color:var(--ink)}
+section{position:relative;padding:80px 0 84px;border-bottom:1px solid var(--line);overflow:hidden}
+section:nth-of-type(even){background:linear-gradient(180deg,#f6f2ea,#efe9dd)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.tag{display:inline-flex;gap:10px;font:500 12.5px 'Geist Mono';color:var(--forest);background:rgba(47,93,70,.09);padding:6px 12px;border-radius:999px;margin-bottom:22px}
+.tag s{text-decoration:none;color:var(--mut)}
+.eyebrow{display:flex;align-items:center;gap:12px;font:600 12.5px Geist;letter-spacing:.14em;text-transform:uppercase;color:#2a6f66}
+.eyebrow i{width:26px;height:1.5px;background:currentColor}
+h2{font:600 clamp(38px,4.4vw,58px)/1.03 Geist;letter-spacing:-.045em;margin:14px 0 0}
+h2 em{font-style:normal;color:var(--forest)}
+.lead{color:#3d4a43;font-size:18px;margin:0;max-width:31em}
+.lead b{color:var(--ink);font-weight:600}
+.shead{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:40px}
+/* shared bits */
+.lg{width:22px;height:22px;flex:none;border-radius:7px;display:grid;place-items:center;font:700 11px Geist;color:#fff;font-style:normal}
+.bdg{font:700 11px Geist;color:#fff;background:#d23f2f;border-radius:999px;padding:1px 7px;margin-left:auto}
+.st{display:inline-flex;align-items:center;font:600 12px Geist;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.st.a{background:#fbefd9;color:#8f5d0e}.st.d{background:#f9e3dd;color:#b13e2a}.st.g{background:#e3f1e8;color:#2f7a4b}
+.go{font:600 12.5px Geist;padding:8px 12px;border-radius:999px;background:#2f5d46;color:#fbf8f1;white-space:nowrap}
+.card{background:#fffdf9;border-radius:24px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 40px 80px -44px rgba(22,32,28,.35),0 2px 8px rgba(22,32,28,.05)}
+.hi{font:500 13.5px Geist;color:#5b675f}
+.big{font:600 26px/1.15 Geist;letter-spacing:-.035em;margin:2px 0 12px}.big b{color:#2f5d46}
+.lanes{display:flex;gap:7px;flex-wrap:wrap}
+.lanes span{font:600 12.5px Geist;padding:6px 11px;border-radius:999px;background:#f5f1e9;color:#3d4a43}.lanes span b{color:#16201c}
+.lanes span.late{background:#f9e3dd;color:#b13e2a}
+.grp{display:flex;align-items:center;gap:8px;font:600 11px Geist;letter-spacing:.13em;text-transform:uppercase;color:#5b675f}
+.grp i{width:7px;height:7px;border-radius:50%}
+.row{display:grid;grid-template-columns:26px 1fr auto;gap:2px 12px;align-items:center;padding:10px 12px;border-radius:14px;background:#fff;box-shadow:0 12px 26px -20px rgba(22,32,28,.5),inset 0 0 0 1px rgba(22,32,28,.05);transition:opacity .5s,transform .5s cubic-bezier(.3,1,.4,1)}
+.row .rk{grid-row:1/3;width:26px;height:26px;border-radius:50%;background:#eef3ee;display:grid;place-items:center;font:600 12px Geist;color:#2f5d46}
+.row .nm{display:flex;align-items:center;gap:8px;font:600 15px Geist;min-width:0}
+.row .mv{grid-column:2;font:500 13.5px/1.35 Geist;color:#4a5750}
+.row .go{grid-column:3;grid-row:1/3}
+.row.new{opacity:0;transform:translateY(12px)}
+.note{font:500 13.5px Geist;color:var(--mut);margin-top:22px;text-align:center}
+.note b{color:var(--ink)}
+
+/* ===== V1: inbox in, plan out ===== */
+.v1{display:grid;grid-template-columns:1fr 64px 1.15fr;align-items:stretch}
+.v1 .inbox{padding:16px 14px;display:flex;flex-direction:column;gap:6px;overflow:hidden;position:relative}
+.v1 .ihead{display:flex;align-items:center;gap:10px;font:600 13px Geist;color:#3d4a43;padding:2px 4px 8px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.v1 .ihead span{margin-left:auto;font:600 12px 'Geist Mono';color:#b13e2a;background:#f9e3dd;padding:3px 9px;border-radius:999px}
+.v1 .n{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px rgba(22,32,28,.06);font:500 13.5px Geist;white-space:nowrap;transition:opacity .45s,transform .45s,filter .45s}
+.v1 .n em{font-style:normal;color:#8a948d;font:500 12px 'Geist Mono';margin-left:auto}
+.v1 .n.new{opacity:0;transform:translateY(-14px)}
+.v1 .n.done{opacity:.28;filter:grayscale(1)}
+.v1 .mid{display:grid;place-items:center}
+.v1 .mk{width:46px;height:46px;border-radius:14px;background:linear-gradient(160deg,#3f8f84,#2f5d46);display:grid;place-items:center;box-shadow:0 12px 24px -10px rgba(47,93,70,.6);transition:transform .4s}
+.v1 .mk.on{transform:scale(1.12)}
+.v1 .mk svg{width:26px}
+.v1 .mid .ar{position:absolute;font:600 18px Geist;color:#9aa59e}
+.v1 .plan{padding:20px 20px 16px;display:flex;flex-direction:column;gap:8px}
+.v1 .plan .grp{margin-top:6px}
+
+/* ===== V2: one bar, three lanes ===== */
+.v2 .tick{position:relative;overflow:hidden;height:46px;border-radius:14px;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px var(--line);-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.v2 .trk{position:absolute;left:0;top:7px;display:flex;gap:10px;white-space:nowrap;animation:scroll 26s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.v2 .trk div{display:flex;align-items:center;gap:8px;padding:6px 11px;border-radius:10px;background:#fff;box-shadow:0 6px 14px -10px rgba(22,32,28,.5);font:500 13px Geist}
+.v2 .tlab{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0;font:600 14px Geist;color:#3d4a43}
+.v2 .tlab .cnt{font:600 14px 'Geist Mono';color:#b13e2a}
+.v2 .tlab .cnt.ok{color:#2f5d46}
+.v2 .tlab svg{width:18px;color:#9aa59e}
+.v2 .bar{display:flex;align-items:center;gap:26px;padding:18px 24px}
+.v2 .bar .big{margin:0;font-size:24px}
+.v2 .bar .lanes{margin-left:auto}
+.v2 .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.v2 .col{display:flex;flex-direction:column;gap:8px}
+.v2 .col .rows{display:grid;gap:8px}
+.v2 .row{grid-template-columns:26px 1fr;padding:12px}.v2 .row .nm{flex-wrap:wrap;row-gap:4px}
+.v2 .row .go{grid-column:2;grid-row:3;justify-self:start;margin-top:6px;padding:6px 11px;font-size:12px}
+
+/* ===== V3: heading beside the card ===== */
+.v3{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.v3 h2{margin-bottom:18px}
+.v3 .io{display:flex;gap:10px;margin-top:26px}
+.v3 .io div{flex:1;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px var(--line)}
+.v3 .io b{display:block;font:600 30px/1 Geist;letter-spacing:-.03em}
+.v3 .io span{font:500 13px Geist;color:var(--mut)}
+.v3 .io .out b{color:#2f5d46}
+.v3 .card{position:relative;height:606px;padding:22px 22px 18px;overflow:hidden}
+.v3 .pile{position:absolute;inset:118px 22px 18px;transition:opacity .5s}
+.v3 .pile div{position:absolute;display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:12px;background:#fff;box-shadow:0 12px 24px -14px rgba(22,32,28,.45),inset 0 0 0 1px rgba(22,32,28,.05);font:500 13.5px Geist;white-space:nowrap;transition:all .7s cubic-bezier(.6,0,.2,1)}
+.v3 .pile div.new{opacity:0;transform:translateY(-20px) scale(.96)!important}
+.v3 .pile div.gone{opacity:0;transform:translate(0,-60px) scale(.6)!important}
+.v3 .list{position:absolute;inset:118px 22px 18px;display:flex;flex-direction:column;gap:8px}
+.v3 .list .grp{margin-top:4px}
+
+/* ===== V4: one ranked table ===== */
+.v4 .card{padding:8px 8px 10px}
+.v4 .top{display:flex;align-items:center;gap:22px;padding:16px 18px 14px;border-bottom:1px solid var(--line)}
+.v4 .top .big{margin:0;font-size:22px}
+.v4 .top .lanes{margin-left:auto}
+.v4 .reads{display:flex;gap:18px;flex-wrap:wrap;padding:12px 18px;font:500 13px Geist;color:var(--mut)}
+.v4 .reads span{display:flex;align-items:center;gap:7px}
+.v4 .reads b{font:600 13px 'Geist Mono';color:var(--ink)}
+.v4 .th,.v4 .tr{display:grid;grid-template-columns:40px 170px 210px 170px 1fr 140px;gap:14px;align-items:center;padding:0 18px}
+.v4 .th{font:600 11px Geist;letter-spacing:.12em;text-transform:uppercase;color:#8a948d;padding-top:6px;padding-bottom:8px}
+.v4 .gr{padding:12px 18px 6px}
+.v4 .tr{min-height:58px;border-radius:14px;background:#fff;margin:0 4px 6px;box-shadow:inset 0 0 0 1px rgba(22,32,28,.05);transition:opacity .5s,transform .5s}
+.v4 .tr.new{opacity:0;transform:translateX(-14px)}
+.v4 .tr .rk{width:26px;height:26px;border-radius:50%;background:#eef3ee;display:grid;place-items:center;font:600 12px Geist;color:#2f5d46}
+.v4 .tr .ln{font:600 11px Geist;letter-spacing:.12em;text-transform:uppercase}
+.v4 .tr .ac{font:600 15px Geist}
+.v4 .tr .mv{font:500 13.5px/1.35 Geist;color:#4a5750}
+.v4 .tr .go{justify-self:end}
+
+/* ===== phones ===== */
+@media (max-width:760px){
+ section{padding:56px 0 60px}
+ .tag s{display:none}.rv{gap:2px}.rv b{display:none}.rv a{padding:5px 7px;font-size:12px}
+ .wrap,.intro{padding-left:18px;padding-right:18px}
+ .shead{grid-template-columns:1fr;gap:14px;margin-bottom:24px}
+ h2{font-size:38px}.lead{font-size:16.5px}
+ .row{grid-template-columns:26px 1fr;padding:11px}.row .go{display:none}
+ .row .nm{font-size:14.5px;flex-wrap:wrap}.row .mv{font-size:13px}
+ .big{font-size:22px}
+ .v1{grid-template-columns:1fr;height:auto;gap:0}
+ .v1 .inbox{height:232px}
+ .v1 .n:nth-child(n+7){display:none}
+ .v1 .mid{height:52px}.v1 .mk{width:38px;height:38px;border-radius:12px}.v1 .mk svg{width:22px}
+ .v1 .plan{padding:18px 14px 14px}
+ .v2 .bar{flex-direction:column;align-items:flex-start;gap:10px;padding:16px}
+ .v2 .bar .lanes{margin-left:0}
+ .v2 .cols{grid-template-columns:1fr}
+ .v3{grid-template-columns:1fr;gap:26px}
+ .v3 .card{height:auto;padding:18px 14px 14px}
+ .v3 .pile{inset:150px 14px 14px}.v3 .list{position:relative;inset:auto;margin-top:14px}
+ .v3 .pile div:nth-child(n+7){display:none}
+ .v3 .io b{font-size:24px}
+ .v4 .top{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
+ .v4 .top .lanes{margin-left:0}
+ .v4 .reads{padding:10px 14px;gap:8px 14px}
+ .v4 .th{display:none}
+ .v4 .tr{grid-template-columns:26px 1fr;gap:2px 12px;padding:11px 12px;margin:0 2px 6px}
+ .v4 .tr .rk{grid-row:1/4}
+ .v4 .tr .go,.v4 .tr .ln{display:none}
+ .v4 .gr{padding:10px 12px 6px}
+}
+@media (prefers-reduced-motion:reduce){.v2 .trk{animation:none}}
+</style>
+</head>
+<body>
+<nav class="rv"><b>Morning, compact</b><a href="#v1">1 · Inbox in, plan out</a><a href="#v2">2 · One bar, three lanes</a><a href="#v3">3 · Heading beside the card</a><a href="#v4">4 · One ranked table</a></nav>
+<p class="intro">Four tighter versions of the Morning section. Every one uses the full width, keeps the same five accounts and the groups <b>Late / Most important / Due today</b>, and plays only while it is on screen. The live section today is about <b>1,390px</b> tall on a laptop. Each variant shows its own height under it.</p>
+
+<!-- V1 -->
+<section id="v1"><div class="wrap">
+ <div class="tag">Variant 1 <s>· the noise and the plan side by side, no empty space</s></div>
+ <div class="shead"><div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><em>the guesswork</em></h2></div><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order.</p></div>
+ <div class="v1" data-v="1">
+  <div class="card inbox"><div class="ihead">Before 8:00 <span data-c>0 new</span></div></div>
+  <div class="mid"><div class="mk"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16a8 8 0 0 1 16 0" stroke="#f3dfb8" stroke-width="2.4" stroke-linecap="round"/><path d="M3 19h18" stroke="#fbf8f1" stroke-width="2.4" stroke-linecap="round"/></svg></div></div>
+  <div class="card plan"></div>
+ </div>
+ <p class="note" data-h></p>
+</div></section>
+
+<!-- V2 -->
+<section id="v2"><div class="wrap">
+ <div class="tag">Variant 2 <s>· one wide bar, the day in three lanes</s></div>
+ <div class="shead"><div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><em>the guesswork</em></h2></div><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order.</p></div>
+ <div class="v2" data-v="2">
+  <div class="tick"><div class="trk"></div></div>
+  <div class="tlab"><span class="cnt" data-c>0 alerts</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="cnt ok" data-o>5 moves</span></div>
+  <div class="card bar"><div><div class="hi">Good morning, Laurie · Tuesday</div><div class="big"><b>$184,000</b> of ARR needs you today.</div></div><div class="lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div></div>
+  <div class="cols"></div>
+ </div>
+ <p class="note" data-h></p>
+</div></section>
+
+<!-- V3 -->
+<section id="v3"><div class="wrap">
+ <div class="tag">Variant 3 <s>· heading on the left, the card on the right, the noise sorts inside the card</s></div>
+ <div class="v3" data-v="3">
+  <div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><em>the guesswork</em></h2><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order.</p>
+   <div class="io"><div><b data-c>0</b><span>alerts overnight</span></div><div class="out"><b>5</b><span>moves for today</span></div></div></div>
+  <div class="card"><div class="hi">Good morning, Laurie · Tuesday</div><div class="big"><b>$184,000</b> of ARR needs you today.</div><div class="lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div><div class="pile"></div><div class="list"></div></div>
+ </div>
+ <p class="note" data-h></p>
+</div></section>
+
+<!-- V4 -->
+<section id="v4"><div class="wrap">
+ <div class="tag">Variant 4 <s>· the whole morning as one ranked table, the most compact</s></div>
+ <div class="shead"><div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><em>the guesswork</em></h2></div><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order.</p></div>
+ <div class="v4" data-v="4"><div class="card">
+  <div class="top"><div><div class="hi">Good morning, Laurie · Tuesday</div><div class="big"><b>$184,000</b> of ARR needs you today.</div></div><div class="lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div></div>
+  <div class="reads"></div>
+  <div class="th"><span>#</span><span>Lane</span><span>Account</span><span>Status</span><span>Today's move</span><span></span></div>
+  <div class="tb"></div>
+ </div></div>
+ <p class="note" data-h></p>
+</div></section>
+
+<script>
+const N=[['M','#ea4335','Why is nobody replying?','3','07:52'],['#','#4a154b','#cs-escalations','8','07:48'],['S','#635bff','Payment failed · $19,000','','07:41'],['31','#1a73e8','11:30 Hooli call, no prep','','07:30'],['I','#1f8ded','Ticket reopened, still broken','','07:22'],['X','#107c41','customers_FINAL_v7 (2).xlsx','','07:10'],['J','#2684ff','Bug open for 9 days','','06:58'],['M','#ea4335','Order form?','12','06:40'],['H','#ff7a59','Deal stage: unknown','','06:15']];
+const C=[['Late · since yesterday','Aviato','No Response','d','Security review you promised. Send it before 10.','Send review','#b13e2a','late'],
+['Renewal · 12 days','Wayne Enterprises','Paperwork Pending','a','Order form out for six days. Chase the signature with Bruce.','Draft nudge','#9a6512','top'],
+['Pilot · week 6','Pied Piper','On Track','g','Week-6 proof due today. Share it with Monica before noon.','Open pilot','#2f7a4b','top'],
+['Renewal · 24 days','Hooli','Decision Pending','a','Call at 11:30. The brief is ready.','Prep call','#9a6512','today'],
+['Pilot · week 9','Dunder Mifflin','Low Engagement','d','One of three teams active. Book a check-in.','Book check-in','#b13e2a','today']];
+const G={late:['Late','#c4452f'],top:['Most important','#2f5d46'],today:['Due today','#c98a1e']};
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const W=ms=>new Promise(r=>setTimeout(r,ms));
+const inView=el=>{const r=el.getBoundingClientRect(),h=innerHeight||800;return r.height>0&&r.bottom>h*.2&&r.top<h*.8};
+const gate=async el=>{while(!inView(el)||document.hidden)await W(300)};
+const lg=n=>`<i class="lg" style="background:${n[1]}">${n[0]}</i>`;
+const nt=n=>`${lg(n)}${n[2]}${n[3]?`<span class="bdg">${n[3]}</span>`:''}`;
+const row=(c,i)=>`<div class="row new"><span class="rk">${i+1}</span><span class="nm">${c[1]}<span class="st ${c[3]}">${c[2]}</span></span><span class="mv">${c[4]}</span><span class="go">${c[5]} →</span></div>`;
+const grp=k=>`<div class="grp"><i style="background:${G[k][1]}"></i>${G[k][0]}</div>`;
+const grouped=()=>{let h='',last='';C.forEach((c,i)=>{if(c[7]!==last){last=c[7];h+=grp(last)}h+=row(c,i)});return h};
+const count=async(el,to,ms,suf='')=>{if(!el)return;const t0=performance.now();while(true){const p=Math.min(1,(performance.now()-t0)/ms);el.textContent=Math.round(to*p)+suf;if(p>=1)break;await W(40)}};
+const loop=(el,fn)=>{if(RM){fn(true);return}(async()=>{while(true){await gate(el);await fn(false);await W(5500)}})()};
+
+/* V1 */
+(()=>{const v=document.querySelector('[data-v="1"]'),ib=v.querySelector('.inbox'),pl=v.querySelector('.plan'),cnt=v.querySelector('[data-c]'),mk=v.querySelector('.mk');
+ib.insertAdjacentHTML('beforeend',N.map(n=>`<div class="n new">${lg(n)}${n[2]}${n[3]?`<span class="bdg">${n[3]}</span>`:`<em>${n[4]}</em>`}</div>`).join(''));
+pl.innerHTML=`<div class="hi">Good morning, Laurie · Tuesday</div><div class="big"><b>$184,000</b> of ARR needs you today.</div><div class="lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div>`+grouped();
+const ns=[...ib.querySelectorAll('.n')],rs=[...pl.querySelectorAll('.row')];
+loop(v,async still=>{if(still){ns.forEach(n=>n.classList.remove('new'));cnt.textContent='47 new';rs.forEach(r=>r.classList.remove('new'));return}
+ ns.forEach(n=>{n.classList.add('new');n.classList.remove('done')});rs.forEach(r=>r.classList.add('new'));cnt.textContent='0 new';await W(300);
+ count(cnt,47,1500,' new');for(const n of ns){n.classList.remove('new');await W(150)}await W(700);
+ mk.classList.add('on');await W(350);mk.classList.remove('on');
+ for(let i=0;i<rs.length;i++){rs[i].classList.remove('new');ns.slice(i*2,i*2+2).forEach(n=>n.classList.add('done'));await W(320)}
+ ns.forEach(n=>n.classList.add('done'))})})();
+
+/* V2 */
+(()=>{const v=document.querySelector('[data-v="2"]'),trk=v.querySelector('.trk'),cols=v.querySelector('.cols'),cnt=v.querySelector('[data-c]');
+const one=N.map(n=>`<div>${nt(n)}</div>`).join('');trk.innerHTML=one+one;
+const by=k=>C.map((c,i)=>[c,i]).filter(x=>x[0][7]==k);
+cols.innerHTML=['late','top','today'].map(k=>`<div class="col ${by(k).length>1?'w':''}">${grp(k)}<div class="rows">${by(k).map(([c,i])=>row(c,i)).join('')}</div></div>`).join('');
+const rs=[...cols.querySelectorAll('.row')];
+loop(v,async still=>{if(still){cnt.textContent='47 alerts';rs.forEach(r=>r.classList.remove('new'));return}
+ rs.forEach(r=>r.classList.add('new'));cnt.textContent='0 alerts';await W(300);await count(cnt,47,1600,' alerts');await W(250);
+ for(const r of rs){r.classList.remove('new');await W(260)}})})();
+
+/* V3 */
+(()=>{const v=document.querySelector('[data-v="3"]'),pile=v.querySelector('.pile'),list=v.querySelector('.list'),cnt=v.querySelector('[data-c]');
+const P=[[0,2,-3],[34,10,2],[6,24,1],[40,34,-2],[2,48,2],[30,58,-2],[8,72,-1],[42,80,3],[14,90,1]];
+pile.innerHTML=N.map((n,k)=>`<div class="new" style="left:${P[k][0]}%;top:${P[k][1]}%;transform:rotate(${P[k][2]}deg)">${nt(n)}</div>`).join('');
+list.innerHTML=grouped();const ps=[...pile.children],rs=[...list.querySelectorAll('.row')],gs=[...list.querySelectorAll('.grp')];
+loop(v,async still=>{if(still){ps.forEach(p=>p.style.display='none');rs.forEach(r=>r.classList.remove('new'));cnt.textContent='47';return}
+ ps.forEach(p=>{p.className='new'});rs.forEach(r=>r.classList.add('new'));gs.forEach(g=>g.style.opacity=0);cnt.textContent='0';await W(300);
+ count(cnt,47,1500);for(const p of ps){p.classList.remove('new');await W(130)}await W(1400);
+ for(const p of ps){p.classList.add('gone');await W(60)}await W(400);
+ gs.forEach(g=>{g.style.transition='opacity .4s';g.style.opacity=1});for(const r of rs){r.classList.remove('new');await W(240)}})})();
+
+/* V4 */
+(()=>{const v=document.querySelector('[data-v="4"]'),rd=v.querySelector('.reads'),tb=v.querySelector('.tb');
+const R=[['M','#ea4335',31,'emails'],['#','#4a154b',12,'Slack threads'],['I','#1f8ded',6,'tickets'],['31','#1a73e8',3,'calendars'],['S','#635bff',1,'failed payment']];
+rd.innerHTML='Read before 8:00:'+R.map(r=>`<span>${lg(r)}<b data-n="${r[2]}">0</b>${r[3]}</span>`).join('');
+let h='',last='';C.forEach((c,i)=>{if(c[7]!==last){last=c[7];h+=`<div class="gr">${grp(last)}</div>`}h+=`<div class="tr new"><span class="rk">${i+1}</span><span class="ln" style="color:${c[6]}">${c[0]}</span><span class="ac">${c[1]}</span><span><span class="st ${c[3]}">${c[2]}</span></span><span class="mv">${c[4]}</span><span class="go">${c[5]} →</span></div>`});tb.innerHTML=h;
+const nums=[...rd.querySelectorAll('[data-n]')],rs=[...tb.querySelectorAll('.tr')];
+loop(v,async still=>{if(still){nums.forEach(n=>n.textContent=n.dataset.n);rs.forEach(r=>r.classList.remove('new'));return}
+ rs.forEach(r=>r.classList.add('new'));nums.forEach(n=>n.textContent='0');await W(300);
+ await Promise.all(nums.map(n=>count(n,+n.dataset.n,1300)));await W(200);
+ for(const r of rs){r.classList.remove('new');await W(260)}})})();
+
+/* heights */
+const sh=()=>document.querySelectorAll('section').forEach(s=>{const n=s.querySelector('[data-h]');if(n)n.innerHTML='This section: <b>'+s.offsetHeight.toLocaleString('en-US')+'px</b> tall at this screen width';});
+addEventListener('load',sh);addEventListener('resize',sh);
+</script>
+</body>
+</html>
