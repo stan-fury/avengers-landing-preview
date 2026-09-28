@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Three wins variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--paper:#f3eee4;--ink:#16201c;--forest:#2f5d46;--teal:#3f8f84;--mut:#5b675f;--line:rgba(22,32,28,.1)}
+*{box-sizing:border-box}html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.rv{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:rgba(243,238,228,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:500 13px Geist}
+.rv a{color:var(--mut);text-decoration:none;padding:6px 10px;border-radius:9px}.rv a:hover{background:rgba(22,32,28,.06);color:var(--ink)}
+.rv b{margin-right:8px}
+.intro{max-width:1180px;margin:0 auto;padding:30px 32px 0;font:500 15px/1.5 Geist;color:var(--mut)}.intro b{color:var(--ink)}
+section{position:relative;padding:72px 0 80px;border-bottom:1px solid var(--line);overflow:hidden;text-align:center}
+section::before{content:'';position:absolute;left:50%;top:-20%;width:900px;height:700px;margin-left:-450px;border-radius:50%;background:radial-gradient(closest-side,rgba(241,196,140,.42),transparent);pointer-events:none}
+.wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 32px}
+.tag{display:inline-flex;gap:10px;font:500 12.5px 'Geist Mono';color:var(--forest);background:rgba(47,93,70,.09);padding:6px 12px;border-radius:999px;margin-bottom:10px}
+.tag s{text-decoration:none;color:var(--mut)}
+/* the word */
+.word{font:700 clamp(58px,9.5vw,138px)/1.05 Geist;letter-spacing:-.07em;white-space:nowrap;margin:6px 0 0}
+.word .o{display:inline-block;overflow:hidden;vertical-align:bottom;max-width:0;transition:max-width .9s cubic-bezier(.3,1,.4,1);background:linear-gradient(90deg,#2f5d46,#3a7866 38%,#3f8f84 72%,#79b39c);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .04em 0 0}
+.word.on .o{max-width:3.2em}
+.word .d{display:inline-block}
+.lead{margin:18px auto 0;max-width:38em;font:400 19px/1.55 Geist;color:#3d4a43}
+.lead b{color:var(--ink);font-weight:600}
+.card{background:#fffdf9;border-radius:24px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 40px 80px -44px rgba(22,32,28,.35),0 2px 8px rgba(22,32,28,.05)}
+.rev{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.on .rev,.rev.on{opacity:1;transform:none}
+.note{font:500 13.5px Geist;color:var(--mut);margin-top:26px}.note b{color:var(--ink)}
+.ck{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#3aa56b;color:#fff;flex:none}
+.ck svg{width:12px}
+.no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#f1ece3;color:#a39c8f;flex:none;font:600 13px Geist}
+
+
+section{padding:60px 0 70px}
+h2{font:600 clamp(36px,4.2vw,56px)/1.05 Geist;letter-spacing:-.045em;margin:10px 0 12px}
+h2 em{font-style:normal;color:var(--forest)}
+.sub{max-width:42em;margin:0 auto;color:#3d4a43;font-size:18px}
+.eb{display:inline-flex;align-items:center;gap:10px;font:600 12.5px Geist;letter-spacing:.14em;text-transform:uppercase;color:#2a6f66}.eb i{width:26px;height:1.5px;background:currentColor}
+.av{width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;font:600 12px Geist;color:#fff;flex:none}
+.fade{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}.fade.on{opacity:1;transform:none}
+.ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}.ic svg{width:19px;height:19px}
+.chip{display:inline-flex;font:600 12px Geist;padding:5px 10px;border-radius:999px;background:#e6f2ea;color:#244d3a}
+.seg{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:rgba(22,32,28,.06);margin:24px 0 20px}
+.seg button{border:0;background:none;display:flex;align-items:center;gap:9px;font:600 15px Geist;color:var(--mut);padding:10px 18px;border-radius:999px;cursor:pointer;transition:all .3s}
+.seg button .av{width:24px;height:24px;font-size:10.5px}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 8px 18px -10px rgba(22,32,28,.4)}
+/* 1 three columns */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px auto 0;max-width:1180px;text-align:left}
+.col{padding:24px 22px 20px;display:flex;flex-direction:column;cursor:pointer;transition:transform .35s,box-shadow .35s,opacity .35s}
+.col:hover,.col.pk{transform:translateY(-4px);box-shadow:inset 0 0 0 2px #3f8f84,0 40px 80px -40px rgba(22,32,28,.45)}
+.col .who{display:flex;align-items:center;gap:10px;font:600 13px Geist;color:#6b756f}
+.col h3{margin:14px 0 14px;font:600 22px/1.2 Geist;letter-spacing:-.02em}
+.col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.col li{display:flex;gap:10px;align-items:flex-start;font:400 14.5px/1.45 Geist;color:#3d4a43}
+.col li .ic{width:28px;height:28px;border-radius:9px}.col li .ic svg{width:15px;height:15px}
+.col li b{display:block;font-weight:600;color:var(--ink)}
+.col .ms{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+.col .ms small{width:100%;font:600 10.5px Geist;letter-spacing:.08em;text-transform:uppercase;color:#8a948d}
+/* 2 one account, three views */
+.acc{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;text-align:left}
+.ac-card{padding:22px;display:flex;flex-direction:column}.ac-card .one{margin-top:auto;padding-top:14px;font:500 13.5px/1.45 Geist;color:#6b756f}
+.ac-card .top{display:flex;align-items:center;gap:10px;font:600 17px Geist}
+.ac-card .top span{margin-left:auto;font:500 12.5px 'Geist Mono';color:#8a948d}
+.ac-card .kv{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ac-card .kv div{padding:12px;border-radius:12px;background:#f6f3ec}
+.ac-card .kv small{display:block;font:600 10.5px Geist;letter-spacing:.08em;text-transform:uppercase;color:#8a948d}
+.ac-card .kv b{display:block;font:600 19px Geist;margin-top:3px}
+.ac-card .kv b.a{color:#9a6512}.ac-card .kv b.g{color:#2f5d46}
+.view{position:relative;padding:22px 24px;min-height:300px}
+.vw{position:absolute;inset:22px 24px;opacity:0;transform:translateX(10px);transition:opacity .45s,transform .45s;pointer-events:none}
+.vw.on{opacity:1;transform:none;pointer-events:auto}
+.vw small{font:600 11.5px Geist;letter-spacing:.08em;text-transform:uppercase;color:#2f5d46}
+.vw h4{margin:6px 0 10px;font:600 22px/1.2 Geist;letter-spacing:-.02em}
+.vw .box{border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px rgba(22,32,28,.08);padding:14px 16px;font:400 14.5px/1.5 Geist;color:#3d4a43}
+.vw .box b{color:var(--ink)}
+.vw .row{display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid var(--line);font:500 14px Geist}.vw .row:first-child{border-top:0}
+.vw .row span:last-child{font-family:'Geist Mono';color:#2f5d46}
+.vw .win{margin-top:12px;font:600 15px Geist;color:#2f5d46}
+/* 3 one big number */
+.big3{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1080px;margin:0 auto;text-align:left;align-items:stretch}
+.num{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.num small{font:600 12px Geist;letter-spacing:.1em;text-transform:uppercase;color:#8a948d}
+.num b{display:block;font:600 clamp(56px,6vw,84px)/1 Geist;letter-spacing:-.05em;color:#2f5d46;margin:12px 0 8px}
+.num span{font:500 16px/1.45 Geist;color:#3d4a43}
+.num em{display:block;margin-top:12px;font-style:normal;font:500 12.5px Geist;color:#9aa59e}
+.lst{display:flex;flex-direction:column;gap:10px}
+.lst .it{display:flex;gap:14px;align-items:center;padding:16px 18px}
+.lst .it b{display:block;font:600 16px Geist}.lst .it span{font:400 14px Geist;color:#5b675f}
+/* 4 value flows up */
+.ladder{max-width:960px;margin:34px auto 0;display:flex;flex-direction:column;align-items:stretch;gap:0;text-align:left}
+.rung.fade{}.rung{display:grid;grid-template-columns:56px 1fr 1.1fr;gap:18px;align-items:center;padding:20px 22px}
+.rung .who{font:600 12px Geist;letter-spacing:.08em;text-transform:uppercase;color:#8a948d}
+.rung h4{margin:4px 0 0;font:600 20px/1.2 Geist;letter-spacing:-.02em}
+.rung p{margin:0;font:400 14.5px/1.5 Geist;color:#4a5750}
+.rung p b{color:#2f5d46}
+.flow{display:flex;justify-content:center;align-items:center;gap:10px;height:54px;font:600 13px Geist;color:#2f5d46}
+.flow i{display:block;width:2px;height:40px;background:linear-gradient(#3f8f84,transparent);transform-origin:top;transform:scaleY(0);transition:transform .6s}
+.flow.on i{transform:scaleY(1)}
+.flow span{opacity:0;transition:opacity .5s .3s;padding:5px 12px;border-radius:999px;background:#e6f2ea}
+.flow.on span{opacity:1}
+/* 5 ask as */
+.ask{max-width:900px;margin:0 auto;text-align:center}.ask .chat{text-align:left}
+.chat{padding:22px 24px;min-height:330px}
+.q{display:flex;justify-content:flex-end}
+.q div{max-width:70%;padding:12px 16px;border-radius:18px 18px 4px 18px;background:#2f5d46;color:#fff;font:500 15.5px/1.4 Geist}
+.a{display:flex;gap:12px;margin-top:16px}
+.a .mk{width:32px;height:32px;border-radius:10px;background:linear-gradient(160deg,#3f8f84,#2f5d46);display:grid;place-items:center;flex:none}.a .mk svg{width:18px}
+.a .txt{font:400 15.5px/1.6 Geist;color:#243029;min-height:96px}
+.a .txt b{font-weight:600}
+.src{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;opacity:0;transition:opacity .4s}.src.on{opacity:1}
+.src span{font:500 12px Geist;padding:4px 9px;border-radius:999px;background:#f3f5f1;color:#5b675f}
+.cur{display:inline-block;width:2px;height:1em;background:#3f8f84;vertical-align:-2px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.winl{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font:600 14.5px Geist;color:#2f5d46;opacity:0;transition:opacity .4s}.winl.on{opacity:1}
+@media (max-width:760px){
+ .cols,.acc,.big3{grid-template-columns:1fr}
+ .seg{flex-direction:column;border-radius:18px;width:100%}.seg button{justify-content:center}
+ .view{min-height:360px}
+ .rung.fade{}.rung{grid-template-columns:44px 1fr}.rung p{grid-column:1/-1}
+ .q div{max-width:90%}
+}
+</style>
+</head>
+<body>
+<nav class="rv"><b>One platform, three wins</b><a href="#w1">1 · Three columns</a><a href="#w2">2 · One account, three views</a><a href="#w3">3 · One number each</a><a href="#w4">4 · Value flows up</a><a href="#w5">5 · Ask it as</a></nav>
+<p class="intro">Five versions of <b>One platform. Three wins.</b> Same three roles and the same honest outcomes: hours from the calculator's assumptions, churn, NRR and expansion as mechanisms, never invented percentages.</p>
+<section id="w1"><div class="wrap">
+ <div class="tag">Variant 1 · Three columns <s>· all three roles at once, each card lifts in turn</s></div><br>
+ <div class="eb"><i></i>Who gets what</div>
+ <h2>One platform. <em>Three wins.</em></h2>
+ <p class="sub">The CSM gets their days back. The Head of CS sees retention coming. The founder grows NRR without hiring ahead of it.</p>
+ <div class="cols" data-w1></div>
+</div></section>
+<section id="w2"><div class="wrap">
+ <div class="tag">Variant 2 · One account, three views <s>· the same renewal, seen by each role</s></div><br>
+ <div class="eb"><i></i>Who gets what</div>
+ <h2>One platform. <em>Three wins.</em></h2>
+ <p class="sub">The CSM gets their days back. The Head of CS sees retention coming. The founder grows NRR without hiring ahead of it.</p>
+ <div data-w2><div class="seg"><button type="button" data-r="0" class="on"><span class="av" style="background:#3f8f84">L</span>The CSM</button><button type="button" data-r="1"><span class="av" style="background:#c98a1e">H</span>The Head of CS</button><button type="button" data-r="2"><span class="av" style="background:#2f5d46">C</span>The founder or CEO</button></div><div class="acc"><div class="card ac-card"><div class="top">Hooli <span>renews in 24 days</span></div><div class="kv"><div><small>ARR</small><b>$64,000</b></div><div><small>Status</small><b class="a">Decision Pending</b></div><div><small>Health</small><b class="g">72</b></div><div><small>Next step</small><b>Call 11:30</b></div></div><div class="one">One account in Avengers. Pick a role to see what each person gets from it.</div></div><div class="card view"></div></div></div>
+</div></section>
+<section id="w3"><div class="wrap">
+ <div class="tag">Variant 3 · One number each <s>· each role gets one big number and three reasons</s></div><br>
+ <div class="eb"><i></i>Who gets what</div>
+ <h2>One platform. <em>Three wins.</em></h2>
+ <p class="sub">The CSM gets their days back. The Head of CS sees retention coming. The founder grows NRR without hiring ahead of it.</p>
+ <div data-w3><div class="seg"><button type="button" data-r="0" class="on"><span class="av" style="background:#3f8f84">L</span>The CSM</button><button type="button" data-r="1"><span class="av" style="background:#c98a1e">H</span>The Head of CS</button><button type="button" data-r="2"><span class="av" style="background:#2f5d46">C</span>The founder or CEO</button></div><div class="big3"><div class="card num"></div><div class="lst"></div></div></div>
+</div></section>
+<section id="w4"><div class="wrap">
+ <div class="tag">Variant 4 · Value flows up <s>· hours for the CSM become retention for the Head of CS become NRR for the founder</s></div><br>
+ <div class="eb"><i></i>Who gets what</div>
+ <h2>One platform. <em>Three wins.</em></h2>
+ <p class="sub">The CSM gets their days back. The Head of CS sees retention coming. The founder grows NRR without hiring ahead of it.</p>
+ <div class="ladder" data-w4><div class="card rung fade"><span class="av" style="background:#3f8f84;width:44px;height:44px">L</span><div><div class="who">The CSM</div><h4>Gets about 10 hours back a week</h4></div><p>Ranked mornings, ready briefs, drafted follow-ups. <b>The time goes back to the clients.</b></p></div><div class="flow"><i></i><span>more time with every client</span></div><div class="card rung fade"><span class="av" style="background:#c98a1e;width:44px;height:44px">H</span><div><div class="who">The Head of CS</div><h4>Sees churn risk while it can be saved</h4></div><p>Every account checked every morning, every renewal with a status. <b>Retention stops being a surprise.</b></p></div><div class="flow"><i></i><span>fewer renewals lost, more expansions found</span></div><div class="card rung fade"><span class="av" style="background:#2f5d46;width:44px;height:44px">C</span><div><div class="who">The founder or CEO</div><h4>Grows NRR without hiring ahead of it</h4></div><p>The base is protected and the team covers more of it. <b>One saved renewal pays for a year.</b></p></div></div>
+</div></section>
+<section id="w5"><div class="wrap">
+ <div class="tag">Variant 5 · Ask it as <s>· each role asks the AI CSM its own question and gets its answer</s></div><br>
+ <div class="eb"><i></i>Who gets what</div>
+ <h2>One platform. <em>Three wins.</em></h2>
+ <p class="sub">The CSM gets their days back. The Head of CS sees retention coming. The founder grows NRR without hiring ahead of it.</p>
+ <div class="ask" data-w5><div class="seg"><button type="button" data-r="0" class="on"><span class="av" style="background:#3f8f84">L</span>The CSM</button><button type="button" data-r="1"><span class="av" style="background:#c98a1e">H</span>The Head of CS</button><button type="button" data-r="2"><span class="av" style="background:#2f5d46">C</span>The founder or CEO</button></div><div class="card chat"><div class="q"><div></div></div><div class="a"><span class="mk" style="width:44px;height:44px;border-radius:14px;background:linear-gradient(160deg,#3f8f84,#2f5d46);display:grid;place-items:center"><svg viewBox="0 0 24 24" width="22" fill="none"><path d="M4 16a8 8 0 0 1 16 0" stroke="#f3dfb8" stroke-width="2.4" stroke-linecap="round"/><path d="M3 19h18" stroke="#fbf8f1" stroke-width="2.4" stroke-linecap="round"/></svg></span><div style="flex:1"><div class="txt"></div><div class="src"></div></div></div><div class="winl"></div></div></div>
+</div></section>
+
+<script>
+const W=ms=>new Promise(r=>setTimeout(r,ms));
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const inView=el=>{const r=el.getBoundingClientRect(),h=innerHeight||800;return r.height>0&&r.bottom>h*.15&&r.top<h*.85};
+const gate=async el=>{while(!inView(el)||document.hidden)await W(300)};
+const P={clock:'<circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+ shield:'<path d="M10 2.5 4 5v4.5c0 3.6 2.6 6.3 6 7.5 3.4-1.2 6-3.9 6-7.5V5l-6-2.5Z" stroke="currentColor" stroke-width="1.6"/><path d="m7.3 10 1.9 1.9 3.6-3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+ phone:'<path d="M6.2 3.5 8 7.3l-1.6 1.2a8.3 8.3 0 0 0 5.1 5.1L12.7 12l3.8 1.8-.6 2.6c-.2.6-.7 1-1.4 1A12.5 12.5 0 0 1 2.6 5c0-.7.4-1.2 1-1.4l2.6-.1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
+ renew:'<path d="M15.5 8A6 6 0 0 0 4.7 6.2M4.5 12a6 6 0 0 0 10.8 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M4.2 3.2v3.3h3.3M15.8 16.8v-3.3h-3.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+ up:'<path d="M3.5 14.5 8 10l3 3 5.5-6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 6.5h4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+ team:'<circle cx="7" cy="7.5" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="13.5" cy="8.5" r="2.1" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 16c.6-2.6 2.4-4 4.5-4s3.9 1.4 4.5 4M11.5 15.5c.4-1.8 1.6-2.8 3-2.8s2.4.9 2.9 2.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+ eye:'<path d="M1.5 10S4.5 4.5 10 4.5 18.5 10 18.5 10 15.5 15.5 10 15.5 1.5 10 1.5 10Z" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/>',
+ coin:'<ellipse cx="10" cy="6" rx="6" ry="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 6v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6M4 10v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4" stroke="currentColor" stroke-width="1.6"/>'};
+const ic=(k,bg,fg)=>`<span class="ic" style="background:${bg};color:${fg}"><svg viewBox="0 0 20 20" fill="none">${P[k]}</svg></span>`;
+const MK='<span class="mk"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16a8 8 0 0 1 16 0" stroke="#f3dfb8" stroke-width="2.4" stroke-linecap="round"/><path d="M3 19h18" stroke="#fbf8f1" stroke-width="2.4" stroke-linecap="round"/></svg></span>';
+const R=[
+ {av:'L',c:'#3f8f84',n:'The CSM',t:'Runs the book',h:'More time with clients. Less time between spreadsheets.',k:['Hours saved','Time with clients','Renewals on time'],
+  o:[['clock','#e6f2ea','#2f5d46','About 10 hours back a week','Ranked morning, call briefs and drafts.'],['phone','#fbf2df','#9a6512','Ready for every call','The brief names the risk and the ask.'],['team','#efebf8','#6a4fb0','Room for more accounts','The same hours cover a bigger book.']],
+  big:['Hours saved, every week','~10 h','per CSM, from ranked mornings, ready briefs and drafted follow-ups.']},
+ {av:'H',c:'#c98a1e',n:'The Head of CS',t:'Owns retention',h:'Retention you can see coming.',k:['GRR','Churned ARR','Renewal forecast'],
+  o:[['shield','#fbece8','#b13e2a','Churn risk flagged in time','Health from real signals, with the reason for every drop.'],['renew','#e2f1ee','#23685f','Renewals forecast by status','14 statuses, "Renewal won" only after payment.'],['eye','#e9f0fa','#2f64a8','The whole team\'s book, every morning','Who is behind, and which accounts nobody touched.']],
+  big:['Accounts checked for risk','Every day','every account, from payments, replies, usage, support and calls. Not once a quarter.']},
+ {av:'C',c:'#2f5d46',n:'The founder or CEO',t:'Owns the number',h:'Grow NRR without hiring ahead of it.',k:['NRR','ARR at risk','ARR per CSM'],
+  o:[['up','#e6f2ea','#2f5d46','Grow NRR from the base','Renewals on time plus expansion moments.'],['team','#efebf8','#6a4fb0','Scale the book, not the headcount','More accounts per CSM, same hours.'],['coin','#fbf2df','#9a6512','Pays for itself with one renewal','One saved $20,000 renewal covers a year of Team for 16 people.']],
+  big:['One saved renewal','Pays for a year','of Team for up to 16 people, at a $20,000 renewal.']}];
+const avH=r=>`<span class="av" style="background:${r.c}">${r.av}</span>`;
+const segH=()=>`<div class="seg">${R.map((r,i)=>`<button type="button" data-r="${i}" class="${i?'':'on'}">${avH(r)}${r.n}</button>`).join('')}</div>`;
+const auto=(root,show,every=6500)=>{const bs=[...root.querySelectorAll('.seg button')];let manual=0,cur=0;bs.forEach(b=>b.addEventListener('click',()=>{manual=Date.now()+20000;cur=+b.dataset.r;show(cur)}));show(0);if(RM)return;(async()=>{while(true){await gate(root);await W(every);if(Date.now()<manual)continue;cur=(cur+1)%3;show(cur)}})()};
+const segOn=(root,i)=>root.querySelectorAll('.seg button').forEach((b,k)=>b.classList.toggle('on',k===i));
+
+/* 1 */
+(()=>{const g=document.querySelector('[data-w1]');
+ g.innerHTML=R.map(r=>`<div class="card col fade"><div class="who">${avH(r)}${r.n} · ${r.t}</div><h3>${r.h}</h3><ul>${r.o.map(o=>`<li>${ic(o[0],o[1],o[2])}<span><b>${o[3]}</b>${o[4]}</span></li>`).join('')}</ul><div class="ms"><small>What you measure</small>${r.k.map(k=>`<span class="chip">${k}</span>`).join('')}</div></div>`).join('');
+ const cs=[...g.children];if(RM){cs.forEach(c=>c.classList.add('on'));return}
+ (async()=>{while(true){await gate(g);cs.forEach(c=>c.classList.remove('on','pk'));await W(500);for(const c of cs){c.classList.add('on');await W(350)}await W(1200);for(const c of cs){c.classList.add('pk');await W(2200);c.classList.remove('pk')}await W(9000)}})()})();
+
+/* 2 */
+(()=>{const v=document.querySelector('[data-w2]');
+ const V=[{t:'What the CSM sees at 8:00',h:'Hooli is second on today\'s list.',box:'<b>Renewal call at 11:30. The brief is ready.</b><br>The champion moved teams in August. Usage is up 18%. Ask for a two-year term.',w:'Walks in prepared, in a two-minute read.'},
+  {t:'What the Head of CS sees',h:'Hooli is a renewal to watch.',box:'<div class="row"><span>Status</span><span>Decision Pending</span></div><div class="row"><span>Health</span><span>72, stable</span></div><div class="row"><span>Next step</span><span>Call today 11:30</span></div><div class="row"><span>Owner</span><span>Laurie</span></div>',w:'Knows the forecast without asking for an update.'},
+  {t:'What the founder sees',h:'$64,000 of ARR is protected this week.',box:'<div class="row"><span>ARR renewing in 30 days</span><span>$184,000</span></div><div class="row"><span>With a next step booked</span><span>6 of 6</span></div><div class="row"><span>Expansion moment</span><span>Hooli, 2-year term</span></div>',w:'Sees NRR being protected, account by account.'}];
+ v.querySelector('.view').innerHTML=V.map((x,i)=>`<div class="vw${i?'':' on'}"><small>${x.t}</small><h4>${x.h}</h4><div class="box">${x.box}</div><div class="win">${x.w}</div></div>`).join('');
+ const vs=[...v.querySelectorAll('.vw')];auto(v,i=>{segOn(v,i);vs.forEach((x,k)=>x.classList.toggle('on',k===i))})})();
+
+/* 3 */
+(()=>{const v=document.querySelector('[data-w3]'),nm=v.querySelector('.num'),ls=v.querySelector('.lst');
+ const show=i=>{segOn(v,i);const r=R[i];nm.innerHTML=`<small>${r.big[0]}</small><b>${r.big[1]}</b><span>${r.big[2]}</span><em>${i==0?'From the calculator\'s stated assumptions.':i==2?'From the Team price, $99 per seat.':'How the Health Score works today.'}</em>`;ls.innerHTML=r.o.map(o=>`<div class="card it fade on">${ic(o[0],o[1],o[2])}<div><b>${o[3]}</b><span>${o[4]}</span></div></div>`).join('')};
+ auto(v,show)})();
+
+/* 4 */
+(()=>{const v=document.querySelector('[data-w4]'),fl=[...v.querySelectorAll('.flow')],rs=[...v.querySelectorAll('.rung')];
+ if(RM){fl.forEach(f=>f.classList.add('on'));rs.forEach(r=>r.classList.add('on'));return}
+ (async()=>{while(true){await gate(v);fl.forEach(f=>f.classList.remove('on'));rs.forEach(r=>r.classList.remove('on'));await W(500);rs[0].classList.add('on');await W(900);fl[0].classList.add('on');await W(900);rs[1].classList.add('on');await W(900);fl[1].classList.add('on');await W(900);rs[2].classList.add('on');await W(12000)}})()})();
+
+/* 5 */
+(()=>{const v=document.querySelector('[data-w5]'),q=v.querySelector('.q div'),tx=v.querySelector('.txt'),src=v.querySelector('.src'),wl=v.querySelector('.winl');
+ const A=[['Who needs me today?','<b>Six accounts, in this order.</b> Wayne Enterprises first: the order form is six days unsigned and the nudge is drafted. Then Hooli, renewal call at 11:30, brief ready.',['Gmail','HubSpot','Calendar'],'The CSM: a planned morning in one question.'],
+  ['Which renewals are at risk this quarter?','<b>Three, worth $91,000.</b> Endframe: the payment failed on Monday. Dunder Mifflin: one of three teams active. Aviato: waiting on a security review for four days.',['Chargebee','Product usage','Intercom'],'The Head of CS: the risk, with the reason, before the review.'],
+  ['Where can we grow NRR next quarter?','<b>Two expansion moments.</b> Hooli is ready for a two-year term, usage is up 18%. Pied Piper met its week-6 pilot goal, three teams are live.',['Product usage','HubSpot','Pilot proof'],'The founder: growth found in the base you already have.']];
+ let tok=0;const show=async i=>{segOn(v,i);const my=++tok;const a=A[i];q.textContent=a[0];src.classList.remove('on');wl.classList.remove('on');src.innerHTML=a[2].map(s=>`<span>${s}</span>`).join('');wl.textContent=a[3];
+  if(RM){tx.innerHTML=a[1];src.classList.add('on');wl.classList.add('on');return}
+  tx.innerHTML='<span class="cur"></span>';await W(500);const parts=a[1].split(/(<b>|<\/b>)/);let html='';let bold=false;for(const p of parts){if(p=='<b>'){bold=true;continue}if(p=='</b>'){bold=false;continue}for(const ch of p){if(my!==tok)return;html+=ch;tx.innerHTML=(bold?html.replace(/([^]*)$/,'$1'):html);tx.innerHTML=render(a[1],html.length)+'<span class="cur"></span>';await W(14)}}
+  tx.innerHTML=a[1];src.classList.add('on');await W(300);wl.classList.add('on')};
+ const render=(full,n)=>{let out='',c=0;for(const p of full.split(/(<b>|<\/b>)/)){if(p=='<b>'||p=='</b>'){out+=p;continue}if(c+p.length<=n){out+=p;c+=p.length}else{out+=p.slice(0,n-c);c=n;break}}if(out.split('<b>').length>out.split('</b>').length)out+='</b>';return out};
+ auto(v,show,9000)})();
+</script>
+</body>
+</html>
