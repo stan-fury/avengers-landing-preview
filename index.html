@@ -407,7 +407,7 @@ section{padding:96px 0}
 .vseg{gap:4px}
 .ovl{display:inline-block;opacity:0;transform:translateY(.06em);transition:opacity .16s ease,transform .16s ease}.ovl.shw{opacity:1;transform:none;filter:none}
 .ovB .o{padding-right:.05em;margin-right:-.05em;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:inherit}
-.ovl{color:var(--c)}
+.ovl{color:transparent;background-image:linear-gradient(90deg,#2f5d46 0%,#3a7866 38%,#3f8f84 72%,#79b39c 100%);background-repeat:no-repeat;-webkit-background-clip:text;background-clip:text;padding:0 .1em;margin:0 -.1em}
 .ovB .d{transition:opacity .5s}.ovB .d.fade{opacity:0}
 .bcar{transition:none}
 section.dark{background:radial-gradient(circle at 20% 0%,rgba(63,143,132,.55),transparent 55%),radial-gradient(circle at 85% 100%,rgba(244,178,122,.18),transparent 50%),linear-gradient(160deg,#1c3a2d,#2f5d46 60%,#24493a);color:#eef4f0;padding:120px 0}
@@ -1272,8 +1272,11 @@ const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.class
 
 (()=>{const box=document.getElementById('ovbox'),o=box.querySelector('.o'),d=box.querySelector('.d'),rest=box.querySelector('.rest'),car=document.getElementById('bcar');let tm=[];const T=(f,ms)=>tm.push(setTimeout(f,ms));
 const put=w=>{if(w=='afterD')rest.before(car);else if(w=='start')o.before(car);else if(w=='afterO')o.after(car);else rest.after(car)};
-const add=(ch)=>{const s=document.createElement('span');s.className='ovl';s.textContent=ch;s.style.setProperty('--c',['#2f5d46','#3a7866','#3f8f84','#9a9a6e'][o.children.length]);o.appendChild(s);requestAnimationFrame(()=>s.classList.add('shw'))};
-function play(){tm.forEach(clearTimeout);tm=[];o.innerHTML='';d.textContent='D';put('afterD');T(()=>{d.textContent=''},800);T(()=>{d.textContent='d'},1050);T(()=>put('start'),1450);'Over'.split('').forEach((c,k)=>T(()=>{add(c);put('afterO')},1750+k*120));T(()=>put('end'),2600);T(play,11000)}
+let OW=0;const meas=()=>{const p=document.createElement('span');p.className='ovl shw';p.textContent='Over';p.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;padding:0;margin:0';box.appendChild(p);OW=p.getBoundingClientRect().width;p.remove()};
+const paintG=()=>{const L=[...o.children];if(!L.length)return;const pad=parseFloat(getComputedStyle(L[0]).paddingLeft)||0;const x0=L[0].getBoundingClientRect().left+pad;L.forEach(s=>{const x=s.getBoundingClientRect().left+pad-x0;s.style.backgroundSize=(OW+2*pad)+'px 100%';s.style.backgroundPosition=(-x)+'px 0'})};
+const add=(ch)=>{const s=document.createElement('span');s.className='ovl';s.textContent=ch;o.appendChild(s);paintG();requestAnimationFrame(()=>s.classList.add('shw'))};
+addEventListener('resize',()=>{meas();paintG()});
+function play(){tm.forEach(clearTimeout);tm=[];o.innerHTML='';meas();d.textContent='D';put('afterD');T(()=>{d.textContent=''},800);T(()=>{d.textContent='d'},1050);T(()=>put('start'),1450);'Over'.split('').forEach((c,k)=>T(()=>{add(c);put('afterO')},1750+k*120));T(()=>put('end'),2600);T(play,11000)}
 let seen=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!seen){seen=true;play()}}),{threshold:.3}).observe(box);})();
 document.querySelectorAll('#hvseg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#hvseg button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.hv').forEach(h=>h.classList.toggle('on',h.dataset.h==b.dataset.h))}));
 
