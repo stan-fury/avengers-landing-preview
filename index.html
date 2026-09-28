@@ -612,6 +612,19 @@ html,body{overflow-x:clip}
 }
 .annc .an-s{display:none}
 @media (max-width:700px){.annc{white-space:nowrap}.annc .an-l{display:none}.annc .an-s{display:inline;overflow:hidden;text-overflow:ellipsis;min-width:0}}
+/* v1.17 integrations on phones */
+.lens.big .glass{touch-action:pan-y}
+@media (max-width:700px){
+ .lens.big .sharpwin{-webkit-mask:linear-gradient(90deg,transparent calc(var(--lx,50%) - 128px),#000 calc(var(--lx,50%) - 112px),#000 calc(var(--lx,50%) + 112px),transparent calc(var(--lx,50%) + 128px));mask:linear-gradient(90deg,transparent calc(var(--lx,50%) - 128px),#000 calc(var(--lx,50%) - 112px),#000 calc(var(--lx,50%) + 112px),transparent calc(var(--lx,50%) + 128px))}
+ .lens.big .glass::after{opacity:1;transform:translateX(-50%);top:-30px}
+ .lens.big.drag .glass::after{opacity:0}
+ .cnn{font-size:15.5px}.cns{font-size:14px}.cn b{width:40px;height:40px;font-size:13px}
+ .steps b{font-size:17px}.steps span{font-size:15.5px}
+ .chub{width:96px;padding:14px 0;border-radius:24px}
+ #cout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ #cout .co{padding:12px 10px;border-radius:14px;text-align:center;display:flex;align-items:center;justify-content:center;min-height:62px}
+ #cout .co .cnn{font-size:14px;line-height:1.25}#cout .co .cns{display:none}
+}
 </style>
 </head>
 <body>
@@ -1390,7 +1403,7 @@ const bio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targ
 document.querySelectorAll('#subseg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#subseg button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.sub').forEach(s=>s.classList.toggle('on',s.dataset.s==b.dataset.s))}));
 document.querySelectorAll('.gh').forEach(g=>{g.querySelector('i').innerHTML=LOGO[g.dataset.k]});
 (()=>{const el=document.getElementById('rot');if(!el)return;const W=['firefighting','the stress','the urgency','the guesswork','the chaos'];let i=0;setInterval(()=>{i=(i+1)%W.length;const w=W[i];el.textContent='';let k=0;const add=setInterval(()=>{el.textContent=w.slice(0,++k);if(k>=w.length)clearInterval(add)},75)},4800)})();
-(()=>{const L=document.getElementById('lens');if(!L)return;let dr=false;const set=x=>{const r=L.getBoundingClientRect();const v=Math.max(170,Math.min(r.width-170,x-r.left));L.style.setProperty('--lx',v+'px')};const g=L.querySelector('.glass');g.addEventListener('pointerdown',e=>{dr=true;L.classList.add('drag');g.setPointerCapture(e.pointerId);set(e.clientX)});g.addEventListener('pointermove',e=>{if(dr)set(e.clientX)});['pointerup','pointercancel'].forEach(ev=>g.addEventListener(ev,()=>{dr=false;L.classList.remove('drag')}));})();
+(()=>{const L=document.getElementById('lens');if(!L)return;let dr=false;const set=x=>{const r=L.getBoundingClientRect();const h=Math.max(120,(g.offsetWidth||340)/2+6);const v=Math.max(h,Math.min(r.width-h,x-r.left));L.style.setProperty('--lx',v+'px')};const g=L.querySelector('.glass');g.addEventListener('pointerdown',e=>{dr=true;L.classList.add('drag');g.setPointerCapture(e.pointerId);set(e.clientX)});g.addEventListener('pointermove',e=>{if(dr)set(e.clientX)});['pointerup','pointercancel'].forEach(ev=>g.addEventListener(ev,()=>{dr=false;L.classList.remove('drag')}));})();
 (()=>{const el=document.getElementById('ftime');let seen=false;const run=()=>{let m=56;el.textContent='8:56';el.classList.remove('done');const iv=setInterval(()=>{m++;if(m>=60){el.textContent='9:00';el.classList.add('done');clearInterval(iv);setTimeout(run,6000)}else el.textContent='8:'+m},900)};new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!seen){seen=true;run()}}),{threshold:.3}).observe(el)})();
 
 document.addEventListener('click',e=>{const a=e.target.closest('.act');if(!a)return;e.preventDefault();const el=document.getElementById(a.dataset.go);if(el)window.scrollTo({top:el.getBoundingClientRect().top+scrollY-84,behavior:'smooth'})});
