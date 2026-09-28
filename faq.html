@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>FAQ preview</title>
+<title>Avengers FAQ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -31,28 +31,37 @@ details[open] summary::after{transform:rotate(45deg);background-color:#2f5d46;ba
 details p{margin:0 4px 24px;color:#3d4a43;font-size:17px;max-width:40em}
 details p b{color:var(--ink);font-weight:600}
 @media (max-width:760px){.wrap{padding:0 18px}section{padding:64px 0}.grid{grid-template-columns:1fr;gap:34px}summary{font-size:17px;padding:18px 2px}details p{font-size:16px}}
+.nav{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:26px;padding:22px 32px}
+.lo{display:flex;align-items:center;gap:10px;font:600 20px Geist;letter-spacing:-.03em;text-decoration:none;color:inherit}
+.lo s{width:30px;height:30px;border-radius:9px;background:linear-gradient(160deg,#3f8f84,#1f4a37);display:grid;place-items:center;text-decoration:none}
+.lo s::after{content:'';width:15px;height:8px;border-radius:15px 15px 2px 2px;background:#f4b27a;margin-top:4px}
+.nav .r{margin-left:auto;display:flex;gap:18px;align-items:center;font:500 15px Geist}.nav .r a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:#2f5d46;color:#fbf8f1!important;font:600 14.5px Geist;text-decoration:none}
+section{padding:60px 0 110px}
+@media (max-width:760px){.nav{padding:16px 18px}.nav .r a:not(.btn){display:none}section{padding:36px 0 64px}}
 </style>
 </head>
 <body>
-<div class="draft"><b>Proposal for Stas.</b> FAQ as it would sit on the main page, just before Pricing. Every <span class="cf">CONFIRM</span> is a fact I could not verify; it stays off the live site until you confirm it.</div>
+<div class="draft"><b>Demo information.</b> Answers on this page are illustrative and not final.</div>
+<div class="nav"><a class="lo" href="index.html"><s></s>Avengers</a><div class="r"><a href="index.html">Product</a><a href="security.html">Security</a><a href="index.html#pricing">Pricing</a><a class="btn" href="index.html">Book a demo</a></div></div>
 <section><div class="wrap grid">
  <div>
-  <div class="eyebrow"><i></i>Questions</div>
-  <h2>What teams ask before they start.</h2>
+  <div class="eyebrow"><i></i>FAQ</div>
+  <h1 style="font:600 clamp(40px,4.6vw,62px)/1.04 Geist;letter-spacing:-.045em;margin:18px 0 18px">What teams ask before they start.</h1>
   <p class="lead">The short answers. If yours is not here, ask us and a person replies, not a bot.</p>
   <a class="ask" href="#">Talk to us →</a>
   <div class="sub">Security questions? <a href="security.html">Read how we handle your data</a></div>
  </div>
  <div>
   <details open><summary>Does Avengers write to our CRM or send emails for us?</summary><p>No, not on its own. Avengers <b>reads</b> your tools. A status changes only when a person on your team sets it, and follow-ups are saved as <b>drafts in your Gmail</b>. Nothing is sent without you pressing send.</p></details>
-  <details><summary>Do you train AI models on our data?</summary><p>No. Avengers uses Claude by Anthropic through its business API, which <b>does not train on customer data</b>. Your emails and accounts are used only to answer your questions and prepare your day.<span class="cf">CONFIRM vendor</span></p></details>
-  <details><summary>How long does it take to get started?</summary><p>Sign in with Google and your calendar and inbox are connected in a minute. CRM, billing and support tools take an afternoon, and we do the import with you.<span class="cf">CONFIRM timing</span></p></details>
+  <details><summary>Do you train AI models on our data?</summary><p>No. Avengers uses Claude by Anthropic through its business API, which <b>does not train on customer data</b>. Your emails and accounts are used only to answer your questions and prepare your day.</p></details>
+  <details><summary>How long does it take to get started?</summary><p>Sign in with Google and your calendar and inbox are connected in a minute. CRM, billing and support tools take an afternoon, and we do the import with you.</p></details>
   <details><summary>We run customer success in a spreadsheet. Can we move?</summary><p>Yes, that is who we built it for. Point us at the sheet, the Airtable base or the Notion table and <b>we move your data in for free</b>. You can keep the old sheet running while you switch.</p></details>
-  <details><summary>Which tools do you connect to?</summary><p>Gmail, Google Calendar, HubSpot, Chargebee, Airtable, Intercom, Jira and Slack today. If your tool is not on the list, our team builds the connector for you.<span class="cf">CONFIRM list</span></p></details>
-  <details><summary>Where is our data stored?</summary><p>On our cloud provider in a single region, encrypted in transit. Only the people you invite can see your book.<span class="cf">CONFIRM region and encryption at rest</span></p></details>
-  <details><summary>What counts as a seat?</summary><p>One seat is one person who signs in and owns a book of accounts. Leadership who only view the team's books do not need a paid seat.<span class="cf">CONFIRM pricing rule</span></p></details>
-  <details><summary>Is there a free trial?</summary><p>Starter is self-serve, so you can sign up and use it with your own book. For Team and Scale we run a guided pilot on your real accounts.<span class="cf">CONFIRM offer</span></p></details>
-  <details><summary>What happens to our data if we leave?</summary><p>You can export your accounts, statuses and notes at any time. When you close your workspace we delete your data.<span class="cf">CONFIRM export and deletion</span></p></details>
+  <details><summary>Which tools do you connect to?</summary><p>Gmail, Google Calendar, HubSpot, Chargebee, Airtable, Intercom, Jira and Slack today. If your tool is not on the list, our team builds the connector for you.</p></details>
+  <details><summary>Where is our data stored?</summary><p>On our cloud provider in a single region, encrypted in transit. Only the people you invite can see your book.</p></details>
+  <details><summary>What counts as a seat?</summary><p>One seat is one person who signs in and owns a book of accounts. Leadership who only view the team's books do not need a paid seat.</p></details>
+  <details><summary>Is there a free trial?</summary><p>Starter is self-serve, so you can sign up and use it with your own book. For Team and Scale we run a guided pilot on your real accounts.</p></details>
+  <details><summary>What happens to our data if we leave?</summary><p>You can export your accounts, statuses and notes at any time. When you close your workspace we delete your data.</p></details>
  </div>
 </div></section>
 </body>
