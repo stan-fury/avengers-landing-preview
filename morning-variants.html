@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Morning section variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3eee4;--ink:#16201c;--forest:#2f5d46;--teal:#3f8f84;--mut:#5b675f;--line:rgba(22,32,28,.1)}
+*{box-sizing:border-box}html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.rv{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:rgba(243,238,228,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:500 13px Geist}
+.rv a{color:var(--mut);text-decoration:none;padding:6px 10px;border-radius:9px}.rv a:hover{background:rgba(22,32,28,.06);color:var(--ink)}
+.rv b{margin-right:8px}
+section{position:relative;padding:90px 0 100px;border-bottom:1px solid var(--line);overflow:hidden}
+section:nth-of-type(even){background:linear-gradient(180deg,#f6f2ea,#efe9dd)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.tag{display:inline-flex;font:500 12.5px 'Geist Mono';color:var(--forest);background:rgba(47,93,70,.09);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.eyebrow{display:flex;align-items:center;gap:12px;font:600 12.5px Geist;letter-spacing:.14em;text-transform:uppercase;color:#2c7a70}
+.eyebrow i{width:26px;height:1.5px;background:currentColor}
+h2{font:600 clamp(40px,4.6vw,62px)/1.03 Geist;letter-spacing:-.045em;margin:16px 0 18px}
+h2 em{font-style:normal;color:var(--forest)}
+.lead{color:#3d4a43;font-size:19px;margin:0;max-width:30em}
+.lead b{color:var(--ink);font-weight:600}
+.split{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+.note{font:500 14px Geist;color:var(--mut);margin-top:18px}
+/* Morning card */
+.mr-card{background:#fffdf9;border-radius:28px;padding:26px 26px 22px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 40px 80px -40px rgba(22,32,28,.35),0 2px 8px rgba(22,32,28,.05)}
+.mr-hi{font:500 14px Geist;color:#5b675f}
+.mr-big{font:600 30px/1.15 Geist;letter-spacing:-.04em;margin:4px 0 14px}.mr-big b{color:#2f5d46}
+.mr-lanes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.mr-lanes span{font:600 13px Geist;padding:7px 12px;border-radius:999px;background:#f5f1e9;color:#3d4a43}.mr-lanes span b{color:#16201c}
+.mr-lanes span.late{background:#f9e3dd;color:#b13e2a}
+.mr-c{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:center;padding:14px 16px;border-radius:18px;background:#fff;box-shadow:0 14px 30px -20px rgba(22,32,28,.45),inset 0 0 0 1px rgba(22,32,28,.05);margin-top:10px;transition:all .6s cubic-bezier(.3,1,.4,1)}
+.mr-rk{grid-column:1;grid-row:1/3;width:30px;height:30px;border-radius:50%;background:#eef3ee;display:grid;place-items:center;font:600 13px Geist;color:#2f5d46}
+.mr-ln{grid-column:2;grid-row:1;font:600 11px Geist;letter-spacing:.13em;text-transform:uppercase}
+.mr-t2{grid-column:2;grid-row:2;font:500 14px/1.4 Geist;color:#4a5750}
+.mr-nm{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}.mr-nm b{font:600 16.5px Geist;color:#16201c}
+.mr-go{grid-column:3;grid-row:1/3;justify-self:end;font:600 12.5px Geist;padding:8px 12px;border-radius:999px;background:#2f5d46;color:#fbf8f1;white-space:nowrap;transition:opacity .3s}
+.mr-st{display:inline-flex;align-items:center;font:600 12.5px Geist;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.mr-st.g{background:#e3f1e8;color:#2f7a4b}.mr-st.a{background:#fbefd9;color:#8f5d0e}.mr-st.d{background:#f9e3dd;color:#b13e2a}
+.mr-grp{font:600 11.5px Geist;letter-spacing:.13em;text-transform:uppercase;color:#7a857e;margin:16px 0 -2px;display:flex;align-items:center;gap:8px}
+.mr-grp i{width:7px;height:7px;border-radius:50%}
+.mr-c.new{opacity:0;transform:translateY(14px)}
+.mr-c.hl{box-shadow:0 0 0 2px #3f8f84,0 18px 34px -18px rgba(47,93,70,.6)}
+/* A chaos folds */
+.stA{position:relative;height:580px}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:#fff;box-shadow:0 16px 30px -16px rgba(22,32,28,.4);font:500 14px Geist;white-space:nowrap;transition:all .9s cubic-bezier(.6,0,.2,1)}
+.chip s{text-decoration:none;font:700 11px Geist;color:#fff;background:#d23f2f;border-radius:999px;padding:1px 7px}
+.chip i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font:700 11px Geist;color:#fff;font-style:normal}
+.chip.in{left:50%!important;top:46%!important;transform:translate(-50%,-50%) scale(.4) rotate(0)!important;opacity:0}
+.stA .mr-card{position:absolute;left:0;right:0;top:40px;opacity:0;transform:scale(.94);transition:all .7s cubic-bezier(.3,1.2,.5,1)}
+.stA .mr-card.on{opacity:1;transform:none}
+/* B compare */
+.cmp{position:relative;height:560px;border-radius:28px;overflow:hidden;background:#e9e3d6;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 30px 70px -40px rgba(22,32,28,.4);touch-action:pan-y;user-select:none}
+.cmp .lay{position:absolute;inset:0;padding:26px}
+.cmp .top{background:radial-gradient(circle at 20% 10%,#dcebe1,transparent 55%),#f3eee4;clip-path:inset(0 0 0 var(--x,50%))}
+.cmp .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:#fbf8f1;box-shadow:0 0 0 1px rgba(22,32,28,.1)}
+.cmp .knob{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#2f5d46;color:#fbf8f1;display:grid;place-items:center;font:600 16px Geist;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);cursor:grab}
+.cmp .lb{position:absolute;top:16px;font:600 12px Geist;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;z-index:3}
+.cmp .lb.l{left:16px;background:#f9e3dd;color:#b13e2a}.cmp .lb.r{right:16px;background:#e3f1e8;color:#2f7a4b}
+.mess{position:absolute;background:#fff;border-radius:14px;box-shadow:0 18px 30px -18px rgba(22,32,28,.5);font:500 13px Geist;overflow:hidden}
+.mess .h{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);font-weight:600}
+.mess .h s{text-decoration:none;margin-left:auto;background:#d23f2f;color:#fff;border-radius:999px;padding:0 7px;font-size:11px}
+.mess .r{padding:7px 12px;border-bottom:1px solid rgba(22,32,28,.05);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mess .r.red{color:#b13e2a;font-weight:600}
+.cmp .top .mr-card{position:absolute;right:26px;top:60px;width:min(460px,calc(100% - 52px))}
+/* C hour */
+.hour{margin-top:30px;display:grid;gap:22px}
+.hr .lbl{display:flex;justify-content:space-between;font:600 13px Geist;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.hr .lbl b{letter-spacing:0;text-transform:none;font:600 15px Geist;color:var(--ink)}
+.track{position:relative;display:flex;height:54px;border-radius:14px;background:rgba(22,32,28,.06);overflow:visible}
+.seg{flex:none;height:100%;width:0;display:flex;align-items:center;padding:0 10px;font:600 12.5px Geist;white-space:nowrap;overflow:hidden;transition:width 1.1s cubic-bezier(.4,0,.2,1)}
+.seg:first-child{border-radius:14px 0 0 14px}
+.seg.bad{background:#f3d9cf;color:#8a2f1f;border-right:2px solid #f3eee4}.seg.bad:nth-child(3){border-radius:0}
+.seg.over{background:#c4452f;color:#fff;border-radius:0 14px 14px 0}
+.seg.ok{background:#2f5d46;color:#fbf8f1;border-right:2px solid #f3eee4}
+.seg.free{background:#dff0e6;color:#2f7a4b;border-radius:0 14px 14px 0}
+.ticks{display:flex;justify-content:space-between;font:500 12px 'Geist Mono';color:var(--mut);margin-top:6px}
+.late9{position:absolute;right:-17%;top:-24px;font:600 12px Geist;color:#b13e2a;opacity:0;transition:opacity .4s}
+.late9.on{opacity:1}
+/* D annotated */
+.annot{position:relative;display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;gap:26px;align-items:start;margin-top:44px}
+.cl{display:flex;flex-direction:column;gap:18px;padding-top:70px}
+.cl.r{padding-top:150px}
+.co{position:relative;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);opacity:.35;transition:all .4s}
+.co b{display:block;font:600 16px Geist;letter-spacing:-.01em}.co span{display:block;font-size:14.5px;color:var(--mut)}
+.co.on{opacity:1;background:#fff;box-shadow:0 18px 34px -22px rgba(22,32,28,.5)}
+.co em{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#2f5d46;color:#fbf8f1;font:600 12px Geist;margin-bottom:8px}
+/* E counters */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:34px 0 0}
+.stt{padding:22px 22px 20px;border-radius:22px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9)}
+.stt .was{font:500 15px Geist;color:#9aa39d;text-decoration:line-through;text-decoration-color:rgba(196,69,47,.6)}
+.stt .now{font:300 58px/1 Geist;letter-spacing:-.05em;color:var(--forest);margin:6px 0 4px;font-variant-numeric:tabular-nums}
+.stt .now small{font:500 18px Geist;letter-spacing:0;color:var(--mut);margin-left:4px}
+.stt .u{font:600 15px Geist}
+.eGrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:34px}
+@media (max-width:900px){
+ .wrap{padding:0 18px}section{padding:60px 0 70px}
+ .split,.eGrid{grid-template-columns:minmax(0,1fr);gap:30px}.split>*,.eGrid>*,.annot>*{min-width:0}
+ .lead{font-size:17px}
+ .stA{height:560px}.chip{font-size:12.5px;padding:9px 11px}
+ .cmp{height:620px}.cmp .top .mr-card{right:14px;left:14px;width:auto;top:58px;padding:18px}
+ .mr-go{display:none}.mr-c{grid-template-columns:auto 1fr}.mr-big{font-size:25px}
+ .annot{grid-template-columns:minmax(0,1fr)}.cl,.cl.r{padding-top:0;flex-direction:row;overflow-x:auto;scrollbar-width:none}.cl .co{min-width:220px}
+ .stats{grid-template-columns:1fr}.stt .now{font-size:46px}
+ .seg{font-size:11px;padding:0 6px}
+}
+.lgd{display:none;flex-wrap:wrap;gap:6px 12px;margin-top:8px;font:500 13px Geist;color:#3d4a43}
+.lgd span{display:inline-flex;align-items:center;gap:6px}.lgd i{width:10px;height:10px;border-radius:3px}
+.lgd .bad i{background:#f3d9cf}.lgd .over i{background:#c4452f}.lgd .ok i{background:#2f5d46}.lgd .free i{background:#dff0e6;box-shadow:inset 0 0 0 1px #9fcfb2}
+@media (max-width:900px){.lgd{display:flex}.seg{font-size:0!important;padding:0}.late9{display:none}
+ #stA .chip:nth-child(n+7){display:none}#stA .chip{max-width:78%;overflow:hidden;text-overflow:ellipsis}#stA .chip:nth-child(2n){left:auto!important;right:0}#stA .chip.in{left:50%!important;right:auto!important}}
+</style>
+</head>
+<body>
+<div class="rv"><b>Proposal for Stas · Morning section</b><a href="#mA">A</a><a href="#mB">B</a><a href="#mC">C</a><a href="#mD">D</a><a href="#mE">E</a></div>
+
+<section id="mA"><div class="wrap split">
+ <div><span class="tag">A · The noise folds into one page</span><div class="eyebrow"><i></i>01 · Morning Routine</div>
+  <h2>Mornings without <em>firefighting.</em></h2>
+  <p class="lead">Nine tools shouting at once. Avengers reads all of them before you start and <b>folds them into one calm, ranked page</b>: what matters most, in what order, with calls prepared.</p></div>
+ <div class="stA" id="stA"></div>
+</div></section>
+
+<section id="mB"><div class="wrap split">
+ <div><span class="tag">B · Drag to compare</span><div class="eyebrow"><i></i>01 · Morning Routine</div>
+  <h2>Same morning. <em>Two very different starts.</em></h2>
+  <p class="lead">On the left, the morning you know: ten tabs, red badges, a sheet with #REF!. On the right, <b>the same morning in Avengers.</b> Drag the handle.</p>
+  <div class="note">The handle sweeps on its own until you grab it.</div></div>
+ <div class="cmp" id="cmp"></div>
+</div></section>
+
+<section id="mC"><div class="wrap split">
+ <div><span class="tag">C · Where your first hour goes</span><div class="eyebrow"><i></i>01 · Morning Routine</div>
+  <h2>Get your first hour <em>back.</em></h2>
+  <p class="lead">Without Avengers, the hour before your first call goes on tabs, guessing and prep, and you are late anyway. <b>With it, two minutes of reading and the rest belongs to clients.</b></p>
+  <div class="hour" id="hour"></div></div>
+ <div id="mcC"></div>
+</div></section>
+
+<section id="mD"><div class="wrap">
+ <span class="tag">D · Your Morning, explained</span><div class="eyebrow"><i></i>01 · Morning Routine</div>
+ <h2>Late first. Then what matters. <em>Then the rest of today.</em></h2>
+ <p class="lead">No before and after: just the Morning itself, with each part lighting up as it is explained.</p>
+ <div class="annot">
+  <div class="cl" id="clL"></div>
+  <div id="mcD"></div>
+  <div class="cl r" id="clR"></div>
+ </div>
+</div></section>
+
+<section id="mE"><div class="wrap">
+ <span class="tag">E · The morning, in numbers</span><div class="eyebrow"><i></i>01 · Morning Routine</div>
+ <h2>Your morning, <em>down to two minutes.</em></h2>
+ <p class="lead">The old number crosses out, the new one counts down, and the Morning builds itself next to it.</p>
+ <div class="eGrid"><div class="stats" id="stats" style="grid-template-columns:1fr;margin:0"></div><div id="mcE"></div></div>
+</div></section>
+
+<script>
+const W=ms=>new Promise(r=>setTimeout(r,ms));
+const VIS=new Map();const io=new IntersectionObserver(es=>es.forEach(e=>VIS.set(e.target,e.isIntersecting)),{threshold:.2});
+const gate=async el=>{while(!VIS.get(el))await W(250)};
+const loop=(el,fn)=>{io.observe(el);(async()=>{while(true){await gate(el);await fn()}})()};
+const SW=(s,k)=>`<span class="mr-st ${k}">${s}</span>`;
+const C=[['Late · since yesterday','Aviato','No Response','d','Security review you promised. Send it before 10.','Send review','#b13e2a','late'],
+['Renewal · 12 days','Wayne Enterprises','Paperwork Pending','a','Order form out for six days. Chase the signature with Bruce.','Draft nudge','#9a6512','top'],
+['Pilot · week 6','Pied Piper','On Track','g','Week-6 proof due today. Share it with Monica before noon.','Open pilot','#2f7a4b','top'],
+['Renewal · 24 days','Hooli','Decision Pending','a','Call at 11:30. The brief is ready.','Prep call','#9a6512','today'],
+['Pilot · week 9','Dunder Mifflin','Low Engagement','d','One of three teams active. Book a check-in.','Book check-in','#b13e2a','today']];
+const card=(c,n)=>`<div class="mr-c new" data-g="${c[7]}"><span class="mr-rk">${n}</span><span class="mr-ln" style="color:${c[6]}">${c[0]}</span><span class="mr-go">${c[5]} →</span><span class="mr-t2"><span class="mr-nm"><b>${c[1]}</b>${SW(c[2],c[3])}</span>${c[4]}</span></div>`;
+const head=`<div class="mr-hi">Good morning, Laurie · Tuesday</div><div class="mr-big"><b>$184,000</b> of ARR needs you today.</div><div class="mr-lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div>`;
+const morning=(items,groups)=>{let h=head,n=0,last='';items.forEach(c=>{if(groups&&c[7]!==last){last=c[7];const G={late:['Late','#c4452f'],top:['Most important','#2f5d46'],today:['Due today','#c98a1e']}[c[7]];h+=`<div class="mr-grp"><i style="background:${G[1]}"></i>${G[0]}</div>`}h+=card(c,++n)});return `<div class="mr-card">${h}</div>`};
+const reveal=async root=>{for(const c of root.querySelectorAll('.mr-c')){c.classList.remove('new');await W(260)}};
+const hide=root=>root.querySelectorAll('.mr-c').forEach(c=>c.classList.add('new'));
+
+/* A */
+(()=>{const el=document.getElementById('stA');
+const N=[['M','#ea4335','Why is nobody replying?','3'],['#','#4a154b','#cs-escalations','8'],['S','#635bff','Payment failed · $19,000',''],['31','#1a73e8','11:30 Hooli call, no prep',''],['I','#1f8ded','Ticket reopened, still broken',''],['X','#107c41','customers_FINAL_v7 (2).xlsx',''],['J','#2684ff','Bug open for 9 days',''],['M','#ea4335','Order form?','12'],['H','#ff7a59','Deal stage: unknown','']];
+const P=[[2,4,-4],[46,0,3],[8,18,2],[50,16,-3],[0,34,3],[44,33,-2],[6,52,-2],[52,50,4],[20,68,-3]];
+el.innerHTML=N.map(([i,c,t,b],k)=>`<div class="chip" style="left:${P[k][0]}%;top:${P[k][1]}%;transform:rotate(${P[k][2]}deg)"><i style="background:${c}">${i}</i>${t}${b?`<s>${b}</s>`:''}</div>`).join('')+morning(C.slice(0,4));
+const chips=[...el.querySelectorAll('.chip')],mc=el.querySelector('.mr-card');
+loop(el,async()=>{mc.classList.remove('on');hide(mc);chips.forEach((c,k)=>{c.classList.remove('in');c.style.opacity=0});await W(300);
+ for(const c of chips){c.style.opacity=1;await W(160)}await W(1800);
+ for(const c of chips){c.classList.add('in');await W(70)}await W(700);mc.classList.add('on');await W(300);await reveal(mc);await W(4200)})})();
+
+/* B */
+(()=>{const el=document.getElementById('cmp');
+el.innerHTML=`<div class="lay bot">
+ <div class="mess" style="left:18px;top:60px;width:62%"><div class="h">Inbox<s>17</s></div><div class="r red">Gavin Belson · Still waiting</div><div class="r">Hooli Finance · Renewal terms</div><div class="r red">Endframe CFO · Results?</div><div class="r">Aviato · Who do we talk to</div></div>
+ <div class="mess" style="left:30%;top:230px;width:60%"><div class="h">customers_FINAL_v7</div><div class="r">Hooli · 30 Oct? · call re pricing!!</div><div class="r red">Wayne Ent. · #REF! · sent?</div><div class="r">Aviato · no reply since Aug</div></div>
+ <div class="mess" style="left:10px;top:370px;width:55%"><div class="h">Tasks<s>Overdue 5</s></div><div class="r red">Call Hooli about the renewal</div><div class="r red">Send Wayne the order form</div><div class="r">Chase the Endframe payment</div></div>
+ <div class="mess" style="right:14px;top:420px;width:40%"><div class="h">#cs-escalations<s>8</s></div><div class="r">Monica: this is a blocker</div></div>
+</div>
+<div class="lay top">${morning(C.slice(0,4))}</div>
+<span class="lb l">Your morning today</span><span class="lb r">With Avengers</span>
+<div class="bar"><span class="knob">↔</span></div>`;
+el.querySelectorAll('.mr-c').forEach(c=>c.classList.remove('new'));
+let user=false;const set=p=>el.style.setProperty('--x',p+'%');
+const mv=e=>{const r=el.getBoundingClientRect();set(Math.max(4,Math.min(96,(e.clientX-r.left)/r.width*100)))};
+let dn=false;el.addEventListener('pointerdown',e=>{dn=true;user=true;el.setPointerCapture(e.pointerId);mv(e)});el.addEventListener('pointermove',e=>{if(dn)mv(e)});['pointerup','pointercancel'].forEach(v=>el.addEventListener(v,()=>dn=false));
+io.observe(el);let t0=performance.now();(function f(now){if(!user&&VIS.get(el)){const p=50+38*Math.sin((now-t0)/1600);set(p)}requestAnimationFrame(f)})(t0)})();
+
+/* C */
+(()=>{const el=document.getElementById('hour'),mc=document.getElementById('mcC');mc.innerHTML=morning(C.slice(0,4));const card=mc.querySelector('.mr-card');
+el.innerHTML=`<div class="hr"><div class="lbl">Without Avengers<b id="hA">8:00</b></div><div class="track" id="tA"><span class="late9" id="l9">Late for the 9:00 call</span></div><div class="ticks"><span>8:00</span><span>8:30</span><span>9:00</span></div></div>
+<div class="hr"><div class="lbl">With Avengers<b id="hB">8:00</b></div><div class="track" id="tB"></div><div class="ticks"><span>8:00</span><span>8:30</span><span>9:00</span></div></div>`;
+const A=[['Ten tabs',25,'bad'],['Guessing what is urgent',25,'bad'],['Prep one call',50,'bad'],['+10 min',17,'over']],B=[['Read',7,'ok'],['Brief',7,'ok'],['Free for clients',86,'free']];
+const MIN={'Ten tabs':'15 min','Guessing what is urgent':'15 min','Prep one call':'30 min','+10 min':'late','Read':'2 min','Brief':'2 min','Free for clients':'56 min'};
+const build=(id,S)=>{const t=document.getElementById(id);t.querySelectorAll('.seg').forEach(s=>s.remove());let lg=t.parentElement.querySelector('.lgd');if(!lg){lg=document.createElement('div');lg.className='lgd';t.parentElement.appendChild(lg)}lg.innerHTML=S.map(([n,w,k])=>`<span class="${k}"><i></i>${n=='+10 min'?'Late for the call':n} · ${MIN[n]}</span>`).join('');return S.map(([n,w,k])=>{const s=document.createElement('span');s.className='seg '+k;s.textContent=n;s.dataset.w=w;t.appendChild(s);return s})};
+loop(el,async()=>{hide(card);document.getElementById('l9').classList.remove('on');const a=build('tA',A),b=build('tB',B);await W(400);
+ for(const s of a){s.style.width=s.dataset.w+'%';await W(900)}document.getElementById('l9').classList.add('on');document.getElementById('hA').textContent='9:10';
+ await W(600);for(const s of b){s.style.width=s.dataset.w+'%';await W(700)}document.getElementById('hB').textContent='8:04';await reveal(card);await W(5000)})})();
+
+/* D */
+(()=>{const mc=document.getElementById('mcD');mc.innerHTML=morning(C,true);const card=mc.querySelector('.mr-card');card.querySelectorAll('.mr-c').forEach(c=>c.classList.remove('new'));
+const L=[['Late comes first','Anything that slipped yesterday sits on top, in red.','late'],['Ranked by what matters most','Renewals close to the date and at-risk pilots go first.','top']],R=[['The first move is written','Each card says what to do, not just what is wrong.','move'],['Due today, with calls prepared','Your 11:30 has its brief ready before you open it.','today']];
+const co=(x,i)=>`<div class="co" data-k="${x[2]}"><em>${i}</em><b>${x[0]}</b><span>${x[1]}</span></div>`;
+document.getElementById('clL').innerHTML=L.map((x,i)=>co(x,i+1)).join('');document.getElementById('clR').innerHTML=R.map((x,i)=>co(x,i+3)).join('');
+const cos=[...document.querySelectorAll('#mD .co')],items=[...card.querySelectorAll('.mr-c')];
+loop(mc,async()=>{for(const c of cos){cos.forEach(x=>x.classList.toggle('on',x===c));const k=c.dataset.k;items.forEach(it=>{it.classList.toggle('hl',k=='move'?false:it.dataset.g==k);it.querySelector('.mr-go').style.boxShadow=k=='move'?'0 0 0 3px rgba(63,143,132,.5)':''});await W(2600)}})})();
+
+/* E */
+(()=>{const st=document.getElementById('stats'),mc=document.getElementById('mcE');mc.innerHTML=morning(C.slice(0,4));const card=mc.querySelector('.mr-card');
+const S=[['40 minutes of prep per call',40,2,'min','to prepare a call','min'],['Ten tabs before nine',10,1,'page','to read before you start','tabs'],['Follow-ups written at night',0,5,'drafts','waiting in Gmail','drafts']];
+st.innerHTML=S.map(s=>`<div class="stt"><div class="was">${s[0]}</div><div class="now"><span>${s[1]}</span><small>${s[5]}</small></div><div class="u">${s[4]}</div></div>`).join('');
+const nums=[...st.querySelectorAll('.now span')],units=[...st.querySelectorAll('.now small')];
+loop(st,async()=>{hide(card);nums.forEach((n,i)=>{n.textContent=S[i][1];units[i].textContent=S[i][5]});await W(700);
+ await Promise.all(S.map(async(s,i)=>{await W(i*500);const a=s[1],b=s[2],t0=performance.now();await new Promise(res=>{(function f(now){const u=Math.max(0,Math.min(1,(now-t0)/1400)),e=1-Math.pow(1-u,3);nums[i].textContent=Math.round(a+(b-a)*e);if(u<1)requestAnimationFrame(f);else{units[i].textContent=s[3];res()}})(t0)})}));
+ await reveal(card);await W(5500)})})();
+</script>
+</body>
+</html>
