@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>FAQ preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3eee4;--ink:#16201c;--forest:#2f5d46;--teal:#3f8f84;--mut:#5b675f;--line:rgba(22,32,28,.1)}
+*{box-sizing:border-box}html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.draft{background:#2f5d46;color:#e9f2ed;font:500 14px/1.45 Geist;padding:10px 16px;text-align:center}
+.draft b{color:#fff}.cf{display:inline-block;background:#fbe7b4;color:#6b4a07;font:600 11.5px Geist;letter-spacing:.04em;padding:1px 7px;border-radius:6px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+section{padding:110px 0}
+.grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+.eyebrow{display:flex;align-items:center;gap:12px;font:600 12.5px Geist;letter-spacing:.14em;text-transform:uppercase;color:#2c7a70}
+.eyebrow i{width:26px;height:1.5px;background:currentColor}
+h2{font:600 clamp(38px,4.4vw,58px)/1.04 Geist;letter-spacing:-.045em;margin:18px 0 18px}
+.lead{color:#3d4a43;font-size:19px;margin:0 0 28px;max-width:26em}
+.ask{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--forest);color:#fbf8f1;font:600 15px Geist;text-decoration:none}
+.sub{margin-top:14px;font:500 15px Geist;color:var(--mut)}.sub a{color:var(--ink)}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 4px;font:600 19.5px/1.35 Geist;letter-spacing:-.02em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'';flex:none;width:30px;height:30px;border-radius:50%;background:#fbf8f1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 6v12M6 12h12' stroke='%2316201c' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:inset 0 0 0 1px rgba(22,32,28,.12);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg);background-color:#2f5d46;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 6v12M6 12h12' stroke='%23fbf8f1' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")}
+details p{margin:0 4px 24px;color:#3d4a43;font-size:17px;max-width:40em}
+details p b{color:var(--ink);font-weight:600}
+@media (max-width:760px){.wrap{padding:0 18px}section{padding:64px 0}.grid{grid-template-columns:1fr;gap:34px}summary{font-size:17px;padding:18px 2px}details p{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="draft"><b>Proposal for Stas.</b> FAQ as it would sit on the main page, just before Pricing. Every <span class="cf">CONFIRM</span> is a fact I could not verify; it stays off the live site until you confirm it.</div>
+<section><div class="wrap grid">
+ <div>
+  <div class="eyebrow"><i></i>Questions</div>
+  <h2>What teams ask before they start.</h2>
+  <p class="lead">The short answers. If yours is not here, ask us and a person replies, not a bot.</p>
+  <a class="ask" href="#">Talk to us →</a>
+  <div class="sub">Security questions? <a href="security.html">Read how we handle your data</a></div>
+ </div>
+ <div>
+  <details open><summary>Does Avengers write to our CRM or send emails for us?</summary><p>No, not on its own. Avengers <b>reads</b> your tools. A status changes only when a person on your team sets it, and follow-ups are saved as <b>drafts in your Gmail</b>. Nothing is sent without you pressing send.</p></details>
+  <details><summary>Do you train AI models on our data?</summary><p>No. Avengers uses Claude by Anthropic through its business API, which <b>does not train on customer data</b>. Your emails and accounts are used only to answer your questions and prepare your day.<span class="cf">CONFIRM vendor</span></p></details>
+  <details><summary>How long does it take to get started?</summary><p>Sign in with Google and your calendar and inbox are connected in a minute. CRM, billing and support tools take an afternoon, and we do the import with you.<span class="cf">CONFIRM timing</span></p></details>
+  <details><summary>We run customer success in a spreadsheet. Can we move?</summary><p>Yes, that is who we built it for. Point us at the sheet, the Airtable base or the Notion table and <b>we move your data in for free</b>. You can keep the old sheet running while you switch.</p></details>
+  <details><summary>Which tools do you connect to?</summary><p>Gmail, Google Calendar, HubSpot, Chargebee, Airtable, Intercom, Jira and Slack today. If your tool is not on the list, our team builds the connector for you.<span class="cf">CONFIRM list</span></p></details>
+  <details><summary>Where is our data stored?</summary><p>On our cloud provider in a single region, encrypted in transit. Only the people you invite can see your book.<span class="cf">CONFIRM region and encryption at rest</span></p></details>
+  <details><summary>What counts as a seat?</summary><p>One seat is one person who signs in and owns a book of accounts. Leadership who only view the team's books do not need a paid seat.<span class="cf">CONFIRM pricing rule</span></p></details>
+  <details><summary>Is there a free trial?</summary><p>Starter is self-serve, so you can sign up and use it with your own book. For Team and Scale we run a guided pilot on your real accounts.<span class="cf">CONFIRM offer</span></p></details>
+  <details><summary>What happens to our data if we leave?</summary><p>You can export your accounts, statuses and notes at any time. When you close your workspace we delete your data.<span class="cf">CONFIRM export and deletion</span></p></details>
+ </div>
+</div></section>
+</body>
+</html>
