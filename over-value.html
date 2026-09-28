@@ -45,7 +45,7 @@ section{padding:60px 0 70px}
 .ovl.shw{opacity:1;transform:none}
 .bcar{display:inline-block;width:.06em;height:.78em;background:#3f8f84;margin:0 .02em;vertical-align:-.04em;animation:car 1s steps(1) infinite}
 @keyframes car{50%{opacity:0}}
-.why{margin:14px auto 0;max-width:44em;font:400 18.5px/1.55 Geist;color:#3d4a43}
+.why{margin:14px auto 0;max-width:1060px;font:400 18.5px/1.55 Geist;color:#3d4a43}
 .why b{color:var(--ink);font-weight:600}
 .fade{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}.fade.on{opacity:1;transform:none}
 .lg{width:20px;height:20px;display:inline-grid;place-items:center;flex:none}.lg svg{width:18px;height:18px}
@@ -118,7 +118,7 @@ section{padding:60px 0 70px}
  .mt{flex-wrap:wrap;justify-content:center;border-radius:18px}.mt button{padding:8px 12px;font-size:13px}
  .ts{flex-direction:column;gap:6px}.ts input{width:100%}
 }
-.sc{grid-template-columns:.9fr 1.3fr .9fr;gap:18px;max-width:1120px}
+.sc{grid-template-columns:.9fr 1.3fr .9fr;gap:18px;max-width:1180px}
 .scard{padding:18px 18px 16px}.scard h4{font-size:16px}.scard .kind{font-size:12.5px;margin-bottom:10px}
 .scard .meter{margin:7px 0}.scard .meter .ml{font-size:12.5px}.scard .meter .ml span:last-child{font-size:11.5px}.scard .verdict{font-size:13px}
 .scard.us{padding:34px 32px 30px;transform:scale(1.02)}.scard.us h4{font-size:22px}.scard.us .kind{font-size:14.5px;margin-bottom:18px}
@@ -136,19 +136,19 @@ section{padding:60px 0 70px}
 .gt span{font:500 13px/1.4 Geist;color:#6b756f}
 @media (max-width:760px){.gets{grid-template-columns:1fr}.gt b{font-size:28px}}
 .gets{display:none}
-.calc{max-width:1060px;margin:24px auto 30px;text-align:left;padding:22px 24px 18px}
+.calc{max-width:1180px;margin:26px auto 30px;text-align:left;padding:22px 24px 18px}
 .inp{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .in label{display:flex;justify-content:space-between;font:500 13.5px Geist;color:#3d4a43;margin-bottom:8px}
 .in label b{font:600 14px 'Geist Mono';color:#2f5d46}
 .in input{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:6px;background:linear-gradient(90deg,#2f5d46 var(--p,30%),#e4ded2 var(--p,30%))}
 .in input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #2f5d46,0 3px 8px rgba(22,32,28,.25);cursor:pointer}
 .in input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid #2f5d46}
-.outs{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:12px;margin-top:20px}
+.outs{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:12px;margin-top:20px}
 .out{padding:16px 16px 14px;border-radius:16px;background:#f6f3ec}
 .out.hero{background:linear-gradient(160deg,#e6f2ea,#dcebe2)}
 .out small{display:block;font:600 11px Geist;letter-spacing:.08em;text-transform:uppercase;color:#6b756f}
-.out b{display:block;font:600 32px/1.1 Geist;letter-spacing:-.03em;color:#2f5d46;margin:6px 0 3px}
-.out.hero b{font-size:40px}
+.out b{display:block;white-space:nowrap;font:600 clamp(24px,2.3vw,32px)/1.1 Geist;letter-spacing:-.03em;color:#2f5d46;margin:6px 0 3px}
+.out.hero b{font-size:clamp(30px,2.9vw,40px)}
 .out span{display:block;font:500 12.5px/1.4 Geist;color:#6b756f}
 .how{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
 .how summary{cursor:pointer;font:600 13.5px Geist;color:#2f5d46;list-style:none;display:flex;align-items:center;gap:8px}
@@ -174,12 +174,12 @@ section{padding:60px 0 70px}
 .mh3{font:600 20px/1.2 Geist;letter-spacing:-.02em;margin:0 0 8px}
 .statrow{display:flex;gap:18px;flex-wrap:wrap}
 .statrow div b{display:block;font:600 22px Geist;color:#2f5d46}.statrow div span{font:500 12px Geist;color:#6b756f}
-@media (max-width:760px){.inp,.outs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.out b{font-size:24px}.out.hero b{font-size:32px}.out{padding:12px}.out.hero{grid-column:1/-1}.spots{grid-template-columns:1fr}.calc{padding:18px 14px}.how table{font-size:12.5px}}
+@media (max-width:760px){.inp,.outs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.out b{font-size:21px;white-space:normal}.out.hero b{font-size:32px}.out{padding:12px}.out.hero{grid-column:1/-1}.spots{grid-template-columns:1fr}.calc{padding:18px 14px}.how table{font-size:12.5px}}
 </style>
 </head>
 <body>
 <nav class="rv"><b>Overdelivered, the value</b></nav>
-<p class="intro">Proposal. The Overdelivered screen becomes a real value calculator: <b>hours saved, accounts each person can take on, the book reviewed every morning, and what one saved renewal is worth</b>. Every number comes from the inputs and the assumptions shown under "How we calculate", nothing is a customer result. Below it: four other places on the site where the same value can show.</p>
+<p class="intro">The Overdelivered screen as it goes on the site: the why in three lines, the value calculator, then the three cards.</p>
 <section id="s4"><div class="wrap">
  <div class="ovbox"><span class="o"></span><span class="d">D</span><span class="rest">elivered.</span><i class="bcar"></i></div>
  <p class="why">Why overdelivered? Because you get more than you signed up for. Avengers was built by a customer success leader who ran books on spreadsheets, memory and late nights for over ten years, waiting for a tool that fit a real team. It never came, so we built it: <b>the depth of the big platforms, sized for the team you have today.</b></p><div class="card calc" data-calc>
@@ -204,13 +204,7 @@ section{padding:60px 0 70px}
   <tr><td><b>Total per person</b></td><td data-t="sum"></td></tr></table>
   <p>More accounts each: hours saved divided by the time one account takes, assuming 30 hours of account work a week spread across your <span data-t="a"></span> accounts. One saved renewal: your average ARR against a year of the plan for your team size. These are estimates from your inputs, not results measured at a customer.</p>
  </details>
-</div><div data-s4><div class="ts" style="display:none">People on your team <span class="rw"><input type="range" min="1" max="20" value="5" aria-label="People on your team"><span class="tsk"><span style="left:0.00%">1</span><span style="left:21.05%">5</span><span style="left:47.37%">10</span><span style="left:73.68%">15</span><span style="left:100.00%">20</span></span></span><b data-ts>5 people</b></div><!--X--><div class="gets"><div class="gt"><small>Time back, every week</small><b data-h>17 hours</b><span data-hn></span></div><div class="gt"><small>Time back, every month</small><b data-m>70 hours</b><span>about 21 working days</span></div><div class="gt"><small>What it costs</small><b data-p>$495</b><span data-pn></span></div></div><div class="sc"></div></div><div class="more"><h3>The same value, in four more places</h3><p>Small, honest lines that turn features into outcomes. Each uses the calculator's own logic.</p>
- <div class="spots">
-  <div class="card spot"><div class="where">Hero, under the buttons</div><div class="mock"><span class="chipv">About <i>10 hours</i> back per CSM, every week</span></div><div class="why2">The first outcome a visitor reads, next to the demo button.</div></div>
-  <div class="card spot"><div class="where">Morning Routine, top of the card</div><div class="mock"><div class="mh3">Your morning is ready.</div><div class="statrow"><div><b>40 min</b><span>of sorting skipped</span></div><div><b>47 → 6</b><span>alerts into moves</span></div><div><b>4</b><span>drafts waiting</span></div></div></div><div class="why2">Shows what the morning saved, not only what it shows.</div></div>
-  <div class="card spot"><div class="where">Health Score, under the chart</div><div class="mock"><div class="mh3">Every account, every morning.</div><div class="statrow"><div><b>200 of 200</b><span>accounts checked today</span></div><div><b>$64,000</b><span>flagged before the call</span></div></div></div><div class="why2">Churn risk as coverage: nothing waits for the quarterly review.</div></div>
-  <div class="card spot"><div class="where">Pricing, under the plans</div><div class="mock"><span class="chipv">One saved <i>$20,000</i> renewal pays for a year of Team for 16 people</span></div><div class="why2">Turns the price into payback, from the same numbers.</div></div>
- </div></div>
+</div><div data-s4><div class="ts" style="display:none">People on your team <span class="rw"><input type="range" min="1" max="20" value="5" aria-label="People on your team"><span class="tsk"><span style="left:0.00%">1</span><span style="left:21.05%">5</span><span style="left:47.37%">10</span><span style="left:73.68%">15</span><span style="left:100.00%">20</span></span></span><b data-ts>5 people</b></div><!--X--><div class="gets"><div class="gt"><small>Time back, every week</small><b data-h>17 hours</b><span data-hn></span></div><div class="gt"><small>Time back, every month</small><b data-m>70 hours</b><span>about 21 working days</span></div><div class="gt"><small>What it costs</small><b data-p>$495</b><span data-pn></span></div></div><div class="sc"></div></div>
 </div></section>
 
 <script>
