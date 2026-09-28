@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Playbook tab variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3eee4;--ink:#16201c;--forest:#2f5d46;--teal:#3f8f84;--mut:#5b675f;--line:rgba(22,32,28,.1);--card:#fffdf9}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1180px;margin:0 auto;padding:60px 32px 80px}
+.top h1{font:600 42px Geist;letter-spacing:-.04em;margin:0 0 8px}
+.top p{color:var(--mut);margin:0 0 20px;max-width:44em}
+.v{padding:54px 0;border-top:1px solid var(--line)}
+.lab{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.lab b{font:600 13px 'Geist Mono';color:var(--forest);background:rgba(47,93,70,.09);padding:5px 11px;border-radius:999px}
+.lab span{font:600 20px Geist;letter-spacing:-.02em}
+.lab em{font-style:normal;color:var(--mut);font-size:15px}
+.stage{margin-top:22px;height:170px;border-radius:24px;background:radial-gradient(circle at 12% 16%,#dcebe1,transparent 55%),radial-gradient(circle at 88% 88%,#f5dcc6,transparent 55%),#f0ebe1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;transition:opacity .25s}
+.stage b{font:600 24px Geist;letter-spacing:-.03em}.stage span{color:var(--mut);font-size:15px}
+.stage.fx{opacity:.35}
+.ico{display:inline-grid;place-items:center;flex:none}
+.ico svg{width:100%;height:100%}
+button{font-family:inherit;color:inherit;cursor:pointer}
+
+/* 1 editorial text tabs */
+.t1{display:flex;gap:44px;flex-wrap:wrap}
+.t1 button{border:0;background:none;padding:0 0 12px;font:600 34px Geist;letter-spacing:-.04em;color:#a7afa9;position:relative;transition:color .3s}
+.t1 button::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:0;border-radius:3px;background:var(--forest);transition:width .45s cubic-bezier(.3,.8,.3,1)}
+.t1 button.on{color:var(--ink)}.t1 button.on::after{width:100%}
+.t1 button:hover{color:#5b675f}
+
+/* 2 sliding pill */
+.t2{position:relative;display:inline-grid;grid-template-columns:repeat(3,1fr);padding:6px;border-radius:999px;background:#16201c;min-width:640px}
+.t2 i{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px)/3);border-radius:999px;background:#fbf8f1;transition:transform .45s cubic-bezier(.3,1.2,.4,1)}
+.t2 button{position:relative;z-index:1;border:0;background:none;padding:15px 20px;font:600 16px Geist;color:#cfd8d2;transition:color .3s}
+.t2 button.on{color:var(--ink)}
+
+/* 3 chapters with progress */
+.t3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.t3 button{border:0;background:none;text-align:left;padding:16px 0 0;position:relative;color:#8f9892;transition:color .3s}
+.t3 button::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px;background:rgba(22,32,28,.1)}
+.t3 button::after{content:'';position:absolute;top:0;left:0;height:3px;border-radius:3px;background:var(--forest);width:var(--p,0%)}
+.t3 button small{display:block;font:500 13px 'Geist Mono';margin-bottom:4px}
+.t3 button b{font:600 19px Geist;letter-spacing:-.02em}
+.t3 button.on{color:var(--ink)}
+
+/* 4 status chips */
+.t4{display:flex;gap:10px;flex-wrap:wrap}
+.t4 button{display:inline-flex;align-items:center;gap:10px;border:0;padding:12px 18px 12px 14px;border-radius:999px;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(22,32,28,.1);font:600 15.5px Geist;transition:all .3s}
+.t4 button i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.t4 button em{font-style:normal;font-weight:500;color:var(--mut)}
+.t4 button.on{background:#fff;box-shadow:inset 0 0 0 2px var(--c),0 10px 24px -16px rgba(22,32,28,.5)}
+
+/* 5 folder tabs */
+.t5wrap .t5{display:flex;gap:4px;padding-left:20px}
+.t5 button{border:0;padding:14px 24px 16px;border-radius:18px 18px 0 0;background:rgba(22,32,28,.05);font:600 16px Geist;color:#6b766f;transition:all .25s;display:flex;align-items:center;gap:10px}
+.t5 button .ico{width:20px;height:20px}
+.t5 button.on{background:#f0ebe1;color:var(--ink);box-shadow:0 -1px 0 rgba(255,255,255,.8) inset}
+.t5wrap .stage{margin-top:0;border-radius:0 24px 24px 24px}
+
+/* 6 side list */
+.t6wrap{display:grid;grid-template-columns:320px 1fr;gap:26px}
+.t6{display:flex;flex-direction:column;gap:6px}
+.t6 button{position:relative;text-align:left;border:0;background:none;padding:16px 18px 16px 24px;border-radius:16px;transition:background .3s}
+.t6 button::before{content:'';position:absolute;left:8px;top:16px;bottom:16px;width:3px;border-radius:3px;background:rgba(22,32,28,.1);transition:background .3s}
+.t6 button b{display:block;font:600 18px Geist;color:#8f9892;transition:color .3s}
+.t6 button span{display:block;font-size:14.5px;color:var(--mut);max-height:0;opacity:0;overflow:hidden;transition:all .35s}
+.t6 button.on{background:#fff;box-shadow:0 14px 30px -22px rgba(22,32,28,.5)}
+.t6 button.on::before{background:var(--forest)}
+.t6 button.on b{color:var(--ink)}.t6 button.on span{max-height:3em;opacity:1;margin-top:3px}
+.t6wrap .stage{margin-top:0;height:auto;min-height:230px}
+
+/* 7 icon tiles */
+.t7{display:flex;gap:26px}
+.t7 button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:10px;font:600 14.5px Geist;color:#6b766f;transition:color .3s}
+.t7 .ico{width:76px;height:76px;padding:22px;border-radius:24px;background:#fbf8f1;box-shadow:inset 0 0 0 1.5px rgba(22,32,28,.12);color:#5b675f;transition:all .35s cubic-bezier(.3,1.3,.5,1)}
+.t7 button.on{color:var(--ink)}
+.t7 button.on .ico{background:var(--forest);color:#fbf8f1;box-shadow:0 18px 30px -16px rgba(47,93,70,.8);transform:translateY(-4px) scale(1.06)}
+
+/* 8 headline switch */
+.t8h{font:600 44px/1.15 Geist;letter-spacing:-.045em;margin:0}
+.t8h .sw{position:relative;color:var(--forest);white-space:nowrap}
+.t8h .sw::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:4px;border-radius:4px;background:rgba(47,93,70,.25)}
+.t8{display:flex;gap:8px;margin-top:18px}
+.t8 button{border:0;padding:9px 15px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(22,32,28,.14);font:500 14.5px Geist;color:var(--mut);transition:all .25s}
+.t8 button.on{background:var(--ink);color:#fbf8f1;box-shadow:none}
+
+/* 9 stat tabs */
+.t9{display:grid;grid-template-columns:repeat(3,1fr);border-radius:24px;background:rgba(255,255,255,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8)}
+.t9 button{border:0;background:none;text-align:left;padding:24px 26px;position:relative;transition:background .3s}
+.t9 button+button{border-left:1px solid var(--line)}
+.t9 button .n{display:block;font:300 54px/1 Geist;letter-spacing:-.05em;color:#b3bab5;transition:color .3s}
+.t9 button .u{display:block;font:600 15px Geist;margin-top:8px;color:#6b766f}
+.t9 button .d{display:block;font-size:13.5px;color:var(--mut)}
+.t9 button.on{background:#fffdf9;border-radius:24px;box-shadow:0 20px 40px -26px rgba(22,32,28,.5)}
+.t9 button.on .n{color:var(--forest)}.t9 button.on .u{color:var(--ink)}
+
+/* 10 dark bar with notch */
+.t10{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px;border-radius:22px;background:#1f3a2c}
+.t10 button{position:relative;border:0;border-radius:15px;background:none;padding:16px 18px;display:flex;align-items:center;gap:12px;font:600 16px Geist;color:#bcd0c4;transition:all .3s}
+.t10 .ico{width:22px;height:22px}
+.t10 button.on{background:#fbf8f1;color:var(--ink)}
+.t10 button.on::after{content:'';position:absolute;left:50%;bottom:-15px;margin-left:-9px;border:9px solid transparent;border-top-color:#1f3a2c}
+.t10wrap .stage{margin-top:26px}
+
+@media (max-width:760px){
+ .w{padding:40px 16px 60px}.top h1{font-size:30px}
+ .t1{gap:22px}.t1 button{font-size:22px}
+ .t2{min-width:0;width:100%}.t2 button{padding:13px 8px;font-size:13.5px}
+ .t3 button b{font-size:15px}
+ .t6wrap{grid-template-columns:1fr}
+ .t7{gap:14px}.t7 .ico{width:62px;height:62px;padding:18px}
+ .t8h{font-size:28px}
+ .t9 button{padding:16px 12px}.t9 button .n{font-size:36px}.t9 button .d{display:none}
+ .t10 button{padding:12px 8px;font-size:13px;justify-content:center}.t10 .ico{display:none}
+ .t5 button{padding:11px 12px 13px;font-size:13.5px}.t5 button .ico{display:none}
+}
+</style>
+</head>
+<body><div class="w">
+<div class="top"><h1>Playbook tabs · 10 variants</h1><p>Same three playbooks in every block. Each one switches on its own every few seconds so you can see the motion; a click takes over. The box underneath stands in for the playbook animation.</p></div>
+<div id="list"></div>
+</div>
+<script>
+const I={
+ r:'<svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ p:'<svg viewBox="0 0 24 24"><path d="M5 20V5l7 3 7-3v15" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 8v12" stroke="currentColor" stroke-width="2"/></svg>',
+ c:'<svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 4v6M13.5 7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'};
+const P=[{k:'r',n:'Renewal Playbook',s:'Renewal',d:'14 statuses, from the first signal to the paid invoice',num:'14',u:'renewal statuses',c:'#d69b2d',hw:'renewal'},
+ {k:'p',n:'Pilot Playbook',s:'Pilot',d:'16 weeks, clear gates, the right people in their seats',num:'16',u:'pilot weeks',c:'#3aa56b',hw:'pilot'},
+ {k:'c',n:'Custom playbook',s:'Custom',d:'Your stages and gates, built by our team',num:'Yours',u:'stages and gates',c:'#3f8f84',hw:'custom motion'}];
+const ic=(k,st='')=>`<span class="ico" style="${st}">${I[k]}</span>`;
+const V=[
+ ['Editorial text tabs','Big words, no boxes. The active one turns ink with a growing underline.',()=>`<div class="t1 tabs">${P.map(p=>`<button type="button">${p.n}</button>`).join('')}</div>`],
+ ['Sliding pill','One dark track, a cream pill slides to the chosen playbook.',()=>`<div class="t2 tabs"><i></i>${P.map(p=>`<button type="button">${p.n}</button>`).join('')}</div>`],
+ ['Chapters with progress','Numbered chapters. The line above the active one fills while it plays, then moves on.',()=>`<div class="t3 tabs">${P.map((p,i)=>`<button type="button"><small>0${i+1}</small><b>${p.n}</b></button>`).join('')}</div>`],
+ ['Status chips','In the product language: each tab is a status chip with its own colour dot.',()=>`<div class="t4 tabs">${P.map(p=>`<button type="button" style="--c:${p.c}"><i></i>${p.n}<em>· ${p.num=='Yours'?'yours':p.num+' '+(p.k=='r'?'statuses':'weeks')}</em></button>`).join('')}</div>`],
+ ['Folder tabs','Tabs grow out of the stage like folder tabs; the active one merges with it.',()=>`<div class="t5wrap"><div class="t5 tabs">${P.map(p=>`<button type="button">${ic(p.k)}${p.n}</button>`).join('')}</div>__STAGE__</div>`],
+ ['Side list','A list next to the stage; the open item shows one line of explanation.',()=>`<div class="t6wrap"><div class="t6 tabs">${P.map(p=>`<button type="button"><b>${p.n}</b><span>${p.d}</span></button>`).join('')}</div>__STAGE__</div>`],
+ ['Icon tiles','App-launcher tiles. The chosen one fills green and lifts.',()=>`<div class="t7 tabs">${P.map(p=>`<button type="button">${ic(p.k)}${p.s}</button>`).join('')}</div>`],
+ ['The headline is the switch','The section title names the playbook and retypes itself; small pills below.',()=>`<h2 class="t8h">A playbook for every <span class="sw" id="sw8">renewal</span>.</h2><div class="t8 tabs">${P.map(p=>`<button type="button">${p.s}</button>`).join('')}</div>`],
+ ['Stat tabs','Each tab leads with one number: 14 statuses, 16 weeks, your own stages.',()=>`<div class="t9 tabs">${P.map(p=>`<button type="button"><span class="n">${p.num}</span><span class="u">${p.n}</span><span class="d">${p.d}</span></button>`).join('')}</div>`],
+ ['Dark bar with a notch','A dark green bar; the active tab turns cream and points down at the playbook.',()=>`<div class="t10wrap"><div class="t10 tabs">${P.map(p=>`<button type="button">${ic(p.k)}${p.n}</button>`).join('')}</div>__STAGE__</div>`]];
+const stage=()=>`<div class="stage"><b></b><span></span></div>`;
+document.getElementById('list').innerHTML=V.map(([t,d,f],i)=>{let h=f();const inl=h.includes('__STAGE__');h=h.replace('__STAGE__',stage());return `<div class="v" data-i="${i}"><div class="lab"><b>${String(i+1).padStart(2,'0')}</b><span>${t}</span><em>${d}</em></div>${h}${inl?'':stage()}</div>`}).join('');
+const vis=new Map();const io=new IntersectionObserver(es=>es.forEach(e=>vis.set(e.target,e.isIntersecting)),{threshold:.3});
+document.querySelectorAll('.v').forEach(v=>{io.observe(v);const bs=[...v.querySelectorAll('.tabs button')],st=v.querySelector('.stage'),pill=v.querySelector('.t2 i'),sw=v.querySelector('#sw8');let k=0,t0=performance.now(),manual=false,typ=0;const DUR=3600;
+ const set=async(i,user)=>{k=i;t0=performance.now();if(user)manual=true;bs.forEach((b,j)=>{b.classList.toggle('on',j==i);b.style.setProperty('--p',j<i?'100%':'0%')});
+  st.classList.add('fx');setTimeout(()=>{st.querySelector('b').textContent=P[i].n;st.querySelector('span').textContent=P[i].d;st.classList.remove('fx')},180);
+  if(pill)pill.style.transform=`translateX(${i*100}%)`;
+  if(sw){const my=++typ;const w=P[i].hw;for(let n=1;n<=w.length;n++){if(my!==typ)return;sw.textContent=w.slice(0,n);await new Promise(r=>setTimeout(r,35))}}};
+ bs.forEach((b,i)=>b.addEventListener('click',()=>set(i,true)));set(0);
+ (function f(now){if(vis.get(v)&&!manual){const p=Math.min(1,(now-t0)/DUR);if(bs[k])bs[k].style.setProperty('--p',p*100+'%');if(p>=1)set((k+1)%3)}else if(!vis.get(v))t0=now;requestAnimationFrame(f)})(performance.now())});
+</script>
+</body>
+</html>
