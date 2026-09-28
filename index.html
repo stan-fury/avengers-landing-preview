@@ -586,6 +586,31 @@ html,body{overflow-x:clip}
  #csrc .cn:nth-child(n+4){display:none}
 }
 </style>
+<style>
+.pbtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 26px}
+.pbt{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;border:0;cursor:pointer;padding:20px 22px 22px;border-radius:22px;background:rgba(255,255,255,.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);color:#3d4a43;font-family:Geist;transition:background .3s,box-shadow .3s,color .3s,transform .3s;overflow:hidden}
+.pbt:hover{background:rgba(255,255,255,.65)}
+.pbt.on{background:#fffdf9;color:#16201c;box-shadow:inset 0 0 0 1px #fff,0 24px 50px -30px rgba(22,32,28,.45)}
+.pbt .pbi{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(22,32,28,.07);color:#3d4a43;margin-bottom:14px;transition:all .3s}
+.pbt.on .pbi{background:#2f5d46;color:#fbf8f1}
+.pbt b{display:block;font:600 19px Geist;letter-spacing:-.02em}
+.pbt .pbs{display:block;font:500 14.5px/1.45 Geist;margin-top:4px;opacity:.85}
+.pbt .pbbar{position:absolute;left:22px;right:22px;bottom:0;height:3px;border-radius:3px;background:transparent}
+.pbt.on .pbbar{background:linear-gradient(90deg,#2f5d46,#3f8f84)}
+.pbp{display:none}.pbp.on{display:block;animation:pbin .5s ease both}
+@keyframes pbin{from{opacity:0;transform:translateY(8px)}}
+.pbph{display:flex;align-items:baseline;gap:30px;margin:0 0 18px}
+.pbph h3{font:600 24px Geist;letter-spacing:-.03em;margin:0;flex:none}
+.pbph p{margin:0;color:#4a5750;font-size:16.5px;max-width:40em}
+@media (max-width:700px){
+ .pbtabs{grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:18px}
+ .pbt{padding:12px 8px 14px;border-radius:14px;text-align:center;align-items:center}
+ .pbt .pbi{margin:0 auto 6px;width:34px;height:34px;border-radius:10px}
+ .pbt b{font-size:13.5px}.pbt .pbs{display:none}
+ .pbt .pbbar{left:14px;right:14px}
+ .pbph{display:block}.pbph h3{font-size:21px;margin-bottom:6px}.pbph p{font-size:15.5px}
+}
+</style>
 </head>
 <body>
 <a class="annc" href="#custompb"><span class="an-new">New</span>AI Playbooks: our team builds a custom playbook for your motion<span class="an-ar">→</span></a>
@@ -637,21 +662,10 @@ html,body{overflow-x:clip}
   <div data-films="health"></div>
 </div></section>
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">The score dips on a renewal. Open its playbook</div><i class="bh r"></i></div>
-<section id="renewals"><i class="sage" style="left:-25%;top:0"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>03 · Renewal Playbook</div><h2>Every contract gets its own playbook.</h2></div><p class="lead">Signals from billing, email and your CRM point to one of fourteen renewal statuses. Each status comes with <b>when to pick it, when not to, and the first move.</b> You set it. Avengers never guesses.</p></div>
-  <div data-films="renewal"></div>
-</div></section>
-
-<div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">The same care for every pilot</div><i class="bh r"></i></div>
-<section id="pilots"><i class="sun" style="left:30%;top:-20%"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>04 · Pilot Playbook</div><h2>Run every pilot to a clear answer.</h2></div><p class="lead">Sixteen weeks, clear gates and the right people in their seats. The evidence informs the verdict. <b>A person sets it.</b></p></div>
-  <div data-films="poc"></div>
-</div></section>
-
-<div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">Your motion is different? We build it for you</div><i class="bh r"></i></div>
-<section id="custompb"><i class="sun" style="left:-10%;top:-10%"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>Custom playbooks</div><h2>We build your custom playbook.</h2></div><p class="lead">Onboarding, expansion or a save motion only your team runs. Tell us how it works, and our team builds it into Avengers: <b>your stages, your gates, your first moves.</b></p></div>
-  <div data-films="custompb"></div>
+<section id="playbooks"><i class="sage" style="left:-25%;top:0"></i><div class="wrap">
+  <div class="shead"><div><div class="eyebrow"><i></i>03 · Playbooks</div><h2>A playbook for every contract.</h2></div><p class="lead">Renewals, pilots and the motions only your team runs. Each one comes with its statuses, its gates and the first move. <b>You set the status. Avengers never guesses.</b></p></div>
+  <div class="pbtabs" role="tablist"><button type="button" class="pbt on" data-p="renewals"><span class="pbi"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Renewal Playbook</b><span class="pbs">14 statuses, from the first signal to the paid invoice</span><i class="pbbar"></i></button><button type="button" class="pbt" data-p="pilots"><span class="pbi"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 20V5l7 3 7-3v15" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 8v12" stroke="currentColor" stroke-width="2"/></svg></span><b>Pilot Playbook</b><span class="pbs">16 weeks, clear gates, the right people in their seats</span><i class="pbbar"></i></button><button type="button" class="pbt" data-p="custompb"><span class="pbi"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="4" y="4" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 4v6M13.5 7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><b>Custom playbook</b><span class="pbs">Your stages and gates, built by our team</span><i class="pbbar"></i></button></div>
+  <div class="pbp on" id="renewals" data-p="renewals"><div class="pbph"><h3>Every contract gets its own playbook.</h3><p>Signals from billing, email and your CRM point to one of fourteen renewal statuses. Each status comes with <b>when to pick it, when not to, and the first move.</b></p></div><div data-films="renewal"></div></div><div class="pbp" id="pilots" data-p="pilots"><div class="pbph"><h3>Run every pilot to a clear answer.</h3><p>Sixteen weeks, clear gates and the right people in their seats. The evidence informs the verdict. <b>A person sets it.</b></p></div><div data-films="poc"></div></div><div class="pbp" id="custompb" data-p="custompb"><div class="pbph"><h3>We build your custom playbook.</h3><p>Onboarding, expansion or a save motion only your team runs. Tell us how it works, and our team builds it into Avengers: <b>your stages, your gates, your first moves.</b></p></div><div data-films="custompb"></div></div>
 </div></section>
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">A call is on the calendar. Get prepared</div><i class="bh r"></i></div>
 <section id="calls"><i class="sage" style="right:-20%;top:-10%"></i><div class="wrap">
@@ -1411,6 +1425,12 @@ requestAnimationFrame(tick);
 /* v1.14 mobile: pricing "What's included" and footer accordions */
 document.querySelectorAll('.tier ul').forEach(u=>{const b=document.createElement('button');b.type='button';b.className='inc';b.textContent="What's included";u.before(b);b.addEventListener('click',()=>b.closest('.tier').classList.toggle('open'))});
 document.querySelectorAll('.fgrid>div:not(.fbrand)>h4').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+</script>
+<script>
+(()=>{const T=[...document.querySelectorAll('.pbt')],P=[...document.querySelectorAll('.pbp')];const go=p=>{T.forEach(b=>b.classList.toggle('on',b.dataset.p==p));P.forEach(x=>x.classList.toggle('on',x.dataset.p==p))};
+T.forEach(b=>b.addEventListener('click',()=>go(b.dataset.p)));
+document.addEventListener('click',e=>{const a=e.target.closest('a[href="#renewals"],a[href="#pilots"],a[href="#custompb"]');if(a){go(a.getAttribute('href').slice(1));setTimeout(()=>{const tb=document.querySelector('.pbtabs');scrollTo({top:tb.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})},30)}},true);
+const h=location.hash.slice(1);if(['renewals','pilots','custompb'].includes(h))go(h)})();
 </script>
 </body>
 </html>
