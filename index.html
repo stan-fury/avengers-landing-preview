@@ -546,6 +546,30 @@ html,body{overflow-x:clip}
 .nav.scr{transform:translate3d(0,var(--nt,14px),0)}
 .navsp{height:calc(var(--nh,64px) + var(--nt,14px))}
 @media (max-width:700px){:root{--nt:8px}}
+/* v1.14 mobile trims */
+.tier .inc{display:none}
+@media (max-width:700px){
+ .bridge{display:none!important}
+ #sheets .points{display:none}
+ .mr-grid .ba{display:none}
+ .tier{padding:26px 22px 22px}.tier .who{min-height:0;margin:6px 0 14px}
+ .tier .inc{display:flex;align-items:center;justify-content:space-between;width:100%;margin:16px 0 14px;padding:12px 0;border:0;border-top:1px solid rgba(22,32,28,.1);border-bottom:1px solid rgba(22,32,28,.1);background:none;font:600 14.5px Geist;color:inherit;cursor:pointer}
+ .tier.hi .inc{border-color:rgba(243,238,228,.2)}
+ .tier .inc::after{content:'+';display:inline-block;font:400 22px/1 Geist;transition:transform .3s}
+ .tier.open .inc::after{transform:rotate(45deg)}
+ .tier ul{display:none;margin:0 0 18px}.tier.open ul{display:grid}
+ .fgrid{grid-template-columns:1fr;gap:0}
+ .fgrid>div:not(.fbrand){border-top:1px solid rgba(22,32,28,.1)}
+ .fgrid>div:not(.fbrand):last-child{border-bottom:1px solid rgba(22,32,28,.1)}
+ .fbrand{margin-bottom:22px}
+ .fgrid>div:not(.fbrand)>h4{display:flex;justify-content:space-between;align-items:center;margin:0;padding:16px 0;cursor:pointer}
+ .fgrid>div:not(.fbrand)>h4::after{content:'+';display:inline-block;font:400 22px/1 Geist;transition:transform .3s}
+ .fgrid>div.open>h4::after{transform:rotate(45deg)}
+ .fgrid>div:not(.fbrand)>a{display:none!important}
+ .fgrid>div.open>a{display:block!important}
+ .fgrid .addr{margin:0 0 16px}
+ #csrc .cn:nth-child(n+4){display:none}
+}
 </style>
 </head>
 <body>
@@ -1369,6 +1393,9 @@ document.querySelectorAll('.wkdrag,.hdrag').forEach(w=>{const lim=()=>w.classLis
  document.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const txt=a.textContent.trim();if(/Book a demo|Talk to us|Sign up/.test(txt)&&!a.closest('.book')){e.preventDefault();e.stopImmediatePropagation();open()}},true);show(s1)})();
 (()=>{const m=document.getElementById('mnav');document.getElementById('burger').addEventListener('click',()=>m.classList.add('open'));document.getElementById('mnx').addEventListener('click',()=>m.classList.remove('open'));m.addEventListener('click',e=>{if(e.target.closest('a'))m.classList.remove('open')})})();
 requestAnimationFrame(tick);
+/* v1.14 mobile: pricing "What's included" and footer accordions */
+document.querySelectorAll('.tier ul').forEach(u=>{const b=document.createElement('button');b.type='button';b.className='inc';b.textContent="What's included";u.before(b);b.addEventListener('click',()=>b.closest('.tier').classList.toggle('open'))});
+document.querySelectorAll('.fgrid>div:not(.fbrand)>h4').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
 </script>
 </body>
 </html>
