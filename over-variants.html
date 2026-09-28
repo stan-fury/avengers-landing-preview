@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Overdelivered variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3eee4;--ink:#16201c;--forest:#2f5d46;--teal:#3f8f84;--mut:#5b675f;--line:rgba(22,32,28,.1)}
+*{box-sizing:border-box}html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.rv{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:rgba(243,238,228,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:500 13px Geist}
+.rv a{color:var(--mut);text-decoration:none;padding:6px 10px;border-radius:9px}.rv a:hover{background:rgba(22,32,28,.06);color:var(--ink)}
+.rv b{margin-right:8px}
+.intro{max-width:1180px;margin:0 auto;padding:30px 32px 0;font:500 15px/1.5 Geist;color:var(--mut)}.intro b{color:var(--ink)}
+section{position:relative;padding:72px 0 80px;border-bottom:1px solid var(--line);overflow:hidden;text-align:center}
+section::before{content:'';position:absolute;left:50%;top:-20%;width:900px;height:700px;margin-left:-450px;border-radius:50%;background:radial-gradient(closest-side,rgba(241,196,140,.42),transparent);pointer-events:none}
+.wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 32px}
+.tag{display:inline-flex;gap:10px;font:500 12.5px 'Geist Mono';color:var(--forest);background:rgba(47,93,70,.09);padding:6px 12px;border-radius:999px;margin-bottom:10px}
+.tag s{text-decoration:none;color:var(--mut)}
+/* the word */
+.word{font:700 clamp(58px,9.5vw,138px)/1.05 Geist;letter-spacing:-.07em;white-space:nowrap;margin:6px 0 0}
+.word .o{display:inline-block;overflow:hidden;vertical-align:bottom;max-width:0;transition:max-width .9s cubic-bezier(.3,1,.4,1);background:linear-gradient(90deg,#2f5d46,#3a7866 38%,#3f8f84 72%,#79b39c);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .04em 0 0}
+.word.on .o{max-width:3.2em}
+.word .d{display:inline-block}
+.lead{margin:18px auto 0;max-width:38em;font:400 19px/1.55 Geist;color:#3d4a43}
+.lead b{color:var(--ink);font-weight:600}
+.card{background:#fffdf9;border-radius:24px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 40px 80px -44px rgba(22,32,28,.35),0 2px 8px rgba(22,32,28,.05)}
+.rev{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.on .rev,.rev.on{opacity:1;transform:none}
+.note{font:500 13.5px Geist;color:var(--mut);margin-top:26px}.note b{color:var(--ink)}
+.ck{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#3aa56b;color:#fff;flex:none}
+.ck svg{width:12px}
+.no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#f1ece3;color:#a39c8f;flex:none;font:600 13px Geist}
+
+/* 1 comparison */
+.cmp{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.15fr;margin:40px auto 0;max-width:1060px;text-align:left;overflow:hidden}
+.cmp>div{padding:14px 18px;border-top:1px solid var(--line);font:500 15px Geist;color:#3d4a43;display:flex;align-items:center;gap:10px;transition:opacity .45s,transform .45s}
+.cmp .h{border-top:0;font:600 13px Geist;letter-spacing:.08em;text-transform:uppercase;color:#8a948d;padding-top:20px}
+.cmp .h.us{color:#2f5d46}
+.cmp .l{font-weight:600;color:var(--ink)}
+.cmp .us{background:#eef5f0}
+.cmp .h.us{border-radius:0}
+.cmp .row0{opacity:0;transform:translateX(-8px)}
+.cmp .row0.on{opacity:1;transform:none}
+.cmp .us b{color:#2f5d46;font-weight:600}
+
+/* 2 receipt */
+.rc-wrap{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;margin:34px auto 0;max-width:1060px;text-align:left}
+.rc-copy h3{margin:0 0 10px;font:600 30px/1.2 Geist;letter-spacing:-.03em}
+.rc-copy p{margin:0 0 16px;color:#3d4a43}
+.rc-copy ul{list-style:none;margin:0;padding:0}
+.rc-copy li{display:flex;gap:10px;align-items:center;padding:6px 0;font:500 16px Geist}
+.receipt{position:relative;padding:26px 26px 30px;font:500 14px/1.5 'Geist Mono';color:#3d4a43;height:520px;overflow:hidden;border-radius:18px 18px 4px 4px}
+.receipt::after{content:'';position:absolute;left:0;right:0;bottom:0;height:12px;background:radial-gradient(circle at 8px 12px,var(--paper) 7px,transparent 7.5px) 0 0/16px 12px repeat-x}
+.receipt .rh{text-align:center;font:600 13px 'Geist Mono';letter-spacing:.12em;color:#8a948d;border-bottom:1.5px dashed #d9d3c7;padding-bottom:12px;margin-bottom:10px}
+.receipt .rh b{display:block;font:700 20px Geist;letter-spacing:-.02em;color:var(--ink);margin-bottom:2px}
+.receipt .li{display:flex;justify-content:space-between;gap:10px;padding:4px 0;opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s}
+.receipt .li.on{opacity:1;transform:none}
+.receipt .li span:last-child{color:#2f7a4b;white-space:nowrap}
+.receipt .tot{border-top:1.5px dashed #d9d3c7;margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font:700 16px 'Geist Mono';color:var(--ink)}
+.receipt .tot span:last-child{color:#2f5d46}
+.receipt .thx{text-align:center;margin-top:12px;font:500 12.5px 'Geist Mono';color:#8a948d}
+
+/* 3 story timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:46px auto 0;max-width:1080px;text-align:left}
+.tl::before{content:'';position:absolute;left:0;right:0;top:15px;height:2px;background:#e4ded2}
+.tl .ln{position:absolute;left:0;top:15px;height:2px;width:0;background:linear-gradient(90deg,#c4452f,#c98a1e 45%,#3f8f84);transition:width 3.2s ease-in-out}
+.tl.on .ln{width:100%}
+.st{position:relative;padding-top:42px;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+.st.on{opacity:1;transform:none}
+.st i{position:absolute;left:0;top:6px;width:20px;height:20px;border-radius:50%;background:#fffdf9;box-shadow:0 0 0 4px var(--paper),inset 0 0 0 5px var(--c)}
+.st small{display:block;font:600 12px 'Geist Mono';letter-spacing:.06em;color:var(--c);margin-bottom:6px}
+.st b{display:block;font:600 19px/1.25 Geist;letter-spacing:-.02em;margin-bottom:6px}
+.st p{margin:0;font:400 15px/1.5 Geist;color:#4a5750}
+.st .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.st .chips span{font:500 12.5px Geist;padding:4px 9px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:#3d4a43}
+.st.last .card{padding:16px 16px 14px;margin-top:2px}
+.quote{margin:40px auto 0;max-width:760px;font:500 22px/1.45 Geist;letter-spacing:-.01em;color:#243029}
+.quote span{display:block;margin-top:10px;font:500 14px Geist;color:#8a948d}
+
+/* 4 map */
+.mp-wrap{display:grid;grid-template-columns:560px 1fr;gap:56px;align-items:center;margin:34px auto 0;max-width:1080px;text-align:left}
+.map{position:relative;height:430px;padding:0}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.ax{font:600 11.5px Geist;letter-spacing:.1em;text-transform:uppercase;fill:#8a948d}
+.pt{transition:transform 1.6s cubic-bezier(.3,1,.4,1),opacity .6s}
+.pl{font:600 14px Geist;fill:#243029}
+.pl2{font:500 12px Geist;fill:#6b756f}
+.zone{fill:rgba(63,143,132,.09);stroke:rgba(63,143,132,.35);stroke-dasharray:5 5}
+.mp-copy h3{margin:0 0 10px;font:600 30px/1.2 Geist;letter-spacing:-.03em}
+.mp-copy p{margin:0 0 18px;color:#3d4a43}
+.pills{display:grid;gap:10px}
+.pill{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1px rgba(22,32,28,.06)}
+.pill b{display:block;font:600 16px Geist}
+.pill span{display:block;font:400 14.5px/1.45 Geist;color:#5b675f}
+
+/* 5 included tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:40px auto 0;max-width:1100px;text-align:left}
+.tile{position:relative;padding:20px 20px 18px;min-height:148px;opacity:0;transform:scale(.96);transition:opacity .5s,transform .5s cubic-bezier(.3,1.3,.5,1)}
+.tile.on{opacity:1;transform:none}
+.tile .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;margin-bottom:12px}
+.tile .ic svg{width:19px;height:19px}
+.tile b{display:block;font:600 16.5px/1.25 Geist;margin-bottom:4px}
+.tile span{display:block;font:400 14px/1.45 Geist;color:#5b675f}
+.tile .stp{position:absolute;right:14px;top:16px;font:700 11px Geist;letter-spacing:.1em;text-transform:uppercase;color:#2f7a4b;border:1.5px solid #2f7a4b;border-radius:6px;padding:2px 7px;transform:rotate(8deg) scale(1.6);opacity:0;transition:all .35s cubic-bezier(.3,1.5,.5,1)}
+.tile.stamped .stp{opacity:1;transform:rotate(8deg) scale(1)}
+.tsum{display:inline-flex;align-items:center;gap:14px;margin-top:26px;padding:12px 20px;border-radius:999px;background:#fffdf9;box-shadow:inset 0 0 0 1px var(--line);font:500 15px Geist;color:#3d4a43}
+.tsum b{font:600 15px Geist;color:#2f5d46}
+
+@media (max-width:760px){
+ section{padding:52px 0 58px}
+ .tag s{display:none}.rv b{display:none}.rv a{padding:5px 7px;font-size:12px}
+ .wrap,.intro{padding-left:18px;padding-right:18px}
+ .word{font-size:clamp(44px,13.5vw,80px)}
+ .lead{font-size:16.5px}
+ .cmp{grid-template-columns:1.1fr .8fr .8fr 1fr;font-size:12px}
+ .cmp>div{padding:10px 8px;font-size:12.5px;gap:6px}.cmp .h{font-size:10px;letter-spacing:.04em}
+ .cmp .ck,.cmp .no{width:18px;height:18px}
+ .rc-wrap,.mp-wrap{grid-template-columns:1fr;gap:26px}
+ .receipt{height:auto}
+ .map{height:340px}
+ .tl{grid-template-columns:1fr;gap:6px}.tl::before,.tl .ln{left:9px;right:auto;top:0;bottom:0;width:2px;height:auto}.tl .ln{height:0;width:2px;transition:height 3.2s}.tl.on .ln{height:100%;width:2px}
+ .st{padding:0 0 18px 36px}.st i{top:0}
+ .quote{font-size:18px}
+ .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{padding:14px;min-height:0}.tile .stp{display:none}.tile span{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="rv"><b>Overdelivered</b><a href="#o1">1 · Side by side</a><a href="#o2">2 · The receipt</a><a href="#o3">3 · A decade, then this</a><a href="#o4">4 · Where we sit</a><a href="#o5">5 · Everything included</a></nav>
+<p class="intro">Five versions of the <b>Overdelivered</b> screen. Each keeps the headline animation and adds one idea that explains why: enterprise depth for mid-size teams. No invented customers, logos or numbers: every item is something the product does today, or a promise already on the page (free data migration, what each plan includes). Each fits one laptop screen.</p>
+
+<!-- 1 -->
+<section id="o1"><div class="wrap">
+ <div class="tag">Variant 1 · Side by side <s>· enterprise suites, spreadsheets and Avengers, row by row</s></div>
+ <div class="word" data-w><span class="o">Over</span><span class="d">delivered.</span></div>
+ <p class="lead">Enterprise customer success suites take months and an admin team. Spreadsheets take nothing and show you nothing. <b>Avengers gives mid-size teams the enterprise depth, without the enterprise weight.</b></p>
+ <div class="card cmp" data-cmp>
+  <div class="h"></div><div class="h">Spreadsheets</div><div class="h">Enterprise suites</div><div class="h us">Avengers</div>
+ </div>
+</div></section>
+
+<!-- 2 -->
+<section id="o2"><div class="wrap">
+ <div class="tag">Variant 2 · The receipt <s>· everything you get, itemised, and what it costs you extra</s></div>
+ <div class="word" data-w><span class="o">Over</span><span class="d">delivered.</span></div>
+ <div class="rc-wrap">
+  <div class="rc-copy rev">
+   <h3>Enterprise depth, at a mid-size price.</h3>
+   <p>Avengers was built by a customer success leader who spent more than a decade running books on spreadsheets, memory and late nights. So every plan ships with the parts a team usually pays extra for, or waits months to get.</p>
+   <ul><li><span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>No implementation project</li><li><span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>No admin to hire</li><li><span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>Nothing sent without you</li></ul>
+  </div>
+  <div class="card receipt" data-rc>
+   <div class="rh"><b>Avengers · Team</b>RECEIPT · PER SEAT, PER MONTH</div>
+   <div data-items></div>
+   <div class="tot li" data-tot><span>You pay</span><span>$99</span></div>
+   <div class="thx li" data-thx>Everything above is included. No add-ons.</div>
+  </div>
+ </div>
+</div></section>
+
+<!-- 3 -->
+<section id="o3"><div class="wrap">
+ <div class="tag">Variant 3 · A decade, then this <s>· the story behind the product, as a timeline that draws itself</s></div>
+ <div class="word" data-w><span class="o">Over</span><span class="d">delivered.</span></div>
+ <div class="tl" data-tl><span class="ln"></span>
+  <div class="st" style="--c:#c4452f"><i></i><small>YEARS 1 TO 10</small><b>Books run on spreadsheets</b><p>Every renewal tracked by hand, every risk found too late.</p><div class="chips"><span>customers_FINAL_v7.xlsx</span></div></div>
+  <div class="st" style="--c:#c98a1e"><i></i><small>EVERY MORNING</small><b>Forty minutes of sorting</b><p>Nine tools open before the first call, and still no order.</p><div class="chips"><span>Gmail</span><span>Slack</span><span>Jira</span><span>HubSpot</span></div></div>
+  <div class="st" style="--c:#3a7866"><i></i><small>THE QUESTION</small><b>Why only for enterprises?</b><p>The big suites had the depth, but took months and an admin team.</p></div>
+  <div class="st last" style="--c:#3f8f84"><i></i><small>NOW</small><b>Avengers</b><p>Enterprise depth, made for teams going from no solution to a real one.</p><div class="chips"><span>Free migration</span><span>Every source, one morning</span></div></div>
+ </div>
+ <p class="quote rev">The platform that decade was missing.<span>Built by a customer success leader after more than ten years of running books</span></p>
+</div></section>
+
+<!-- 4 -->
+<section id="o4"><div class="wrap">
+ <div class="tag">Variant 4 · Where we sit <s>· a simple map: depth against time to value</s></div>
+ <div class="word" data-w><span class="o">Over</span><span class="d">delivered.</span></div>
+ <div class="mp-wrap">
+  <div class="card map" data-map><svg viewBox="0 0 560 430" aria-hidden="true">
+   <line x1="70" y1="360" x2="520" y2="360" stroke="#d9d3c7" stroke-width="1.5"/><line x1="70" y1="360" x2="70" y2="40" stroke="#d9d3c7" stroke-width="1.5"/>
+   <text class="ax" x="295" y="400" text-anchor="middle">Time to value →  slower</text>
+   <text class="ax" transform="translate(34 200) rotate(-90)" text-anchor="middle">Depth →  more</text>
+   <rect class="zone" x="86" y="52" width="190" height="130" rx="18"/>
+   <text class="pl2" x="100" y="74">Where mid-size teams need to be</text>
+   <g class="pt" data-p="sheet" style="transform:translate(120px,318px)"><circle r="11" fill="#107c41"/><text class="pl" x="20" y="5">Spreadsheets</text><text class="pl2" x="20" y="22">instant, but blind</text></g>
+   <g class="pt" data-p="ent" style="transform:translate(430px,96px)"><circle r="11" fill="#8a948d"/><text class="pl" x="-20" y="5" text-anchor="end">Enterprise suites</text><text class="pl2" x="-20" y="22" text-anchor="end">deep, after months</text></g>
+   <g class="pt" data-p="us" style="transform:translate(120px,318px);opacity:0"><circle r="15" fill="#3f8f84"/><circle r="24" fill="none" stroke="#3f8f84" stroke-opacity=".35" stroke-width="2"/><text class="pl" x="30" y="5" style="fill:#2f5d46">Avengers</text><text class="pl2" x="30" y="22">deep, and fast to start</text></g>
+  </svg></div>
+  <div class="mp-copy rev">
+   <h3>Enterprise ready. Mid-size sized.</h3>
+   <p>Teams outgrowing their spreadsheet had two choices: stay blind, or buy a suite built for companies ten times their size. We built the third one.</p>
+   <div class="pills">
+    <div class="pill"><span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span><div><b>The depth</b><span>Health from real signals, 14 renewal statuses, pilot playbooks, an AI CSM that cites sources.</span></div></div>
+    <div class="pill"><span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span><div><b>The speed</b><span>Free data migration from your spreadsheet, and every integration in the Team plan.</span></div></div>
+    <div class="pill"><span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span><div><b>The control</b><span>Read-only by default. Drafts wait in Gmail. Nothing is sent without you.</span></div></div>
+   </div>
+  </div>
+ </div>
+</div></section>
+
+<!-- 5 -->
+<section id="o5"><div class="wrap">
+ <div class="tag">Variant 5 · Everything included <s>· eight enterprise-grade pieces of the Team plan, each stamped as included</s></div>
+ <div class="word" data-w><span class="o">Over</span><span class="d">delivered.</span></div>
+ <p class="lead">You came for a better spreadsheet. <b>You get what enterprise teams pay extra for,</b> included in the Team plan.</p>
+ <div class="tiles" data-tiles></div>
+ <div class="tsum rev"><b>8 of 8 included</b>in the Team plan · no add-ons · no implementation project</div>
+</div></section>
+
+<script>
+const W=ms=>new Promise(r=>setTimeout(r,ms));
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const inView=el=>{const r=el.getBoundingClientRect(),h=innerHeight||800;return r.height>0&&r.bottom>h*.15&&r.top<h*.85};
+const gate=async el=>{while(!inView(el)||document.hidden)await W(300)};
+const CK='<span class="ck"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span>';
+const NO='<span class="no">–</span>';
+/* headline: Delivered. then Over slides in */
+document.querySelectorAll('[data-w]').forEach(w=>{const d=w.querySelector('.d');
+ if(RM){w.classList.add('on');return}
+ (async()=>{while(true){await gate(w);w.classList.remove('on');d.textContent='Delivered.';await W(1100);d.textContent='delivered.';w.classList.add('on');await W(12000)}})()});
+
+/* 1 */
+(()=>{const c=document.querySelector('[data-cmp]');
+ const R=[['Time to start','A day','Months','<b>Days, we migrate for you</b>'],['Admin you need to hire','None','Often one','<b>None</b>'],['Health from real signals',0,1,1],['Renewal and pilot playbooks',0,1,1],['AI that drafts the next step',0,0,1],['Every source in one morning',0,0,1],['Built for 5 to 50 CSMs',1,0,1]];
+ const cell=(x,us)=>`<div class="row0${us?' us':''}">${x===1?CK:x===0?NO:x}</div>`;
+ c.insertAdjacentHTML('beforeend',R.map(r=>`<div class="row0 l">${r[0]}</div>`+cell(r[1])+cell(r[2])+cell(r[3],1)).join(''));
+ const cells=[...c.querySelectorAll('.row0')];
+ if(RM){cells.forEach(x=>x.classList.add('on'));return}
+ (async()=>{while(true){await gate(c);cells.forEach(x=>x.classList.remove('on'));await W(1600);for(let i=0;i<cells.length;i+=4){for(let j=0;j<4;j++){cells[i+j].classList.add('on');await W(j==3?120:60)}await W(260)}await W(11000)}})()})();
+
+/* 2 */
+(()=>{const r=document.querySelector('[data-rc]'),it=r.querySelector('[data-items]');
+ const I=['Morning Routine, every day','Health score from real signals','Renewal playbook, 14 statuses','Pilot playbook','AI CSM that cites sources','Call briefs before every call','Follow-ups drafted in Gmail','Customer CRM for your book','All integrations','Free data migration'];
+ it.innerHTML=I.map(x=>`<div class="li"><span>${x}</span><span>included</span></div>`).join('');
+ const lis=[...r.querySelectorAll('.li')],copy=r.parentElement.querySelector('.rev');
+ if(RM){lis.forEach(x=>x.classList.add('on'));copy.classList.add('on');return}
+ (async()=>{while(true){await gate(r);lis.forEach(x=>x.classList.remove('on'));copy.classList.remove('on');await W(1400);copy.classList.add('on');for(const l of lis){l.classList.add('on');await W(230)}await W(11000)}})()})();
+
+/* 3 */
+(()=>{const t=document.querySelector('[data-tl]'),sts=[...t.querySelectorAll('.st')],q=t.parentElement.querySelector('.quote');
+ if(RM){t.classList.add('on');sts.forEach(s=>s.classList.add('on'));q.classList.add('on');return}
+ (async()=>{while(true){await gate(t);t.classList.remove('on');sts.forEach(s=>s.classList.remove('on'));q.classList.remove('on');await W(1400);t.classList.add('on');for(const s of sts){s.classList.add('on');await W(800)}await W(500);q.classList.add('on');await W(12000)}})()})();
+
+/* 4 */
+(()=>{const m=document.querySelector('[data-map]'),us=m.querySelector('[data-p="us"]'),copy=m.parentElement.querySelector('.rev');
+ const end=()=>{us.style.opacity=1;us.style.transform='translate(150px,112px)'};
+ if(RM){end();copy.classList.add('on');return}
+ (async()=>{while(true){await gate(m);us.style.transition='none';us.style.opacity=0;us.style.transform='translate(120px,318px)';copy.classList.remove('on');us.getBoundingClientRect();us.style.transition='';await W(1500);us.style.opacity=1;await W(400);end();await W(900);copy.classList.add('on');await W(12000)}})()})();
+
+/* 5 */
+(()=>{const g=document.querySelector('[data-tiles]'),sum=g.parentElement.querySelector('.tsum');
+ const P={sun:'<path d="M4 14a6 6 0 0 1 12 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 16.5h14M10 4v2M4.5 6.5 6 8M15.5 6.5 14 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+  pulse:'<path d="M2.5 10.5h3.5l2-5 3.5 9 2-4h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>',
+  renew:'<path d="M15.5 8A6 6 0 0 0 4.7 6.2M4.5 12a6 6 0 0 0 10.8 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M4.2 3.2v3.3h3.3M15.8 16.8v-3.3h-3.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+  chart:'<path d="M3.5 16.5h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5.5 13.5v-3M9.5 13.5V6.5M13.5 13.5v-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+  chat:'<path d="M4 4.5h12v8H9l-3.5 3v-3H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
+  mail:'<path d="M3 6.5h14v9H3z" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 7 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+  move:'<path d="M3 10h11M10.5 5.5 15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>',
+  plug:'<path d="M7 3v4M13 3v4M5 7h10v3a5 5 0 0 1-10 0V7ZM10 15v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>'};
+ const T=[['sun','#fbf2df','#9a6512','Morning Routine','Your whole book ranked before 8:00.'],['pulse','#e2f1ee','#23685f','Health from real signals','Payments, replies, usage, support and calls.'],['renew','#e2f1ee','#23685f','Renewal playbook','14 statuses, from Authority Gap to Renewal won.'],['chart','#e6f2ea','#2f7a4b','Pilot playbook','Week-by-week proof, built from usage.'],['chat','#efebf8','#6a4fb0','AI CSM','Answers about your book, with every source cited.'],['mail','#e9f0fa','#2f64a8','Drafts, never sends','Follow-ups wait in Gmail for your review.'],['move','#fbece8','#b13e2a','Free data migration','We move your spreadsheet in for you.'],['plug','#f1ece3','#6b5d45','All integrations','Gmail, Slack, HubSpot, Jira, Intercom and more.']];
+ g.innerHTML=T.map(t=>`<div class="card tile"><span class="stp">Included</span><div class="ic" style="background:${t[1]};color:${t[2]}"><svg viewBox="0 0 20 20" fill="none">${P[t[0]]}</svg></div><b>${t[3]}</b><span>${t[4]}</span></div>`).join('');
+ const ts=[...g.children];
+ if(RM){ts.forEach(t=>t.classList.add('on','stamped'));sum.classList.add('on');return}
+ (async()=>{while(true){await gate(g);ts.forEach(t=>t.classList.remove('on','stamped'));sum.classList.remove('on');await W(1400);for(const t of ts){t.classList.add('on');await W(180)}await W(300);for(const t of ts){t.classList.add('stamped');await W(200)}sum.classList.add('on');await W(11000)}})()})();
+</script>
+</body>
+</html>
