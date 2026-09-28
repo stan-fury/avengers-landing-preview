@@ -625,6 +625,40 @@ html,body{overflow-x:clip}
  #cout .co{padding:12px 10px;border-radius:14px;text-align:center;display:flex;align-items:center;justify-content:center;min-height:62px}
  #cout .co .cnn{font-size:14px;line-height:1.25}#cout .co .cns{display:none}
 }
+/* v1.19 audit fixes */
+.eyebrow{color:#2a6f66}.eyebrow i{background:#2a6f66}section.dark .eyebrow{color:#9fd8c8}
+.tier .tag{color:#2a6f66}.tier.hi .tag{color:#9fd8c8}.baa .ttl2{color:#2a6f66}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.livenote{max-width:760px;margin:6px auto 0;padding:0 24px;text-align:center;font:500 14.5px/1.5 Geist;color:#c9dcd2}
+.lens.big .glass:focus-visible{outline:3px solid #9fd8c8;outline-offset:4px}
+.pbt:focus-visible,.vseg button:focus-visible,.ddb:focus-visible,.burger:focus-visible{outline:3px solid #3f8f84;outline-offset:2px}
+.painsec{padding-top:40px}
+/* Morning: noise folds into one page */
+.mrA{position:relative;max-width:1180px;margin:10px auto 0;padding:40px 0 10px}
+.mrA .mr-card{position:relative;max-width:560px;margin:0 auto;opacity:0;transform:scale(.95);transition:opacity .7s,transform .7s cubic-bezier(.3,1.2,.5,1)}
+.mrA .mr-card.on{opacity:1;transform:none}
+.mr-grp{font:600 11.5px Geist;letter-spacing:.13em;text-transform:uppercase;color:#5b675f;margin:16px 0 -2px;display:flex;align-items:center;gap:8px}
+.mr-grp i{width:7px;height:7px;border-radius:50%}
+.mrA .chip{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:#fff;box-shadow:0 16px 30px -16px rgba(22,32,28,.4);font:500 14px Geist;white-space:nowrap;opacity:0;transition:all .9s cubic-bezier(.6,0,.2,1)}
+.mrA .chip s{text-decoration:none;font:700 11px Geist;color:#fff;background:#d23f2f;border-radius:999px;padding:1px 7px}
+.mrA .chip i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font:700 11px Geist;color:#fff;font-style:normal}
+.mrA .chip.in{left:44%!important;right:auto!important;top:40%!important;transform:scale(.4)!important;opacity:0!important}
+@media (max-width:700px){
+ .mrA{padding-top:20px}
+ .mrA .chip{font-size:12.5px;padding:9px 11px;max-width:78%;overflow:hidden;text-overflow:ellipsis}
+ .mrA .chip:nth-child(n+7){display:none}
+ .mrA .chip:nth-child(2n){left:auto!important;right:0}
+ .mrA .chip:nth-child(1){top:2%!important}.mrA .chip:nth-child(2){top:15%!important}.mrA .chip:nth-child(3){top:29%!important}.mrA .chip:nth-child(4){top:43%!important}.mrA .chip:nth-child(5){top:57%!important}.mrA .chip:nth-child(6){top:71%!important}
+ .mrA .chip.in{left:30%!important;right:auto!important;top:40%!important}
+ .livenote{font-size:13.5px;padding:0 18px}
+ /* 320px nav: keep the menu button on screen */
+ .fbot a,.fgrid>div.open>a{min-height:44px;display:flex!important;align-items:center}
+ .vseg button{min-height:40px}
+}
+@media (max-width:360px){
+ .navin{gap:6px;padding:6px 6px 6px 10px}.navin .brand span{font-size:17px}.navin .brand .mk{width:28px;height:28px}
+ .navin .beam{padding:9px 12px;font-size:12.5px}.burger{width:38px;height:38px}
+}
 </style>
 </head>
 <body>
@@ -638,14 +672,14 @@ html,body{overflow-x:clip}
    <div class="dd"><button type="button" class="ddb">Resources <span>▾</span></button><div class="ddp sol"><a href="#"><b>Playbook library</b><span>Ready-made playbooks for onboarding, renewals and saves</span></a><a href="#"><b>Templates</b><span>QBR decks, success plans and email templates you can copy</span></a><a href="#sheets"><b>Guides</b><span>How to move from a spreadsheet to a real CS process</span></a><a href="security.html"><b>Security</b><span>Read-only by default, and exactly how we handle your data</span></a></div></div>
    <a href="#pricing">Pricing</a>
   </div>
-  <span class="sp"></span><a class="signin" href="#">Sign in</a><a class="beam dark" href="#demo">Book a demo</a><button type="button" class="burger" id="burger" aria-label="Menu"><i></i></button>
+  <span class="sp"></span><a class="signin" href="#">Sign in</a><a class="beam dark" href="#demo">Book a demo</a><button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><i></i></button>
 </div></nav>
 
 <section class="hero" id="top"><i class="sun" style="left:-10%;top:-30%"></i><i class="sage" style="right:-20%;top:10%"></i>
   <div class="ghosts"><div class="gh" data-k="slack" style="left:6%;top:22%;--r:-4deg;animation-delay:0.0s"><i></i><div><b>Monica Hall</b><span>Are you there?</span></div></div><div class="gh" data-k="gmail" style="left:78%;top:16%;--r:3deg;animation-delay:1.3s"><i></i><div><b>Gavin Belson</b><span>Why is nobody replying?</span></div></div><div class="gh" data-k="stripe" style="left:3%;top:64%;--r:2deg;animation-delay:2.6s"><i></i><div><b>Stripe</b><span>Payment failed · $34,000</span></div></div><div class="gh" data-k="gmail" style="left:80%;top:66%;--r:-3deg;animation-delay:3.9000000000000004s"><i></i><div><b>Hooli</b><span>We want a 40% discount</span></div></div><div class="gh" data-k="intercom" style="left:12%;top:84%;--r:-2deg;animation-delay:5.2s"><i></i><div><b>Ticket</b><span>Reopened, still broken</span></div></div><div class="gh" data-k="slack" style="left:72%;top:86%;--r:2deg;animation-delay:6.5s"><i></i><div><b>Jared Dunn</b><span>Call in one hour?</span></div></div></div>
   <div class="wrap herowrap">
   <h1>Stop firefighting.<br>Know who needs you today.</h1>
-  <p class="lead herolead">Stop guessing which client is about to churn. Avengers ranks your whole book every morning, hands you the first move for each account and does the busywork, <b>so you spend the day with clients, not tabs.</b></p>
+  <p class="lead herolead">Avengers is the AI customer success platform for teams outgrowing their spreadsheet. It ranks your whole book every morning, hands you the first move for each account and does the busywork, <b>so you spend the day with clients, not tabs.</b></p>
   <div class="ctas"><a class="beam big dark" href="#ai">See it in action <span style="margin-left:4px">↓</span></a><a class="ghost" href="#demo">Book a demo <span>→</span></a></div>
   
   </div>
@@ -657,18 +691,14 @@ html,body{overflow-x:clip}
   <div class="herochat" data-films="chat" data-bare="1" data-aspect="16/10"></div>
 </div></section>
 
-<section id="over" class="over"><i class="sun" style="left:30%;top:-30%"></i><div class="wrap">
-    <div class="ovbox" id="ovbox"><span class="ovB"><span class="o grad"></span><span class="d">D</span><span class="rest">elivered.</span></span><i class="bcar" id="bcar"></i></div>
-  
-  <p class="lead ovlead">So why overdelivered, you ask? Avengers was built by a customer success leader who spent more than a decade running books on spreadsheets, memory and late nights. It is the platform that decade was missing: <b>enterprise depth, made for teams going from no solution to a real one.</b></p>
+<section id="pain" class="over painsec"><div class="wrap">
   <div class="painhead"><div class="eyebrow" style="justify-content:center"><i></i>Sound familiar?<i></i></div><div class="painq">Every morning, the same fire drill.</div><div class="painsub">Messages you missed, renewals you forgot and a call you are not ready for.</div></div>
   <div class="painfilms" data-films="pain"></div>
-</div>
 </div></section>
 
 <section id="morning"><i class="sun" style="right:-25%;top:-10%"></i><div class="wrap">
   <div class="shead"><div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><span class="rot" id="rot">firefighting</span></h2></div><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order, with calls prepped and follow-ups drafted for every renewal, expansion and save.</p></div>
-  <div class="mr-grid"><div class="ba"><div class="bab"><div class="ttl2">Before</div><ul><li>Ten tabs open before nine</li><li>Guessing what is urgent</li><li>Forty minutes to prep one call</li><li>Follow-ups written late at night</li></ul></div><div class="baa"><div class="ttl2">With Avengers</div><ul><li>One page, already read</li><li>Ranked by what matters most</li><li>A two-minute brief per call</li><li>Drafts waiting in Gmail</li></ul></div></div><div class="mr-card" id="mrcard"></div></div>
+  <div class="mrA" id="mrA"></div>
 </div></section>
 
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">Behind every client in your morning, one number</div><i class="bh r"></i></div>
@@ -706,7 +736,8 @@ html,body{overflow-x:clip}
 <section id="integrations" class="dark"><i class="sage" style="left:20%;top:-20%"></i><div class="wrap">
   <div class="shead"><div><div class="eyebrow"><i></i>07 · Integrations</div><h2>Avengers works with the tools you already use.</h2></div><p class="lead">Email, calendar, calls, CRM, support, billing and product data. Connect them in minutes and Avengers reads them for you. <b>Missing one? We build the connector.</b></p></div>
   </div>
-  <div class="lens big" id="lens"><div class="track" id="lt1"></div><div class="glass"></div><div class="sharpwin"><div class="track" id="lt2" style="filter:none;opacity:1"></div></div></div>
+  <div class="lens big" id="lens"><div class="track" id="lt1"></div><div class="glass" tabindex="0" role="slider" aria-label="Integrations lens. Use the left and right arrow keys to move it" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div><div class="sharpwin"><div class="track" id="lt2" style="filter:none;opacity:1"></div></div></div>
+  <p class="livenote">Live today: Gmail, Google Calendar, HubSpot, Slack, Intercom, Jira, Chargebee, Airtable and Avoma. Every other tool is built on request.</p>
   <div class="wrap"><div class="cust2">
   <div class="cl"><div class="eyebrow"><i></i>Custom connectors</div><h3>Your data lives somewhere odd? We wire it in.</h3>
    <p>Not every source has a logo. A database, an internal admin panel, a nightly CSV. Tell us where the truth lives and it shows up everywhere Avengers works.</p>
@@ -715,13 +746,18 @@ html,body{overflow-x:clip}
 </div></div>
 </section>
 
+<section id="over" class="over"><i class="sun" style="left:30%;top:-30%"></i><div class="wrap">
+    <div class="ovbox" id="ovbox"><span class="ovB"><span class="o grad"></span><span class="d">D</span><span class="rest">elivered.</span></span><i class="bcar" id="bcar"></i></div>
+  
+  <p class="lead ovlead">So why overdelivered, you ask? Avengers was built by a customer success leader who spent more than a decade running books on spreadsheets, memory and late nights. It is the platform that decade was missing: <b>enterprise depth, made for teams going from no solution to a real one.</b></p>
+</div></section>
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">Ready when you are. Pick a plan</div><i class="bh r"></i></div>
 <section id="pricing"><i class="sun" style="left:10%;top:-20%"></i><div class="wrap">
   <div class="shead"><div><div class="eyebrow"><i></i>Pricing</div><h2>Priced per seat. Grow with your book.</h2></div><p class="lead">Every plan reads your tools, writes your morning and preps your calls. <b>Grow into the playbooks when your book grows.</b></p></div>
   <div class="tiers">
     <div class="tier"><span class="tag" style="color:#3f8f84">Self-serve</span><h3>Starter</h3><div class="who">One seat, sign up and start today. For a first CSM or a founder.</div><div class="price">$49<small>per seat / month</small></div><ul><li>Morning Routine</li><li>AI CSM, Call prep and follow-ups</li><li>Up to 5 integrations</li><li>Import from Excel, Airtable or Notion</li></ul><a class="go" href="#demo">Sign up</a></div>
     <div class="tier hi"><span class="tag">Most teams</span><h3>Team</h3><div class="who">From 5 seats. For a CS team with a book to protect.</div><div class="price">$99<small>per seat / month</small></div><ul><li>Everything in Starter</li><li>Renewal and Pilot Playbooks</li><li>All integrations</li><li>Team books and access</li><li>Automations</li></ul><a class="go" href="#demo">Book a demo</a></div>
-    <div class="tier"><h3>Scale</h3><div class="who">For larger teams, custom data and custom builds.</div><div class="price">Custom</div><div style="font:500 15px Geist;opacity:.7;margin-top:8px">from $1,500 / month</div><ul><li>Everything in Team</li><li>Custom development by our team</li><li>On-premise or your own cloud</li><li>Custom connectors and playbooks</li><li>SSO, SAML and audit log</li><li>Dedicated onboarding</li></ul><a class="go" href="#demo">Talk to us</a></div>
+    <div class="tier"><h3>Scale</h3><div class="who">For larger teams, custom data and custom builds.</div><div class="price">Custom</div><div style="font:500 15px Geist;opacity:.7;margin-top:8px">from $1,500 / month</div><ul><li>Everything in Team</li><li>Custom development by our team</li><li>Custom connectors and playbooks</li><li>SSO, SAML and audit log</li><li>Dedicated onboarding</li></ul><a class="go" href="#demo">Talk to us</a></div>
   </div>
   <div class="switch">Switching from a spreadsheet? <b>We move your data in for free.</b></div>
 </div></section>
@@ -737,7 +773,7 @@ html,body{overflow-x:clip}
   <div class="fgrid">
     <div class="fbrand"><a class="brand" href="#top"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mkg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f8f84"/><stop offset="1" stop-color="#1f4a37"/></linearGradient><linearGradient id="mks2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2b8"/><stop offset="1" stop-color="#f4b27a"/></linearGradient><clipPath id="mkc2"><rect x="0" y="0" width="32" height="20.6"/></clipPath></defs><rect width="32" height="32" rx="9" fill="url(#mkg2)"/><circle cx="16" cy="21" r="7.4" fill="url(#mks2)" clip-path="url(#mkc2)"/><rect x="6" y="20.4" width="20" height="1.6" rx=".8" fill="#fbf8f1" opacity=".95"/><rect x="10" y="24.6" width="12" height="1.4" rx=".7" fill="#fbf8f1" opacity=".45"/></svg><span>Avengers</span></a><p><b style="color:#16201c">The customer success platform, overdelivered.</b> One calm morning for every account you own.</p><div class="soc"><a href="#" aria-label="LinkedIn" class="so" data-logo="linkedin"></a><a href="#" aria-label="Instagram" class="so" data-logo="instagram"></a><a href="#" aria-label="YouTube" class="so" data-logo="youtube"></a></div></div>
     <div><h4>Product</h4><a href="#ai">AI CSM</a><a href="#morning">Morning Routine</a><a href="#health">Health Score</a><a href="#renewals">Renewal Playbook</a><a href="#pilots">Pilot Playbook</a><a href="#calls">Call prep</a><a href="#sheets">Customer CRM</a><a href="#custompb">Custom playbooks</a><a href="#">MCP and API</a></div><div><h4>Use cases</h4><a href="#">Customer success</a><a href="#">Onboarding</a><a href="#renewals">Renewals</a><a href="#pilots">Pilots and POCs</a><a href="#">Account management</a><a href="#">Support</a></div><div><h4>Resources</h4><a href="#">Blog</a><a href="#">Knowledge base</a><a href="faq.html">FAQ</a><a href="#">Customer stories</a><a href="#integrations">Connectors</a><a href="#">ROI calculator</a><a href="security.html">Security</a><a href="#">Status</a></div><div><h4>Company</h4><a href="#">About</a><a href="#">Jobs</a><a href="#">Partners</a><a href="#demo">Contact</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Master Services Agreement</a><div class="addr">2100 Geng Road, Suite 210<br>Palo Alto, CA 94303<br><a href="#" style="padding:0">+1 (650) 555-0142</a><br><a href="#" style="padding:0">stan@avengers.ai</a></div></div>  </div>
-  <div class="trust3"><svg viewBox="0 0 24 24" width="46" height="46"><path d="M12 2.5l8 3.3v5.6c0 5-3.4 9.3-8 11.1-4.6-1.8-8-6.1-8-11.1V5.8z" fill="#2f5d46"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#f4b27a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Enterprise-grade security</b><span>SOC 2 · GDPR · SSO<span class="tmore"> · ISO 27001 · Your data never trains AI models · Read-only by default</span></span></div><a href="security.html" class="tb2l">Security at Avengers →</a></div>
+  <div class="trust3"><svg viewBox="0 0 24 24" width="46" height="46"><path d="M12 2.5l8 3.3v5.6c0 5-3.4 9.3-8 11.1-4.6-1.8-8-6.1-8-11.1V5.8z" fill="#2f5d46"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#f4b27a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Security at Avengers</b><span>In progress: SOC 2, ISO 27001, GDPR and SSO<span class="tmore"> · Your data never trains AI models · Read-only by default</span></span></div><a href="security.html" class="tb2l">Security at Avengers →</a></div>
   <div class="fwordwrap"><div class="fword">Avengers</div></div>
   <div class="fbot"><span>© 2026 Avengers</span><span class="sp"></span><a href="#">Privacy</a><a href="#">Terms</a><span>Made in Ukraine</span></div>
 </div></footer>
@@ -747,10 +783,10 @@ html,body{overflow-x:clip}
 <h5>Solutions</h5><a href="#renewals">Renewal Playbook</a><a href="#pilots">Pilot Playbook</a><a href="#calls">Call prep</a><a href="#custompb">Custom playbooks</a>
 <h5>More</h5><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a><a href="#">Sign in</a>
 <a class="beam big dark" href="#demo">Book a demo</a></div>
-<div class="book" id="book" aria-hidden="true"><div class="bk-in"><button type="button" class="bk-x" id="bkx" aria-label="Close">×</button>
-<div class="bk-l"><div class="eyebrow"><i></i>Book a demo</div><h2 class="bk-h">See your own book in Avengers.</h2><p class="bk-p">A 30-minute working session on your accounts. We connect a source live, and you leave knowing who needs you tomorrow.</p>
+<div class="book" id="book" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bkh"><div class="bk-in"><button type="button" class="bk-x" id="bkx" aria-label="Close">×</button>
+<div class="bk-l"><div class="eyebrow"><i></i>Book a demo</div><h2 class="bk-h" id="bkh">See your own book in Avengers.</h2><p class="bk-p">A 30-minute working session on your accounts. We connect a source live, and you leave knowing who needs you tomorrow.</p>
 <ul class="bk-ul"><li><b>Your morning, on your data</b><span>We read one real source during the call and show your first Morning.</span></li><li><b>Your renewals and pilots</b><span>Where they stand today, and the first move for each one.</span></li><li><b>Security, rollout and price</b><span>How it fits your stack, and a path to a live pilot in a week.</span></li></ul>
-<div class="bk-sec"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2.5l8 3.3v5.6c0 5-3.4 9.3-8 11.1-4.6-1.8-8-6.1-8-11.1V5.8z" fill="none" stroke="#2f5d46" stroke-width="2"/></svg>Enterprise-grade security · SOC 2 · GDPR · SSO</div></div>
+<div class="bk-sec"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2.5l8 3.3v5.6c0 5-3.4 9.3-8 11.1-4.6-1.8-8-6.1-8-11.1V5.8z" fill="none" stroke="#2f5d46" stroke-width="2"/></svg>Security in progress: SOC 2, ISO 27001, GDPR, SSO</div></div>
 <div class="bk-r"><div class="bk-tz"><span class="mut">Your time zone</span><div class="tzdd" id="tzdd"><button type="button" class="tzb" id="tzb"></button><div class="tzl" id="tzl"></div></div></div><div class="bk-step" id="bks1"><div class="bk-cal"><div class="bk-ch"><b id="bkmon">October 2026</b><span class="mut">Pick a day</span></div><div class="bk-wd"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div><div class="bk-days" id="bkdays"></div></div><div class="bk-times"><div class="bk-ch"><b id="bkday">Choose a day</b></div><div id="bktimes" class="bk-tl"></div></div></div>
 <form class="bk-step bk-form" id="bks2" novalidate><div class="bk-sel" id="bksel"></div><div class="bk-grid"><label>First name *<input name="first" required autocomplete="given-name"></label><label>Last name *<input name="last" required autocomplete="family-name"></label><label class="full">Work email *<input name="email" type="email" required autocomplete="email"></label><label class="full">Company *<input name="company" required autocomplete="organization"></label></div><div class="bk-err" id="bkerr"></div><div class="bk-act"><button type="button" class="bk-back" id="bkback">← Change time</button><button type="submit" class="beam big dark">Confirm the demo</button></div></form>
 <div class="bk-step bk-done" id="bks3"><div class="bk-ok">✓</div><h3>You are booked.</h3><p id="bkdone"></p><p class="mut" style="font-size:14px">Preview page: nothing was sent or saved.</p></div></div></div></div>
@@ -1332,7 +1368,8 @@ function mk(el,dur,active){
     cnt:[...el.querySelectorAll('[data-cnt]')].map(e=>[e,e.dataset.cnt.split(',').map(Number),e.dataset.pre,e.dataset.suf]),
     chats:[...el.querySelectorAll('.chatv')],st:[...el.querySelectorAll('[data-st]')].map(e=>{const base=e.getAttribute('style')||'';const states=e.dataset.st.split('@').map(s=>{const k=s.indexOf('>');return [+s.slice(0,k),s.slice(k+1)]});return [e,base,states,-1]})};
 }
-const io=new IntersectionObserver(es=>es.forEach(en=>{all.filter(f=>f.el.parentNode===en.target).forEach(f=>{f.vis=en.isIntersecting;if(!en.isIntersecting&&f.hold==null)f.t0=null})}),{threshold:.1});
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;let TICKING=false;const kick=()=>{if(!TICKING){TICKING=true;requestAnimationFrame(tick)}};addEventListener('visibilitychange',()=>{if(!document.hidden)kick()});
+const io=new IntersectionObserver(es=>{es.forEach(en=>{all.filter(f=>f.el.parentNode===en.target).forEach(f=>{f.vis=en.isIntersecting;if(!en.isIntersecting&&f.hold==null)f.t0=null})});kick()},{threshold:.1});
 document.querySelectorAll('.stagebox').forEach(b=>io.observe(b));
 const ez=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const SKIP=+(location.hash.match(/t=(\d+(\.\d+)?)/)||[])[1]||0;
@@ -1342,11 +1379,11 @@ function paintF(f,t){
   f.cnt.forEach(([e,v,p,s])=>{const [a,b,x,y,d]=v;const u=ez(Math.max(0,Math.min(1,(t-a)/(b-a))));const val=x+(y-x)*u;const o=p+(d?val.toFixed(d):Math.round(val).toLocaleString('en-US'))+s;if(e._t!==o){e._t=o;e.textContent=o}});
   f.st.forEach(r=>{const [e,base,states]=r;let k=0;states.forEach(([tt],i)=>{if(t>=tt)k=i});if(r[3]!==k){r[3]=k;e.setAttribute('style',base+';'+states[k][1])}});
 }
-function tick(now){all.forEach(f=>{if(!f.active||!f.vis)return;if(f.t0==null)f.t0=now-(f.hold!=null?0:(SKIP?SKIP*1000:700));const t=f.hold!=null?Math.min(f.hold+(now-f.t0)/1000,f.hold+7.95):((now-f.t0)/1000)%f.dur;if(!f.manual)paintF(f,t);f.chats.forEach(c=>{if(c._u){if(c._h==null)c._h=c.scrollHeight;if(c.scrollHeight>c._h+8){c._u=0;c._h=null}else return}const tg=c.scrollHeight-c.clientHeight;c.scrollTop+=(tg-c.scrollTop)*.12})});hero(now);requestAnimationFrame(tick)}
+function tick(now){let any=false;all.forEach(f=>{if(!f.active||!f.vis)return;any=true;if(RM){if(!f._rm){f._rm=1;paintF(f,f.dur*.9)}return}if(f.t0==null)f.t0=now-(f.hold!=null?0:(SKIP?SKIP*1000:700));const t=f.hold!=null?Math.min(f.hold+(now-f.t0)/1000,f.hold+7.95):((now-f.t0)/1000)%f.dur;if(!f.manual)paintF(f,t);f.chats.forEach(c=>{if(c._u){if(c._h==null)c._h=c.scrollHeight;if(c.scrollHeight>c._h+8){c._u=0;c._h=null}else return}const tg=c.scrollHeight-c.clientHeight;c.scrollTop+=(tg-c.scrollTop)*.12})});hero(now);if(any&&!document.hidden)requestAnimationFrame(tick);else TICKING=false}
 /* final + lens */
 const finq=document.getElementById('finq');let h0=null;
 function hero(now){}
-(()=>{const F='Who needs you tomorrow?';const car=document.createElement('i');car.className='bcar';car.style.height='.8em';let seen=false,tm=[];const run=()=>{tm.forEach(clearTimeout);tm=[];finq.innerHTML='';finq.appendChild(car);[...F].forEach((c,i)=>tm.push(setTimeout(()=>{const s=document.createElement('span');s.className='fl';s.textContent=c;finq.insertBefore(s,car);requestAnimationFrame(()=>s.classList.add('shw'))},300+i*75)));tm.push(setTimeout(run,12000))};new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!seen){seen=true;run()}}),{threshold:.3}).observe(finq)})();
+(()=>{const F='Who needs you tomorrow?';const car=document.createElement('i');car.className='bcar';car.style.height='.8em';let seen=false,tm=[];const run=()=>{tm.forEach(clearTimeout);tm=[];finq.innerHTML='';if(matchMedia('(prefers-reduced-motion: reduce)').matches){finq.textContent=F;return}finq.appendChild(car);[...F].forEach((c,i)=>tm.push(setTimeout(()=>{const s=document.createElement('span');s.className='fl';s.textContent=c;finq.insertBefore(s,car);requestAnimationFrame(()=>s.classList.add('shw'))},300+i*75)));tm.push(setTimeout(run,12000))};new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!seen){seen=true;run()}}),{threshold:.3}).observe(finq)})();
 const LK=[['salesforce','Salesforce'],['hubspot','HubSpot'],['gmail','Gmail'],['outlook','Outlook'],['gcal','Google Calendar'],['zoom','Zoom'],['avoma','Avoma'],['gong','Gong'],['teams','Microsoft Teams'],['slack','Slack'],['intercom','Intercom'],['zendesk','Zendesk'],['jira','Jira'],['github','GitHub'],['stripe','Stripe'],['chargebee','Chargebee'],['notion','Notion'],['confluence','Confluence'],['gdrive','Google Drive'],['calendly','Calendly'],['excel','Excel'],['airtable','Airtable'],['mixpanel','Mixpanel'],['amplitude','Amplitude'],['loom','Loom']];
 const lt=[...LK,...LK].map(([k,n])=>`<span class="t"><i>${LOGO[k]}</i>${n}</span>`).join('');document.getElementById('lt1').innerHTML=lt;document.getElementById('lt2').innerHTML=lt;
 const IM=[['CRM',[['salesforce','Salesforce'],['hubspot','HubSpot'],['pipedrive','Pipedrive']]],['Email and calendar',[['gmail','Gmail'],['outlook','Outlook'],['gcal','Google Calendar']]],['Calls',[['zoom','Zoom'],['teams','Microsoft Teams'],['avoma','Avoma'],['gong','Gong']]],['Support',[['intercom','Intercom'],['zendesk','Zendesk'],['helpscout','Help Scout']]],['Billing',[['stripe','Stripe'],['chargebee','Chargebee']]],['Work and docs',[['slack','Slack'],['jira','Jira'],['notion','Notion'],['gdrive','Google Drive']]]];
@@ -1366,20 +1403,28 @@ W.innerHTML=s}
 wire();addEventListener('resize',wire);let mob0=MOB;addEventListener('resize',()=>{if(matchMedia('(max-width:700px)').matches!==mob0)location.reload()});document.fonts&&document.fonts.ready.then(wire);setTimeout(wire,800)})();
 document.querySelectorAll('.so').forEach(e=>{e.innerHTML=LOGO[e.dataset.logo].replace(/fill='url\(#[^)]*\)'/g,"fill='#2f5d46'").replace(/fill='#(?!fff\b|ffffff\b|FFF\b|FFFFFF\b)[0-9a-fA-F]{3,6}'/g,"fill='#2f5d46'").replace(/fill='red'/g,"fill='#2f5d46'")});
 const nav=document.getElementById('nav'),annc=document.querySelector('.annc');const setNV=()=>{const R=document.documentElement.style;R.setProperty('--ah',annc.offsetHeight+'px');R.setProperty('--nh',nav.offsetHeight+'px')};setNV();addEventListener('resize',setNV);if(document.fonts)document.fonts.ready.then(setNV);let navS=null;const onS=()=>{const s=scrollY>annc.offsetHeight;if(s!==navS){navS=s;nav.classList.toggle('scr',s)}};addEventListener('scroll',onS,{passive:true});onS();
-/* Morning Routine card */
-(()=>{const el=document.getElementById('mrcard');if(!el)return;const W=ms=>new Promise(r=>setTimeout(r,ms));const SW=(s,k)=>`<span class="mr-st ${k}">${s}</span>`;
-const C=[['Renewal · 12 days','Wayne Enterprises','Paperwork Pending','a','Order form out for six days. Chase the signature with Bruce.','Draft nudge','#9a6512'],
-['Pilot · week 6','Pied Piper','On Track','g','Week-6 proof due today. Share it with Monica before noon.','Open pilot','#2f7a4b'],
-['Renewal · 24 days','Hooli','Decision Pending','a','Call at 11:30. Monica owes you an answer by Friday.','Prep call','#9a6512'],
-['Pilot · week 9','Dunder Mifflin','Low Engagement','d','One of three teams active. Book a check-in with the champion.','Book check-in','#b13e2a'],
-['Renewal · 30 days','Endframe','Payment Failed','d','Card declined on the $19,000 invoice. Call the payer today.','Call payer','#b13e2a']];
-el.innerHTML=`<div class="mr-hi">Good morning, Laurie · Tuesday</div><div class="mr-big"><b>$184,000</b> of ARR needs you today.</div><div class="mr-lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div><div id="mrl"></div>`;
-const box=document.getElementById('mrl');const card=c=>{const d=document.createElement('div');d.className='mr-c new';d.innerHTML=`<span class="mr-rk"></span><span class="mr-ln" style="color:${c[6]}">${c[0]}</span><span class="mr-go">${c[5]} →</span><span class="mr-t2"><span class="mr-nm"><b>${c[1]}</b>${SW(c[2],c[3])}</span>${c[4]}</span><span class="mr-tick">✓</span>`;return d};
-const renum=()=>[...box.children].filter(x=>!x.classList.contains('done')).forEach((x,i)=>x.querySelector('.mr-rk').textContent=i+1);
-let vis=false;new IntersectionObserver(es=>es.forEach(e=>vis=e.isIntersecting),{threshold:.2}).observe(el);const gate=async()=>{while(!vis)await W(250)};
-(async()=>{while(true){await gate();box.innerHTML='';let q=0;for(;q<3;q++){const d=card(C[q]);box.appendChild(d);renum();await W(60);d.classList.remove('new');await W(420)}
- for(let r=0;r<2;r++){await W(2600);await gate();const top=box.children[0];top.classList.add('ok');await W(900);top.classList.add('done');await W(600);top.remove();const d=card(C[q]);box.appendChild(d);renum();await W(60);d.classList.remove('new');q++}
- await W(3400)}})()})();
+/* Morning Routine: the noise folds into one ranked page (A), grouped Late / Most important / Due today (D) */
+(()=>{const el=document.getElementById('mrA');if(!el)return;const W=ms=>new Promise(r=>setTimeout(r,ms));const RMm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SW=(s,k)=>`<span class="mr-st ${k}">${s}</span>`;
+const C=[['Late · since yesterday','Aviato','No Response','d','Security review you promised. Send it before 10.','Send review','#b13e2a','late'],
+['Renewal · 12 days','Wayne Enterprises','Paperwork Pending','a','Order form out for six days. Chase the signature with Bruce.','Draft nudge','#9a6512','top'],
+['Pilot · week 6','Pied Piper','On Track','g','Week-6 proof due today. Share it with Monica before noon.','Open pilot','#2f7a4b','top'],
+['Renewal · 24 days','Hooli','Decision Pending','a','Call at 11:30. The brief is ready.','Prep call','#9a6512','today'],
+['Pilot · week 9','Dunder Mifflin','Low Engagement','d','One of three teams active. Book a check-in.','Book check-in','#b13e2a','today']];
+const G={late:['Late','#c4452f'],top:['Most important','#2f5d46'],today:['Due today','#c98a1e']};
+let h=`<div class="mr-hi">Good morning, Laurie · Tuesday</div><div class="mr-big"><b>$184,000</b> of ARR needs you today.</div><div class="mr-lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div>`,last='',n=0;
+C.forEach(c=>{if(c[7]!==last){last=c[7];h+=`<div class="mr-grp"><i style="background:${G[last][1]}"></i>${G[last][0]}</div>`}h+=`<div class="mr-c new"><span class="mr-rk">${++n}</span><span class="mr-ln" style="color:${c[6]}">${c[0]}</span><span class="mr-go">${c[5]} →</span><span class="mr-t2"><span class="mr-nm"><b>${c[1]}</b>${SW(c[2],c[3])}</span>${c[4]}</span></div>`});
+const N=[['M','#ea4335','Why is nobody replying?','3'],['#','#4a154b','#cs-escalations','8'],['S','#635bff','Payment failed · $19,000',''],['31','#1a73e8','11:30 Hooli call, no prep',''],['I','#1f8ded','Ticket reopened, still broken',''],['X','#107c41','customers_FINAL_v7 (2).xlsx',''],['J','#2684ff','Bug open for 9 days',''],['M','#ea4335','Order form?','12'],['H','#ff7a59','Deal stage: unknown','']];
+const P=[[0,4,-4],[70,2,3],[4,30,2],[72,24,-3],[0,56,3],[70,50,-2],[6,80,-2],[72,76,4],[36,-2,-3]];
+el.innerHTML=N.map(([i,c,tx,b],k)=>`<div class="chip" aria-hidden="true" style="left:${P[k][0]}%;top:${P[k][1]}%;transform:rotate(${P[k][2]}deg)"><i style="background:${c}">${i}</i>${tx}${b?`<s>${b}</s>`:''}</div>`).join('')+`<div class="mr-card">${h}</div>`;
+const chips=[...el.querySelectorAll('.chip')],mc=el.querySelector('.mr-card'),items=[...mc.querySelectorAll('.mr-c')];
+if(RMm){chips.forEach(c=>c.remove());mc.classList.add('on');items.forEach(c=>c.classList.remove('new'));return}
+const inView=()=>{const r=el.getBoundingClientRect(),h=innerHeight||800;return r.height>0&&r.bottom>h*.2&&r.top<h*.8};const gate=async()=>{while(!inView()||document.hidden)await W(300)};
+(async()=>{while(true){await gate();mc.classList.remove('on');items.forEach(c=>c.classList.add('new'));chips.forEach(c=>{c.classList.remove('in');c.style.opacity=0});await W(350);
+ for(const c of chips){c.style.opacity=1;await W(150)}await W(1900);
+ for(const c of chips){c.classList.add('in');await W(70)}await W(650);mc.classList.add('on');await W(250);
+ for(const c of items){c.classList.remove('new');await W(240)}await W(6000)}})()})();
+
 
 
 (()=>{const box=document.getElementById('ovbox'),o=box.querySelector('.o'),d=box.querySelector('.d'),rest=box.querySelector('.rest'),car=document.getElementById('bcar');let tm=[];const T=(f,ms)=>tm.push(setTimeout(f,ms));
@@ -1388,7 +1433,7 @@ let OW=0;const meas=()=>{const p=document.createElement('span');p.className='ovl
 const paintG=()=>{const L=[...o.children];if(!L.length)return;const pad=parseFloat(getComputedStyle(L[0]).paddingLeft)||0;const x0=L[0].getBoundingClientRect().left+pad;L.forEach(s=>{const x=s.getBoundingClientRect().left+pad-x0;s.style.backgroundSize=(OW+2*pad)+'px 100%';s.style.backgroundPosition=(-x)+'px 0'})};
 const add=(ch)=>{const s=document.createElement('span');s.className='ovl';s.textContent=ch;o.appendChild(s);paintG();requestAnimationFrame(()=>s.classList.add('shw'))};
 addEventListener('resize',()=>{meas();paintG()});
-function play(){tm.forEach(clearTimeout);tm=[];o.innerHTML='';meas();d.textContent='D';put('afterD');T(()=>{d.textContent=''},800);T(()=>{d.textContent='d'},1050);T(()=>put('start'),1450);'Over'.split('').forEach((c,k)=>T(()=>{add(c);put('afterO')},1750+k*120));T(()=>put('end'),2600);T(play,11000)}
+function play(){tm.forEach(clearTimeout);tm=[];o.innerHTML='';meas();if(matchMedia('(prefers-reduced-motion: reduce)').matches){d.textContent='d';'Over'.split('').forEach(c=>add(c));put('end');return}d.textContent='D';put('afterD');T(()=>{d.textContent=''},800);T(()=>{d.textContent='d'},1050);T(()=>put('start'),1450);'Over'.split('').forEach((c,k)=>T(()=>{add(c);put('afterO')},1750+k*120));T(()=>put('end'),2600);T(play,11000)}
 let seen=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!seen){seen=true;play()}}),{threshold:.3}).observe(box);})();
 document.querySelectorAll('#hvseg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#hvseg button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.hv').forEach(h=>h.classList.toggle('on',h.dataset.h==b.dataset.h))}));
 
@@ -1402,7 +1447,7 @@ const bio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targ
 
 document.querySelectorAll('#subseg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#subseg button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.sub').forEach(s=>s.classList.toggle('on',s.dataset.s==b.dataset.s))}));
 document.querySelectorAll('.gh').forEach(g=>{g.querySelector('i').innerHTML=LOGO[g.dataset.k]});
-(()=>{const el=document.getElementById('rot');if(!el)return;const W=['firefighting','the stress','the urgency','the guesswork','the chaos'];let i=0;setInterval(()=>{i=(i+1)%W.length;const w=W[i];el.textContent='';let k=0;const add=setInterval(()=>{el.textContent=w.slice(0,++k);if(k>=w.length)clearInterval(add)},75)},4800)})();
+(()=>{const el=document.getElementById('rot');if(!el)return;const W=['firefighting','the stress','the urgency','the guesswork','the chaos'];let i=0;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;setInterval(()=>{i=(i+1)%W.length;const w=W[i];el.textContent='';let k=0;const add=setInterval(()=>{el.textContent=w.slice(0,++k);if(k>=w.length)clearInterval(add)},75)},4800)})();
 (()=>{const L=document.getElementById('lens');if(!L)return;let dr=false;const set=x=>{const r=L.getBoundingClientRect();const h=Math.max(120,(g.offsetWidth||340)/2+6);const v=Math.max(h,Math.min(r.width-h,x-r.left));L.style.setProperty('--lx',v+'px')};const g=L.querySelector('.glass');g.addEventListener('pointerdown',e=>{dr=true;L.classList.add('drag');g.setPointerCapture(e.pointerId);set(e.clientX)});g.addEventListener('pointermove',e=>{if(dr)set(e.clientX)});['pointerup','pointercancel'].forEach(ev=>g.addEventListener(ev,()=>{dr=false;L.classList.remove('drag')}));})();
 (()=>{const el=document.getElementById('ftime');let seen=false;const run=()=>{let m=56;el.textContent='8:56';el.classList.remove('done');const iv=setInterval(()=>{m++;if(m>=60){el.textContent='9:00';el.classList.add('done');clearInterval(iv);setTimeout(run,6000)}else el.textContent='8:'+m},900)};new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!seen){seen=true;run()}}),{threshold:.3}).observe(el)})();
 
@@ -1436,7 +1481,7 @@ document.querySelectorAll('.wkdrag,.hdrag').forEach(w=>{const lim=()=>w.classLis
  document.getElementById('bkx').addEventListener('click',close);B.addEventListener('click',e=>{if(e.target===B)close()});addEventListener('keydown',e=>{if(e.key=='Escape')close()});
  document.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const txt=a.textContent.trim();if(/Book a demo|Talk to us|Sign up/.test(txt)&&!a.closest('.book')){e.preventDefault();e.stopImmediatePropagation();open()}},true);show(s1)})();
 (()=>{const m=document.getElementById('mnav');document.getElementById('burger').addEventListener('click',()=>m.classList.add('open'));document.getElementById('mnx').addEventListener('click',()=>m.classList.remove('open'));m.addEventListener('click',e=>{if(e.target.closest('a'))m.classList.remove('open')})})();
-requestAnimationFrame(tick);
+kick();
 /* v1.14 mobile: pricing "What's included" and footer accordions */
 document.querySelectorAll('.tier ul').forEach(u=>{const b=document.createElement('button');b.type='button';b.className='inc';b.textContent="What's included";u.before(b);b.addEventListener('click',()=>b.closest('.tier').classList.toggle('open'))});
 document.querySelectorAll('.fgrid>div:not(.fbrand)>h4').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
@@ -1446,6 +1491,37 @@ document.querySelectorAll('.fgrid>div:not(.fbrand)>h4').forEach(h=>h.addEventLis
 T.forEach(b=>b.addEventListener('click',()=>go(b.dataset.p)));
 document.addEventListener('click',e=>{const a=e.target.closest('a[href="#renewals"],a[href="#pilots"],a[href="#custompb"]');if(a){go(a.getAttribute('href').slice(1));setTimeout(()=>{const tb=document.querySelector('.pbtabs');scrollTo({top:tb.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})},30)}},true);
 const h=location.hash.slice(1);if(['renewals','pilots','custompb'].includes(h))go(h)})();
+/* v1.19 accessibility: tabs, menus, dialog, scenes, lens keys, minimum text size on phones */
+(()=>{
+ /* playbook tabs as real tabs */
+ const tabs=[...document.querySelectorAll('.pbt')],pans=[...document.querySelectorAll('.pbp')];
+ tabs.forEach(b=>{const p=b.dataset.p;b.id='tab-'+p;b.setAttribute('role','tab');b.setAttribute('aria-controls',p)});
+ pans.forEach(x=>{x.setAttribute('role','tabpanel');x.setAttribute('aria-labelledby','tab-'+x.dataset.p)});
+ const sync=()=>tabs.forEach(b=>{const on=b.classList.contains('on');b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1});sync();
+ tabs.forEach((b,i)=>{b.addEventListener('click',()=>setTimeout(sync));b.addEventListener('keydown',e=>{const d=e.key=='ArrowRight'?1:e.key=='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();const n=tabs[(i+d+tabs.length)%tabs.length];n.click();n.focus()})});
+ /* dropdowns, burger, view switchers */
+ const dds=[...document.querySelectorAll('.dd .ddb')];dds.forEach(b=>b.setAttribute('aria-expanded','false'));
+ document.addEventListener('click',()=>setTimeout(()=>{dds.forEach(b=>b.setAttribute('aria-expanded',b.parentElement.classList.contains('open')));
+  const m=document.getElementById('mnav'),bg=document.getElementById('burger');if(m&&bg)bg.setAttribute('aria-expanded',m.classList.contains('open'));
+  document.querySelectorAll('.vseg button').forEach(x=>x.setAttribute('aria-pressed',x.classList.contains('on')))}));
+ document.querySelectorAll('.vseg button').forEach(x=>x.setAttribute('aria-pressed',x.classList.contains('on')));
+ /* animated scenes: hidden from screen readers, described in words instead */
+ document.querySelectorAll('[data-films]').forEach(h=>{const box=h.querySelector('.stagebox');if(!box)return;box.querySelectorAll('.stage').forEach(s=>s.setAttribute('aria-hidden','true'));
+  const names=[...h.querySelectorAll('.vseg button')].map(b=>b.textContent);const sec=h.closest('section');const title=sec&&sec.querySelector('h2,.painq');
+  const d=document.createElement('p');d.className='sr';d.textContent='Animated product demo'+(title?': '+title.textContent.trim():'')+(names.length?'. Views: '+names.join(', ')+'.':'.');box.before(d)});
+ const lt=document.getElementById('lt1'),lt2=document.getElementById('lt2');[lt,lt2].forEach(x=>x&&x.setAttribute('aria-hidden','true'));
+ /* lens: arrow keys */
+ const L=document.getElementById('lens'),g=L&&L.querySelector('.glass');
+ if(g){g.addEventListener('keydown',e=>{const d=e.key=='ArrowRight'?1:e.key=='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();const r=L.getBoundingClientRect(),h=Math.max(120,g.offsetWidth/2+6);const cur=parseFloat(getComputedStyle(L).getPropertyValue('--lx'))||r.width/2;const v=Math.max(h,Math.min(r.width-h,cur+d*60));L.style.setProperty('--lx',v+'px');g.setAttribute('aria-valuenow',Math.round((v-h)/(r.width-2*h)*100))})}
+ /* booking dialog: focus in, trap, restore */
+ const B=document.getElementById('book');if(B){let back=null;const foc=()=>[...B.querySelectorAll('button,input,select,a[href],[tabindex]:not([tabindex="-1"])')].filter(x=>x.offsetParent);
+  new MutationObserver(()=>{const open=B.classList.contains('open');document.querySelectorAll('body > *').forEach(x=>{if(x!==B&&x.tagName!='SCRIPT')x.inert=open});
+   if(open&&!B._o){B._o=1;back=document.activeElement;setTimeout(()=>{const f=foc();(f[1]||f[0])&&(f[1]||f[0]).focus()},30)}
+   if(!open&&B._o){B._o=0;back&&back.focus&&back.focus()}}).observe(B,{attributes:true,attributeFilter:['class']});
+  B.addEventListener('keydown',e=>{if(e.key!='Tab')return;const f=foc();if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}})}
+ /* phones: no scene text below 11px */
+ if(matchMedia('(max-width:700px)').matches)document.querySelectorAll('.in.m *').forEach(e=>{if(![...e.childNodes].some(n=>n.nodeType==3&&n.textContent.trim()))return;if(parseFloat(getComputedStyle(e).fontSize)<11)e.style.fontSize='11px'});
+})();
 </script>
 </body>
 </html>
