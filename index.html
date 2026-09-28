@@ -660,6 +660,12 @@ html,body{overflow-x:clip}
  .navin .beam{padding:9px 12px;font-size:12.5px}.burger{width:38px;height:38px}
 }
 .wins{padding:90px 0 40px}@media (max-width:700px){.wins{padding:56px 0 20px}#finq{display:block;min-height:2.3em}}
+.cpseg{display:flex;justify-content:center;gap:4px;width:max-content;margin:0 auto 22px;padding:5px;border-radius:999px;background:rgba(22,32,28,.06)}
+.cpseg button{border:0;background:none;font:600 15px Geist;color:#5b675f;padding:11px 22px;border-radius:999px;cursor:pointer;transition:background .35s,color .35s,box-shadow .35s}
+.cpseg button.on{background:#fff;color:#16201c;box-shadow:0 8px 18px -10px rgba(22,32,28,.4)}
+.cppanes{display:grid}.cppane{grid-area:1/1;visibility:hidden;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s,visibility 0s linear .5s}.cppane.on{visibility:visible;opacity:1;transform:none;transition:opacity .5s,transform .5s,visibility 0s}
+.sheetnote{margin-top:14px!important;color:#e6efe9!important}.sheetnote b{color:#fff}
+@media (max-width:700px){.cpseg button{padding:10px 16px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -667,10 +673,10 @@ html,body{overflow-x:clip}
 <div class="navsp" aria-hidden="true"></div><nav class="nav" id="nav"><div class="navin">
   <a class="brand" href="#top"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f8f84"/><stop offset="1" stop-color="#1f4a37"/></linearGradient><linearGradient id="mks" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2b8"/><stop offset="1" stop-color="#f4b27a"/></linearGradient><clipPath id="mkc"><rect x="0" y="0" width="32" height="20.6"/></clipPath></defs><rect width="32" height="32" rx="9" fill="url(#mkg)"/><circle cx="16" cy="21" r="7.4" fill="url(#mks)" clip-path="url(#mkc)"/><rect x="6" y="20.4" width="20" height="1.6" rx=".8" fill="#fbf8f1" opacity=".95"/><rect x="10" y="24.6" width="12" height="1.4" rx=".7" fill="#fbf8f1" opacity=".45"/></svg><span>Avengers</span></a>
   <div class="links">
-   <div class="dd"><button type="button" class="ddb">Product <span>▾</span></button><div class="ddp sol"><a href="#ai"><b>AI CSM</b><span>Ask about any account and get an answer with its sources</span></a><a href="#morning"><b>Morning Routine</b><span>Every account read before you start, ranked by what matters</span></a><a href="#renewals"><b>AI Playbooks</b><span>Renewals and pilots with statuses, gates and a first move</span></a><a href="#health"><b>Health Score</b><span>One number from real signals, with the reason behind every move</span></a><a href="#sheets"><b>Customer CRM</b><span>Retire the spreadsheet: one source of truth for every account</span></a></div></div>
-   <div class="dd"><button type="button" class="ddb">Solutions <span>▾</span></button><div class="ddp sol"><a href="#renewals"><b>Renewal Playbook</b><span>Fourteen statuses, each with when to pick it and the first move</span></a><a href="#pilots"><b>Pilot Playbook</b><span>Sixteen weeks, clear gates, and a verdict a person sets</span></a><a href="#calls"><b>Call prep</b><span>A two-minute brief from every source, before every call</span></a><a href="#sheets"><b>Spreadsheet-free CS</b><span>Retire the spreadsheet. We promise it will not miss you.</span></a><a href="#followup"><b>After the call</b><span>Recap, owners and the follow-up email, drafted for you</span></a><a href="#custompb" class="feat"><span class="fi"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 7h10M4 12h16M4 17h7" stroke="#fbf8f1" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="7" r="2.4" fill="#f4b27a"/><circle cx="14" cy="17" r="2.4" fill="#f4b27a"/></svg></span><span class="ft"><b>Custom playbooks</b><span>Your motion is unique. Our team designs and builds the playbook with you.</span></span><span class="fa">Talk to us →</span></a></div></div>
+   <div class="dd"><button type="button" class="ddb">Product <span>▾</span></button><div class="ddp sol"><a href="#ai"><b>AI CSM</b><span>Ask about any account and get an answer with its sources</span></a><a href="#morning"><b>Morning Routine</b><span>Every account read before you start, ranked by what matters</span></a><a href="#renewals"><b>AI Playbooks</b><span>Renewals and pilots with statuses, gates and a first move</span></a><a href="#health"><b>Health Score</b><span>One number from real signals, with the reason behind every move</span></a><a href="#integrations"><b>Customer CRM</b><span>Retire the spreadsheet: one source of truth for every account</span></a></div></div>
+   <div class="dd"><button type="button" class="ddb">Solutions <span>▾</span></button><div class="ddp sol"><a href="#renewals"><b>Renewal Playbook</b><span>Fourteen statuses, each with when to pick it and the first move</span></a><a href="#pilots"><b>Pilot Playbook</b><span>Sixteen weeks, clear gates, and a verdict a person sets</span></a><a href="#calls"><b>Call prep</b><span>A two-minute brief from every source, before every call</span></a><a href="#integrations"><b>Spreadsheet-free CS</b><span>Retire the spreadsheet. We promise it will not miss you.</span></a><a href="#calls"><b>After the call</b><span>Recap, owners and the follow-up email, drafted for you</span></a><a href="#custompb" class="feat"><span class="fi"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 7h10M4 12h16M4 17h7" stroke="#fbf8f1" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="7" r="2.4" fill="#f4b27a"/><circle cx="14" cy="17" r="2.4" fill="#f4b27a"/></svg></span><span class="ft"><b>Custom playbooks</b><span>Your motion is unique. Our team designs and builds the playbook with you.</span></span><span class="fa">Talk to us →</span></a></div></div>
    <div class="dd"><button type="button" class="ddb">Integrations <span>▾</span></button><div class="ddp int" id="intmenu"></div></div>
-   <div class="dd"><button type="button" class="ddb">Resources <span>▾</span></button><div class="ddp sol"><a href="#"><b>Playbook library</b><span>Ready-made playbooks for onboarding, renewals and saves</span></a><a href="#"><b>Templates</b><span>QBR decks, success plans and email templates you can copy</span></a><a href="#sheets"><b>Guides</b><span>How to move from a spreadsheet to a real CS process</span></a><a href="security.html"><b>Security</b><span>Read-only by default, and exactly how we handle your data</span></a></div></div>
+   <div class="dd"><button type="button" class="ddb">Resources <span>▾</span></button><div class="ddp sol"><a href="#"><b>Playbook library</b><span>Ready-made playbooks for onboarding, renewals and saves</span></a><a href="#"><b>Templates</b><span>QBR decks, success plans and email templates you can copy</span></a><a href="#integrations"><b>Guides</b><span>How to move from a spreadsheet to a real CS process</span></a><a href="security.html"><b>Security</b><span>Read-only by default, and exactly how we handle your data</span></a></div></div>
    <a href="#pricing">Pricing</a>
   </div>
   <span class="sp"></span><a class="signin" href="#">Sign in</a><a class="beam dark" href="#demo">Book a demo</a><button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><i></i></button>
@@ -692,11 +698,6 @@ html,body{overflow-x:clip}
   <div class="herochat" data-films="chat" data-bare="1" data-aspect="16/10"></div>
 </div></section>
 
-<section id="pain" class="over painsec"><div class="wrap">
-  <div class="painhead"><div class="eyebrow" style="justify-content:center"><i></i>Sound familiar?<i></i></div><div class="painq">Every morning, the same fire drill.</div><div class="painsub">Messages you missed, renewals you forgot and a call you are not ready for.</div></div>
-  <div class="painfilms" data-films="pain"></div>
-</div></section>
-
 <section id="morning"><i class="sun" style="right:-25%;top:-10%"></i><div class="wrap">
   <div class="shead"><div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><span class="rot" id="rot">firefighting</span></h2></div><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order, with calls prepped and follow-ups drafted for every renewal, expansion and save.</p></div>
   <div id="mrE" class="mrE"></div>
@@ -715,29 +716,22 @@ html,body{overflow-x:clip}
 </div></section>
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">A call is on the calendar. Get prepared</div><i class="bh r"></i></div>
 <section id="calls"><i class="sage" style="right:-20%;top:-10%"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>05 · Call prep</div><h2>Walk into every call prepared.</h2></div><p class="lead">One click before the call. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b></p></div>
-  <div data-films="prep"></div>
+  <div class="shead"><div><div class="eyebrow"><i></i>04 · Every call</div><h2 id="cph">Walk into every call prepared.</h2></div><p class="lead" id="cpl">One click before the call. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b></p></div>
+  <div class="cpseg" role="tablist" aria-label="Before or after the call"><button type="button" class="on" data-c="0" role="tab" aria-selected="true">Before the call</button><button type="button" data-c="1" role="tab" aria-selected="false">After the call</button></div>
+  <div class="cppanes"><div class="cppane on" data-c="0"><div data-films="prep"></div></div>
+  <div class="cppane" data-c="1"><div data-films="follow"></div></div></div>
 </div></section>
 
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">The call ended. The follow-up is next</div><i class="bh r"></i></div>
-<section id="followup"><i class="sun" style="left:-20%;top:0"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>06 · Draft follow-up</div><h2>The follow-up writes itself. You press send.</h2></div><p class="lead">When the call ends, Avengers reads the recording, writes the recap and the next steps with owners and dates, and drafts the email. <b>Nothing is sent without you.</b></p></div>
-  <div data-films="follow"></div>
-</div></section>
+
 
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">Still living in a spreadsheet? Bring it with you</div><i class="bh r"></i></div>
-<section id="sheets"><i class="sage" style="left:-20%;top:-10%"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>Replace the spreadsheet</div><h2>Still running customer success in a spreadsheet?</h2></div><p class="lead">Excel, Airtable, Notion or a homegrown CRM got you this far. Avengers replaces them with <b>its own customer CRM, one source of truth</b> for every account, owner, lifecycle and contract, with the signals and automations your sheet never had.</p></div>
-  <div data-films="sheet"></div>
-  <div class="points"><div class="pt"><b>Your own customer CRM</b><span>Accounts, owners, contracts and lifecycle in one structure. Every field says how fresh it is.</span></div><div class="pt"><b>Import in an afternoon</b><span>Point us at the sheet, the base or the table. Nothing is lost, and you can keep Airtable while you move.</span></div><div class="pt"><b>Automations from day one</b><span>Renewal reminders, payment alerts and silent-account flags, switched on.</span></div></div>
-  
-</div></section>
-
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">All of it runs on the tools you already use</div><i class="bh r"></i></div>
 <section id="integrations" class="dark"><i class="sage" style="left:20%;top:-20%"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>07 · Integrations</div><h2>Avengers works with the tools you already use.</h2></div><p class="lead">Email, calendar, calls, CRM, support, billing and product data. Connect them in minutes and Avengers reads them for you. <b>Missing one? We build the connector.</b></p></div>
+  <div class="shead"><div><div class="eyebrow"><i></i>05 · Integrations</div><h2>Avengers works with the tools you already use.</h2></div><p class="lead">Email, calendar, calls, CRM, support, billing and product data. Connect them in minutes and Avengers reads them for you. <b>Missing one? We build the connector.</b></p></div>
   </div>
   <div class="lens big" id="lens"><div class="track" id="lt1"></div><div class="glass" tabindex="0" role="slider" aria-label="Integrations lens. Use the left and right arrow keys to move it" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div><div class="sharpwin"><div class="track" id="lt2" style="filter:none;opacity:1"></div></div></div>
+  <p class="livenote sheetnote">Still in a spreadsheet? <b>Excel, Airtable and Notion move in for free,</b> into Avengers' own customer CRM.</p>
   <p class="livenote">Live today: Gmail, Google Calendar, HubSpot, Slack, Intercom, Jira, Chargebee, Airtable and Avoma. Every other tool is built on request.</p>
   <div class="wrap"><div class="cust2">
   <div class="cl"><div class="eyebrow"><i></i>Custom connectors</div><h3>Your data lives somewhere odd? We wire it in.</h3>
@@ -775,14 +769,14 @@ html,body{overflow-x:clip}
 <footer class="foot"><div class="wrap">
   <div class="fgrid">
     <div class="fbrand"><a class="brand" href="#top"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mkg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f8f84"/><stop offset="1" stop-color="#1f4a37"/></linearGradient><linearGradient id="mks2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2b8"/><stop offset="1" stop-color="#f4b27a"/></linearGradient><clipPath id="mkc2"><rect x="0" y="0" width="32" height="20.6"/></clipPath></defs><rect width="32" height="32" rx="9" fill="url(#mkg2)"/><circle cx="16" cy="21" r="7.4" fill="url(#mks2)" clip-path="url(#mkc2)"/><rect x="6" y="20.4" width="20" height="1.6" rx=".8" fill="#fbf8f1" opacity=".95"/><rect x="10" y="24.6" width="12" height="1.4" rx=".7" fill="#fbf8f1" opacity=".45"/></svg><span>Avengers</span></a><p><b style="color:#16201c">The customer success platform, overdelivered.</b> One calm morning for every account you own.</p><div class="soc"><a href="#" aria-label="LinkedIn" class="so" data-logo="linkedin"></a><a href="#" aria-label="Instagram" class="so" data-logo="instagram"></a><a href="#" aria-label="YouTube" class="so" data-logo="youtube"></a></div></div>
-    <div><h4>Product</h4><a href="#ai">AI CSM</a><a href="#morning">Morning Routine</a><a href="#health">Health Score</a><a href="#renewals">Renewal Playbook</a><a href="#pilots">Pilot Playbook</a><a href="#calls">Call prep</a><a href="#sheets">Customer CRM</a><a href="#custompb">Custom playbooks</a><a href="#">MCP and API</a></div><div><h4>Use cases</h4><a href="#">Customer success</a><a href="#">Onboarding</a><a href="#renewals">Renewals</a><a href="#pilots">Pilots and POCs</a><a href="#">Account management</a><a href="#">Support</a></div><div><h4>Resources</h4><a href="#">Blog</a><a href="#">Knowledge base</a><a href="faq.html">FAQ</a><a href="#">Customer stories</a><a href="#integrations">Connectors</a><a href="#">ROI calculator</a><a href="security.html">Security</a><a href="#">Status</a></div><div><h4>Company</h4><a href="#">About</a><a href="#">Jobs</a><a href="#">Partners</a><a href="#demo">Contact</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Master Services Agreement</a><div class="addr">2100 Geng Road, Suite 210<br>Palo Alto, CA 94303<br><a href="#" style="padding:0">+1 (650) 555-0142</a><br><a href="#" style="padding:0">stan@avengers.ai</a></div></div>  </div>
+    <div><h4>Product</h4><a href="#ai">AI CSM</a><a href="#morning">Morning Routine</a><a href="#health">Health Score</a><a href="#renewals">Renewal Playbook</a><a href="#pilots">Pilot Playbook</a><a href="#calls">Call prep</a><a href="#integrations">Customer CRM</a><a href="#custompb">Custom playbooks</a><a href="#">MCP and API</a></div><div><h4>Use cases</h4><a href="#">Customer success</a><a href="#">Onboarding</a><a href="#renewals">Renewals</a><a href="#pilots">Pilots and POCs</a><a href="#">Account management</a><a href="#">Support</a></div><div><h4>Resources</h4><a href="#">Blog</a><a href="#">Knowledge base</a><a href="faq.html">FAQ</a><a href="#">Customer stories</a><a href="#integrations">Connectors</a><a href="#">ROI calculator</a><a href="security.html">Security</a><a href="#">Status</a></div><div><h4>Company</h4><a href="#">About</a><a href="#">Jobs</a><a href="#">Partners</a><a href="#demo">Contact</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Master Services Agreement</a><div class="addr">2100 Geng Road, Suite 210<br>Palo Alto, CA 94303<br><a href="#" style="padding:0">+1 (650) 555-0142</a><br><a href="#" style="padding:0">stan@avengers.ai</a></div></div>  </div>
   <div class="trust3"><svg viewBox="0 0 24 24" width="46" height="46"><path d="M12 2.5l8 3.3v5.6c0 5-3.4 9.3-8 11.1-4.6-1.8-8-6.1-8-11.1V5.8z" fill="#2f5d46"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8" fill="none" stroke="#f4b27a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Security at Avengers</b><span>In progress: SOC 2, ISO 27001, GDPR and SSO<span class="tmore"> · Your data never trains AI models · Read-only by default</span></span></div><a href="security.html" class="tb2l">Security at Avengers →</a></div>
   <div class="fwordwrap"><div class="fword">Avengers</div></div>
   <div class="fbot"><span>© 2026 Avengers</span><span class="sp"></span><a href="#">Privacy</a><a href="#">Terms</a><span>Made in Ukraine</span></div>
 </div></footer>
 
 <div class="mnav" id="mnav"><button type="button" class="mx" id="mnx" aria-label="Close">×</button>
-<h5>Product</h5><a href="#ai">AI CSM</a><a href="#morning">Morning Routine</a><a href="#health">Health Score</a><a href="#sheets">Customer CRM</a>
+<h5>Product</h5><a href="#ai">AI CSM</a><a href="#morning">Morning Routine</a><a href="#health">Health Score</a><a href="#integrations">Customer CRM</a>
 <h5>Solutions</h5><a href="#renewals">Renewal Playbook</a><a href="#pilots">Pilot Playbook</a><a href="#calls">Call prep</a><a href="#custompb">Custom playbooks</a>
 <h5>More</h5><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a><a href="#">Sign in</a>
 <a class="beam big dark" href="#demo">Book a demo</a></div>
@@ -1746,6 +1740,16 @@ ROOT.querySelectorAll('[data-who]').forEach(sec=>{const mode=sec.dataset.who,rb=
  show(0);if(!RM)(async()=>{let i=0;while(true){await gate(pn);await W(8000);if(Date.now()<manual)continue;i=(i+1)%3;show(i)}})()});
 
 })();
+/* Every call: before and after (v1.42) */
+const fixLinks=()=>document.querySelectorAll('a[href="#followup"],a[href="#sheets"],a[href="#pain"]').forEach(a=>a.setAttribute('href',a.getAttribute('href')=='#followup'?'#calls':a.getAttribute('href')=='#sheets'?'#integrations':'#morning'));fixLinks();setTimeout(fixLinks,1500);
+(()=>{const s=document.getElementById('calls');if(!s)return;const bs=[...s.querySelectorAll('.cpseg button')],ps=[...s.querySelectorAll('.cppane')],h=document.getElementById('cph'),l=document.getElementById('cpl');
+const C=[['Walk into every call prepared.','One click before the call. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b>'],['The follow-up writes itself. You press send.','When the call ends, Avengers reads the recording, writes the recap and the next steps with owners and dates, and drafts the email. <b>Nothing is sent without you.</b>']];
+let cur=0,manual=0;const show=i=>{cur=i;bs.forEach((b,k)=>{b.classList.toggle('on',k===i);b.setAttribute('aria-selected',k===i)});ps.forEach((p,k)=>p.classList.toggle('on',k===i));h.textContent=C[i][0];l.innerHTML=C[i][1]};
+const fit=()=>{[h,l].forEach(e=>e.style.minHeight='');let mh=0,ml=0;C.forEach(c=>{h.textContent=c[0];l.innerHTML=c[1];mh=Math.max(mh,h.offsetHeight);ml=Math.max(ml,l.offsetHeight)});h.style.minHeight=mh+'px';l.style.minHeight=ml+'px';h.textContent=C[cur][0];l.innerHTML=C[cur][1]};fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
+bs.forEach(b=>b.addEventListener('click',()=>{manual=Date.now()+30000;show(+b.dataset.c)}));
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+let vis=false;new IntersectionObserver(es=>es.forEach(e=>vis=e.isIntersecting),{threshold:.3}).observe(s);
+setInterval(()=>{const r=s.getBoundingClientRect(),hh=innerHeight||800;const inV=r.bottom>hh*.2&&r.top<hh*.8;if(!inV||document.hidden||Date.now()<manual)return;show(1-cur)},16000);})();
 </script>
 </body>
 </html>
