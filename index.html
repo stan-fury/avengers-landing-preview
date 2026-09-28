@@ -516,11 +516,39 @@ html,body{overflow-x:clip}
 .mnav a{display:block;padding:10px 0;font:600 20px Geist;letter-spacing:-.02em;color:#16201c;border-bottom:1px solid var(--line)}
 .mnav .beam{display:flex;justify-content:center;margin-top:26px;border:0}
 .mnav .mx{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(22,32,28,.06);font:500 26px Geist;cursor:pointer}
+
+/* v1.13 Morning Routine card (from hero A2) */
+.mr-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:10px}
+.mr-grid .ba{grid-template-columns:1fr;margin-top:0}
+.mr-card{background:#fffdf9;border-radius:28px;padding:28px 28px 24px;min-height:520px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 40px 80px -40px rgba(22,32,28,.35),0 2px 8px rgba(22,32,28,.05)}
+.mr-hi{font:500 14px Geist;color:#5b675f}
+.mr-big{font:600 32px/1.15 Geist;letter-spacing:-.04em;margin:4px 0 14px}.mr-big b{color:#2f5d46}
+.mr-lanes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.mr-lanes span{font:600 13px Geist;padding:7px 12px;border-radius:999px;background:#f5f1e9;color:#3d4a43}.mr-lanes span b{color:#16201c}
+.mr-lanes span.late{background:#f9e3dd;color:#b13e2a}
+.mr-c{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:center;padding:15px 16px;border-radius:18px;background:#fff;box-shadow:0 14px 30px -20px rgba(22,32,28,.45),inset 0 0 0 1px rgba(22,32,28,.05);margin-top:10px;transition:all .6s cubic-bezier(.3,1,.4,1)}
+.mr-rk{grid-column:1;grid-row:1/3;width:30px;height:30px;border-radius:50%;background:#eef3ee;display:grid;place-items:center;font:600 13px Geist;color:#2f5d46}
+.mr-ln{grid-column:2;grid-row:1;font:600 11px Geist;letter-spacing:.13em;text-transform:uppercase}
+.mr-t2{grid-column:2;grid-row:2;font:500 14px/1.4 Geist;color:#4a5750}
+.mr-t2 .mr-nm{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}.mr-t2 .mr-nm b{font:600 16.5px Geist;color:#16201c}
+.mr-go{grid-column:3;grid-row:1/3;justify-self:end;font:600 12.5px Geist;padding:8px 12px;border-radius:999px;background:#2f5d46;color:#fbf8f1;white-space:nowrap;transition:opacity .3s}
+.mr-st{display:inline-flex;align-items:center;font:600 12.5px Geist;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.mr-st.g{background:#e3f1e8;color:#2f7a4b}.mr-st.a{background:#fbefd9;color:#8f5d0e}.mr-st.d{background:#f9e3dd;color:#b13e2a}
+.mr-tick{position:absolute;right:16px;top:50%;margin-top:-15px;width:30px;height:30px;border-radius:50%;background:#3aa56b;color:#fff;display:grid;place-items:center;font:700 15px Geist;opacity:0;transform:scale(.4);transition:all .35s}
+.mr-c.ok .mr-tick{opacity:1;transform:none}.mr-c.ok .mr-go{opacity:0}
+.mr-c.done{opacity:0;transform:translateX(40px) scale(.96);margin-top:-86px;pointer-events:none}
+.mr-c.new{opacity:0;transform:translateY(16px)}
+@media (max-width:900px){.mr-grid{grid-template-columns:1fr;gap:22px}.mr-card{order:-1;padding:22px 18px 18px;min-height:0}.mr-big{font-size:26px}.mr-go{display:none}.mr-c{grid-template-columns:auto 1fr}}
+/* v1.13 fixed nav: no sticky jitter */
+.nav{position:fixed!important;left:0;right:0;top:0!important;margin-top:0!important;transform:translate3d(0,calc(var(--ah,40px) + var(--nt,14px)),0);transition:transform .35s cubic-bezier(.3,.8,.3,1);will-change:transform;backface-visibility:hidden}
+.nav.scr{transform:translate3d(0,var(--nt,14px),0)}
+.navsp{height:calc(var(--nh,64px) + var(--nt,14px))}
+@media (max-width:700px){:root{--nt:8px}}
 </style>
 </head>
 <body>
 <a class="annc" href="#custompb"><span class="an-new">New</span>AI Playbooks: our team builds a custom playbook for your motion<span class="an-ar">→</span></a>
-<nav class="nav" id="nav"><div class="navin">
+<div class="navsp" aria-hidden="true"></div><nav class="nav" id="nav"><div class="navin">
   <a class="brand" href="#top"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f8f84"/><stop offset="1" stop-color="#1f4a37"/></linearGradient><linearGradient id="mks" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2b8"/><stop offset="1" stop-color="#f4b27a"/></linearGradient><clipPath id="mkc"><rect x="0" y="0" width="32" height="20.6"/></clipPath></defs><rect width="32" height="32" rx="9" fill="url(#mkg)"/><circle cx="16" cy="21" r="7.4" fill="url(#mks)" clip-path="url(#mkc)"/><rect x="6" y="20.4" width="20" height="1.6" rx=".8" fill="#fbf8f1" opacity=".95"/><rect x="10" y="24.6" width="12" height="1.4" rx=".7" fill="#fbf8f1" opacity=".45"/></svg><span>Avengers</span></a>
   <div class="links">
    <div class="dd"><button type="button" class="ddb">Product <span>▾</span></button><div class="ddp sol"><a href="#ai"><b>AI CSM</b><span>Ask about any account and get an answer with its sources</span></a><a href="#morning"><b>Morning Routine</b><span>Every account read before you start, ranked by what matters</span></a><a href="#renewals"><b>AI Playbooks</b><span>Renewals and pilots with statuses, gates and a first move</span></a><a href="#health"><b>Health Score</b><span>One number from real signals, with the reason behind every move</span></a><a href="#sheets"><b>Customer CRM</b><span>Retire the spreadsheet: one source of truth for every account</span></a></div></div>
@@ -567,8 +595,7 @@ html,body{overflow-x:clip}
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">Your data is in one place. Now, your morning</div><i class="bh r"></i></div>
 <section id="morning"><i class="sun" style="right:-25%;top:-10%"></i><div class="wrap">
   <div class="shead"><div><div class="eyebrow"><i></i>01 · Morning Routine</div><h2>Mornings without<br><span class="rot" id="rot">firefighting</span></h2></div><p class="lead">No more guessing what is on fire, or forty minutes of prep before every call. Avengers reads every source before you start and gives you a <b>planned, clear and calm morning:</b> what matters most, in what order, with calls prepped and follow-ups drafted for every renewal, expansion and save.</p></div>
-  <div data-films="morning"></div>
-  <div class="ba"><div class="bab"><div class="ttl2">Before</div><ul><li>Ten tabs open before nine</li><li>Guessing what is urgent</li><li>Forty minutes to prep one call</li><li>Follow-ups written late at night</li></ul></div><div class="baa"><div class="ttl2">With Avengers</div><ul><li>One page, already read</li><li>Ranked by what matters most</li><li>A two-minute brief per call</li><li>Drafts waiting in Gmail</li></ul></div></div>
+  <div class="mr-grid"><div class="ba"><div class="bab"><div class="ttl2">Before</div><ul><li>Ten tabs open before nine</li><li>Guessing what is urgent</li><li>Forty minutes to prep one call</li><li>Follow-ups written late at night</li></ul></div><div class="baa"><div class="ttl2">With Avengers</div><ul><li>One page, already read</li><li>Ranked by what matters most</li><li>A two-minute brief per call</li><li>Drafts waiting in Gmail</li></ul></div></div><div class="mr-card" id="mrcard"></div></div>
 </div></section>
 
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">Behind every client in your morning, one number</div><i class="bh r"></i></div>
@@ -1268,7 +1295,22 @@ function wire(){const r=P.getBoundingClientRect(),h=H.getBoundingClientRect();W.
 W.innerHTML=s}
 wire();addEventListener('resize',wire);let mob0=MOB;addEventListener('resize',()=>{if(matchMedia('(max-width:700px)').matches!==mob0)location.reload()});document.fonts&&document.fonts.ready.then(wire);setTimeout(wire,800)})();
 document.querySelectorAll('.so').forEach(e=>{e.innerHTML=LOGO[e.dataset.logo].replace(/fill='url\(#[^)]*\)'/g,"fill='#2f5d46'").replace(/fill='#(?!fff\b|ffffff\b|FFF\b|FFFFFF\b)[0-9a-fA-F]{3,6}'/g,"fill='#2f5d46'").replace(/fill='red'/g,"fill='#2f5d46'")});
-const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scr',scrollY>40),{passive:true});
+const nav=document.getElementById('nav'),annc=document.querySelector('.annc');const setNV=()=>{const R=document.documentElement.style;R.setProperty('--ah',annc.offsetHeight+'px');R.setProperty('--nh',nav.offsetHeight+'px')};setNV();addEventListener('resize',setNV);if(document.fonts)document.fonts.ready.then(setNV);let navS=null;const onS=()=>{const s=scrollY>annc.offsetHeight;if(s!==navS){navS=s;nav.classList.toggle('scr',s)}};addEventListener('scroll',onS,{passive:true});onS();
+/* Morning Routine card */
+(()=>{const el=document.getElementById('mrcard');if(!el)return;const W=ms=>new Promise(r=>setTimeout(r,ms));const SW=(s,k)=>`<span class="mr-st ${k}">${s}</span>`;
+const C=[['Renewal · 12 days','Wayne Enterprises','Paperwork Pending','a','Order form out for six days. Chase the signature with Bruce.','Draft nudge','#9a6512'],
+['Pilot · week 6','Pied Piper','On Track','g','Week-6 proof due today. Share it with Monica before noon.','Open pilot','#2f7a4b'],
+['Renewal · 24 days','Hooli','Decision Pending','a','Call at 11:30. Monica owes you an answer by Friday.','Prep call','#9a6512'],
+['Pilot · week 9','Dunder Mifflin','Low Engagement','d','One of three teams active. Book a check-in with the champion.','Book check-in','#b13e2a'],
+['Renewal · 30 days','Endframe','Payment Failed','d','Card declined on the $19,000 invoice. Call the payer today.','Call payer','#b13e2a']];
+el.innerHTML=`<div class="mr-hi">Good morning, Laurie · Tuesday</div><div class="mr-big"><b>$184,000</b> of ARR needs you today.</div><div class="mr-lanes"><span><b>3</b> calls</span><span><b>4</b> renewals</span><span><b>2</b> pilots</span><span class="late"><b>1</b> late</span></div><div id="mrl"></div>`;
+const box=document.getElementById('mrl');const card=c=>{const d=document.createElement('div');d.className='mr-c new';d.innerHTML=`<span class="mr-rk"></span><span class="mr-ln" style="color:${c[6]}">${c[0]}</span><span class="mr-go">${c[5]} →</span><span class="mr-t2"><span class="mr-nm"><b>${c[1]}</b>${SW(c[2],c[3])}</span>${c[4]}</span><span class="mr-tick">✓</span>`;return d};
+const renum=()=>[...box.children].filter(x=>!x.classList.contains('done')).forEach((x,i)=>x.querySelector('.mr-rk').textContent=i+1);
+let vis=false;new IntersectionObserver(es=>es.forEach(e=>vis=e.isIntersecting),{threshold:.2}).observe(el);const gate=async()=>{while(!vis)await W(250)};
+(async()=>{while(true){await gate();box.innerHTML='';let q=0;for(;q<3;q++){const d=card(C[q]);box.appendChild(d);renum();await W(60);d.classList.remove('new');await W(420)}
+ for(let r=0;r<2;r++){await W(2600);await gate();const top=box.children[0];top.classList.add('ok');await W(900);top.classList.add('done');await W(600);top.remove();const d=card(C[q]);box.appendChild(d);renum();await W(60);d.classList.remove('new');q++}
+ await W(3400)}})()})();
+
 
 (()=>{const box=document.getElementById('ovbox'),o=box.querySelector('.o'),d=box.querySelector('.d'),rest=box.querySelector('.rest'),car=document.getElementById('bcar');let tm=[];const T=(f,ms)=>tm.push(setTimeout(f,ms));
 const put=w=>{if(w=='afterD')rest.before(car);else if(w=='start')o.before(car);else if(w=='afterO')o.after(car);else rest.after(car)};
