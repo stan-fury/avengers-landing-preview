@@ -50,7 +50,7 @@ h1 span{display:block}h1 .g{color:#2f5d46}
 section{border-bottom:0}
 .hg{grid-template-columns:1fr 1.08fr;gap:48px}
 h1{font-size:clamp(44px,4.7vw,74px)}h1 span{white-space:nowrap}
-.pn{height:560px;display:flex;flex-direction:column}
+.pn{height:590px;display:flex;flex-direction:column}
 .ph .pb{margin-left:10px;font:600 12px Geist;padding:4px 10px;border-radius:8px;background:#f1efe8;color:#3d4a43;box-shadow:inset 0 0 0 1px rgba(22,32,28,.08);transition:opacity .3s}
 .body{position:relative;flex:1;padding:20px 24px 10px;overflow:hidden}
 .scr{position:absolute;inset:20px 24px 10px;opacity:0;transform:translateX(24px);transition:opacity .45s,transform .45s;pointer-events:none}
@@ -93,6 +93,7 @@ h1{font-size:clamp(44px,4.7vw,74px)}h1 span{white-space:nowrap}
 .reel .rl{display:flex;flex-direction:column;align-items:flex-start;will-change:transform}
 .reel .tg{height:28px;margin:3px 0;box-sizing:border-box;flex:none;animation:none;transition:opacity .15s}
 .reel .tg.dim{opacity:.35}
+.sm{display:inline-block;margin-top:8px;font:500 13.5px/1.45 Manrope;color:#5b675f}
 .rn{margin-left:10px;font:500 12.5px Manrope;color:#8a948d;animation:pop .35s ease-out}
 .hsn{font-size:30px!important}.hsd{margin-left:10px;font:500 13px Manrope;color:#6b756f}
 .acct .tm{margin-left:auto;text-align:right;font:700 15px Manrope!important;color:#2f5d46}.acct .tm small{display:block;font:600 10.5px Manrope;letter-spacing:.1em;color:#9aa59e}
@@ -142,21 +143,24 @@ const clockLoop=(el,box)=>{if(!el)return;let m=0;const T=['08:55','08:56','08:57
 
 const LI=k=>`<span class="lgi">${LOGO[k]||''}</span>`;
 const money=n=>'$'+Math.round(n).toLocaleString('en-US');
-const ST={'Product Blocker':'d','Low Engagement':'a','No Response':'a','Payment Failed':'d','Champion Left':'d','Alternative Evaluation':'d','Low Performance':'a','On Track':'g','Decision Ready':'g','Commercial Ask':'a','Authority Gap':'a','Paperwork Pending':'a','Launch Blocked':'d','Expectation Gap':'a'};
-const REEL={churn:['Low Engagement','No Response','Payment Failed','Champion Left','Alternative Evaluation','Low Performance','Product Blocker'],
+const ST={'Low':'g','Medium':'a','High':'d','On Track':'g','Decision Ready':'g','Commercial Ask':'a','Authority Gap':'a','Low Performance':'a','No Response':'a','Alternative Evaluation':'d','Paperwork Pending':'a','Launch Blocked':'d','Low Engagement':'a','Expectation Gap':'a','Product Blocker':'d'};
+const REEL={churn:['Low','Medium','High'],
  renewal:['On Track','Decision Ready','Commercial Ask','Authority Gap','Low Performance','No Response','Alternative Evaluation','Paperwork Pending'],
- pilot:['Launch Blocked','Low Engagement','Expectation Gap','Low Performance','No Response','Decision Ready']};
-const RNAME={churn:'churn risks',renewal:'renewal statuses',pilot:'pilot statuses'};
-async function spin(host,cur,set,pick,tok){const opts=REEL[set].filter(x=>x!==pick);const seq=[...opts,...opts.slice(0,3),pick];
+ pilot:['Launch Blocked','Low Engagement','Expectation Gap','Product Blocker','Low Performance','No Response','Decision Ready']};
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+async function spin(host,cur,x,tok){const seq=REEL[x.reel];
  const w=document.createElement('span');w.className='reel';const col=document.createElement('span');col.className='rl';col.innerHTML=seq.map(s=>`<span class="tg ${ST[s]}">${s}</span>`).join('');w.appendChild(col);host.insertBefore(w,cur);
- const H=34,n=seq.length-1,t0=performance.now(),D=2100;
- while(!tok.dead){const p=Math.min(1,(performance.now()-t0)/D),e=1-Math.pow(1-p,4);col.style.transform=`translateY(${-e*n*H}px)`;const k=Math.round(e*n);[...col.children].forEach((c,i)=>c.classList.toggle('dim',i!==k));if(p>=1)break;await W(16)}
- w.classList.add('done');const last=col.lastChild;w.style.width=last.offsetWidth+'px';
- const m=document.createElement('span');m.className='rn';m.textContent=`picked from ${REEL[set].length} ${RNAME[set]}`;host.insertBefore(m,cur);await W(500)}
+ const H=34,items=[...col.children];let at=0;const mark=k=>items.forEach((c,i)=>c.classList.toggle('dim',i!==k));mark(0);await W(450);
+ for(const to of x.path){const from=at,D=380+Math.abs(to-from)*190,t0=performance.now();
+  while(!tok.dead){const p=Math.min(1,(performance.now()-t0)/D),pos=from+(to-from)*ease(p);col.style.transform=`translateY(${-pos*H}px)`;mark(Math.round(pos));if(p>=1)break;await W(16)}
+  at=to;await W(to===x.path[x.path.length-1]?0:420)}
+ w.classList.add('done');w.style.width=items[at].offsetWidth+'px';
+ if(x.note){const m=document.createElement('span');m.className='rn';m.textContent=x.note;host.insertBefore(m,cur)}await W(500)}
 async function play(el,tokens,speed,tok){const cur=document.createElement('i');cur.className='cur';el.appendChild(cur);
  for(const x of tokens){if(tok.dead)return;
   if(typeof x==='string'){const s=document.createTextNode('');el.insertBefore(s,cur);for(const ch of x){if(tok.dead)return;s.textContent+=ch;await W(speed)}}
-  else if(x.reel){await spin(el,cur,x.reel,x.pick,tok)}
+  else if(x.reel){await spin(el,cur,x,tok)}
+  else if(x.sm){const e=document.createElement('span');e.className='sm';el.insertBefore(e,cur);const s=document.createTextNode('');e.appendChild(s);e.appendChild(cur);for(const ch of x.sm){if(tok.dead)return;s.textContent+=ch;await W(speed*.8)}}
   else if(x.hs){const e=document.createElement('span');e.className='num hsn';el.insertBefore(e,cur);const t0=performance.now();while(!tok.dead){const p=Math.min(1,(performance.now()-t0)/1200),q=1-Math.pow(1-p,3);const n=Math.round(x.hs[0]+(x.hs[1]-x.hs[0])*q);e.textContent=n;e.classList.toggle('r',n<55);if(p>=1)break;await W(30)}
    const d=document.createElement('span');d.className='hsd';d.textContent=`down from ${x.hs[0]} in 7 days`;el.insertBefore(d,cur);await W(300)}
   else if(x.num!=null){const e=document.createElement('span');e.className='num'+(x.cls?' '+x.cls:'');el.insertBefore(e,cur);const t0=performance.now();while(!tok.dead){const p=Math.min(1,(performance.now()-t0)/700);e.textContent=(x.pre||'')+(x.money?money(x.num*p):Math.round(x.num*p))+(x.suf||'');if(p>=1)break;await W(30)}await W(120)}
@@ -170,26 +174,27 @@ const IC={call:'<path d="M5 3h3l1.5 4-2 1.2a9 9 0 0 0 4.3 4.3L13 10.5l4 1.5v3a2 
  commit:'<path d="M4 10.5l3.5 3.5L16 6"/>',
  pilot:'<path d="M10 17V3M10 4h6l-1.5 3L16 10h-6"/>',
  reply:'<path d="M3 5h14v10H3z"/><path d="M3 5l7 6 7-6"/>'};
-const TY={call:['Call','#2f64a8'],renewal:['Renewal check','#9a6512'],commit:['Commit','#2f5d46'],pilot:['Pilot check','#6a4fb0'],reply:['Reply','#b13e2a']};
+const TY={call:['QBR call','#2f64a8'],renewal:['Renewal check','#9a6512'],commit:['Commit','#2f5d46'],pilot:['Pilot check','#6a4fb0'],reply:['Reply','#b13e2a']};
 /* six screens */
+CO['Raviga Capital']=['R','#8a5a2b'];
 const SC=[
  {tab:'Morning Routine',pb:'Morning Routine',t:'08:55',kind:'morning',
-  head:['Good morning, Laurie. Five things before lunch, ',{num:195000,money:1},' of ARR.'],
+  head:['Good morning, Laurie. Five things before lunch, ',{num:171000,money:1},' of ARR.'],
   rows:[['09:00','commit','Pied Piper','You promised Richard a fix date by noon.'],
    ['09:30','renewal','Wayne Enterprises','Paperwork on Mr. Fox’s desk. Renews in 12 days.'],
-   ['10:00','call','Hooli','Renewal call with Gavin Belson. Brief is ready.'],
+   ['10:00','call','Raviga Capital','QBR with Peter Gregory. Deck and brief are ready.'],
    ['11:15','pilot','Dunder Mifflin','Week 6 of 8. Dwight wants the decision call.'],
    ['12:00','reply','Aviato','Erlich asked to pay the renewal in equity.']]},
  {tab:'Health',pb:'Health Score',t:'09:00',co:'Pied Piper',sub:'Bertram Gilfoyle · renews in 21 days',arr:30000,
-  f:[F('Signals',[{lg:'amplitude'},'Usage hit zero when Anton, their server, died',{br:1},{lg:'intercom'},'Gilfoyle: “Anton is fine. Your status page is lying.”',{br:1},{lg:'gmail'},'Dinesh stopped replying 5 days ago']),F('Health',[{hs:[81,44]}]),F('Churn risk',[{reel:'churn',pick:'Product Blocker'}]),F('Ready for you',[{rd:['jira','Escalated, fix date for Richard drafted']}])]},
- {tab:'Renewal',pb:'Renewal Playbook',t:'09:30',co:'Wayne Enterprises',sub:'Lucius Fox · renews in 12 days',arr:48000,
-  f:[F('What changed',[{lg:'gmail'},'The renewal paperwork is on Mr. Fox’s desk',{br:1},{lg:'hubspot'},'Bruce signed off on every add-on, unread.']),F('Renewal status',[{reel:'renewal',pick:'Paperwork Pending'}]),F('ARR',[{num:48000,money:1},' → ',{num:120000,money:1}]),F('Ready for you',[{rd:['gmail','Order form with the add-ons, drafted for Mr. Fox']}])]},
- {tab:'Call prep',pb:'Call prep',t:'10:00',co:'Hooli',sub:'Gavin Belson · renewal call today',arr:64000,
-  f:[F('The risk',[{lg:'gmail'},'Gavin forwarded a Nucleus demo to his whole team']),F('Renewal status',[{reel:'renewal',pick:'Alternative Evaluation'}]),F('The ask',['Show a year of Avengers costs less than one Nucleus sprint']),F('Ready for you',[{rd:['gcal','Brief ready, two-minute read']}])]},
- {tab:'Follow-up',pb:'Follow-up',t:'10:35',co:'Hooli',sub:'Call ended 5 minutes ago',arr:64000,
-  f:[F('They said',[{lg:'gong'},'“Hooli XYZ owns the budget now.”']),F('Renewal status',[{reel:'renewal',pick:'Authority Gap'}]),F('Next step',['Meet the new budget owner at Hooli XYZ']),F('Ready for you',[{rd:['gmail','Recap and intro email drafted, nothing sent']}])]},
+  f:[F('Signals',[{lg:'amplitude'},'Weekly active users down 62% in 14 days',{br:1},{lg:'intercom'},'3 tickets from Gilfoyle about failed exports',{br:1},{lg:'gmail'},'Dinesh stopped replying 5 days ago']),F('Health',[{hs:[81,44]}]),F('Churn risk',[{reel:'churn',path:[2,1,2],note:'driven by the failed exports'}]),F('Ready for you',[{rd:['jira','Escalated to engineering with the 3 tickets']},{br:1},{sm:'Update to Richard drafted with a fix date. Waiting for your send.'}])]},
+ {tab:'Renewal',pb:'Renewal Playbook',t:'09:30',co:'Wayne Enterprises',sub:'Lucius Fox · renews on 12 Oct',arr:48000,
+  f:[F('What changed',[{lg:'gmail'},'The renewal paperwork is on Mr. Fox’s desk',{br:1},{lg:'hubspot'},'Order form opened 3 times, not signed yet']),F('Renewal status',[{reel:'renewal',path:[5,2,7],note:'suggested from 14 statuses, you confirm'}]),F('ARR at stake',[{num:48000,money:1},' due 12 Oct']),F('Ready for you',[{rd:['gmail','Nudge to Lucius Fox drafted']},{br:1},{sm:'Signature link and the 12 Oct deadline inside. Nothing sent.'}])]},
+ {tab:'QBR prep',pb:'Call prep',t:'09:50',co:'Raviga Capital',sub:'Peter Gregory · QBR at 10:00',arr:40000,
+  f:[F('Since last QBR',[{lg:'amplitude'},'Active users up 41%, 3 teams live',{br:1},{lg:'intercom'},'Zero open tickets for 60 days']),F('Agenda',['1. Results against their goals',{br:1},'2. What ships next quarter',{br:1},'3. Rollout to the portfolio']),F('The ask',['Put Avengers in the other four portfolio companies']),F('Ready for you',[{rd:['gdrive','QBR deck, 6 slides, built from live data']},{br:1},{sm:'Numbers, risks and the ask in a two-minute brief.'}])]},
+ {tab:'Follow-up',pb:'Follow-up',t:'10:50',co:'Raviga Capital',sub:'QBR ended 5 minutes ago',arr:40000,
+  f:[F('They said',[{lg:'gong'},'Peter: “Start with two. If it works, all four.”']),F('Upsell',[{num:40000,money:1},' → ',{num:120000,money:1}]),F('Next step',['Intro calls with the first two portfolio CEOs']),F('Ready for you',[{rd:['gmail','Recap and upsell proposal drafted']},{br:1},{sm:'Seat quote and two CEO intros. Nothing sent.'}])]},
  {tab:'Pilot',pb:'Pilot Playbook',t:'11:15',co:'Dunder Mifflin',sub:'Dwight Schrute · week 6 of 8',weeks:6,arr:17000,
-  f:[F('What changed',[{lg:'slack'},'Dwight: “Michael wants the whole Scranton branch on it.”']),F('Pilot status',[{reel:'pilot',pick:'Decision Ready'}]),F('Deal if it wins',[{num:17000,money:1},' + 12 Scranton seats']),F('Ready for you',[{rd:['excel','Proof page and seat quote built']}])]}];
+  f:[F('What changed',[{lg:'slack'},'Dwight: “Michael wants the whole Scranton branch on it.”']),F('Pilot status',[{reel:'pilot',path:[4,1,6],note:'suggested from the evidence, you confirm'}]),F('Deal if it wins',[{num:17000,money:1},' + 12 Scranton seats']),F('Ready for you',[{rd:['excel','Proof page and seat quote built']},{br:1},{sm:'Six weeks of results. Decision call held for Friday.'}])]}];
 document.querySelectorAll('[data-scr]').forEach(v=>{const body=v.querySelector('.body'),tabs=v.querySelector('.tabs'),pb=v.querySelector('.pb'),clk=v.querySelector('.clk b');
  body.innerHTML=SC.map(()=>'<div class="scr"></div>').join('');tabs.innerHTML=SC.map((s,i)=>`<button type="button" data-i="${i}">${s.tab}<i></i></button>`).join('');
  const scrs=[...body.children],bs=[...tabs.children];let cur=-1,tok={dead:false},manual=false;

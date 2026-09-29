@@ -669,6 +669,11 @@ html,body{overflow-x:clip}
 @media (max-width:700px){.cpseg button{padding:10px 16px;font-size:14px}}
 .lens.big .glass{top:6px!important}
 .tier .was{display:flex;align-items:center;gap:10px;margin:22px 0 2px;font:500 16px Geist}.tier .was s{opacity:.55;text-decoration-thickness:1.5px}.tier .was span{font:700 12px Geist;padding:4px 10px;border-radius:999px;background:#2f7a4b;color:#fff;letter-spacing:.01em}.tier.hi .was span{background:#fbf8f1;color:#2f5d46}@media (max-width:900px){.tier .was[style*=hidden]{display:none}}
+#health .vbar{display:none!important}
+.pbt .pbbar{display:none!important}
+.pbt{box-shadow:inset 0 0 0 1px rgba(22,32,28,.06)}
+.pbt.on{background:#fffdf9;box-shadow:inset 0 0 0 1.5px #2f5d46,0 24px 50px -30px rgba(22,32,28,.45)}
+.pbt.on b{color:#2f5d46}
 </style>
 </head>
 <body>
@@ -719,7 +724,7 @@ html,body{overflow-x:clip}
 </div></section>
 <div class="bridge"><div class="bglow"></div><i class="bh l"></i><div class="bt">A call is on the calendar. Get prepared</div><i class="bh r"></i></div>
 <section id="calls"><i class="sage" style="right:-20%;top:-10%"></i><div class="wrap">
-  <div class="shead"><div><div class="eyebrow"><i></i>04 · Every call</div><h2 id="cph">Walk into every call prepared.</h2></div><p class="lead" id="cpl">One click before the call. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b></p></div>
+  <div class="shead"><div><div class="eyebrow"><i></i>04 · Every call</div><h2 id="cph">Walk into every call prepared.</h2></div><p class="lead" id="cpl">One click before any call: a check-in, a renewal or a QBR. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b></p></div>
   <div class="cpseg" role="tablist" aria-label="Before or after the call"><button type="button" class="on" data-c="0" role="tab" aria-selected="true">Before the call</button><button type="button" data-c="1" role="tab" aria-selected="false">After the call</button></div>
   <div class="cppanes"><div class="cppane on" data-c="0"><div data-films="prep"></div></div>
   <div class="cppane" data-c="1"><div data-films="follow"></div></div></div>
@@ -1743,7 +1748,7 @@ ROOT.querySelectorAll('[data-who]').forEach(sec=>{const mode=sec.dataset.who,rb=
 /* Every call: before and after (v1.42) */
 const fixLinks=()=>document.querySelectorAll('a[href="#followup"],a[href="#sheets"],a[href="#pain"]').forEach(a=>a.setAttribute('href',a.getAttribute('href')=='#followup'?'#calls':a.getAttribute('href')=='#sheets'?'#integrations':'#morning'));fixLinks();setTimeout(fixLinks,1500);
 (()=>{const s=document.getElementById('calls');if(!s)return;const bs=[...s.querySelectorAll('.cpseg button')],ps=[...s.querySelectorAll('.cppane')],h=document.getElementById('cph'),l=document.getElementById('cpl');
-const C=[['Walk into every call prepared.','One click before the call. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b>'],['The follow-up writes itself. You press send.','When the call ends, Avengers reads the recording, writes the recap and the next steps with owners and dates, and drafts the email. <b>Nothing is sent without you.</b>']];
+const C=[['Walk into every call prepared.','One click before any call: a check-in, a renewal or a QBR. Avengers checks every source you connected, reads what happened with this client, and writes <b>your next move in a two-minute read.</b>'],['The follow-up writes itself. You press send.','When the call ends, Avengers reads the recording, writes the recap and the next steps with owners and dates, and drafts the email. <b>Nothing is sent without you.</b>']];
 let cur=0,manual=0;const show=i=>{cur=i;bs.forEach((b,k)=>{b.classList.toggle('on',k===i);b.setAttribute('aria-selected',k===i)});ps.forEach((p,k)=>p.classList.toggle('on',k===i));h.textContent=C[i][0];l.innerHTML=C[i][1]};
 const fit=()=>{[h,l].forEach(e=>e.style.minHeight='');let mh=0,ml=0;C.forEach(c=>{h.textContent=c[0];l.innerHTML=c[1];mh=Math.max(mh,h.offsetHeight);ml=Math.max(ml,l.offsetHeight)});h.style.minHeight=mh+'px';l.style.minHeight=ml+'px';h.textContent=C[cur][0];l.innerHTML=C[cur][1]};fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
 bs.forEach(b=>b.addEventListener('click',()=>{manual=Date.now()+30000;show(+b.dataset.c)}));
