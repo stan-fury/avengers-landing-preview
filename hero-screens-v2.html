@@ -76,7 +76,9 @@ h1{font-size:clamp(44px,4.7vw,74px)}h1 span{white-space:nowrap}
 /* morning list */
 .ml .big{font:600 22px/1.2 Geist;letter-spacing:-.02em;margin:2px 0 14px;min-height:28px}
 .ml .r{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--line);min-height:62px}.ml .r .v{font-size:16.5px!important;font-weight:600!important}
-.ml .r .t{font:500 13px 'Geist Mono';color:#6b756f}.ml .r .v{font:500 15px Geist}
+.ml .r .t{font:500 13px Manrope;color:#6b756f}.ml .r .v{font:600 16.5px Manrope}
+.ml .big{font-family:Manrope!important;font-weight:700!important}
+.ml .r{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}.ml .r.in{opacity:1;transform:none}.ml .r .t:empty::before,.ml .r .v:empty::before{content:'\200b'}
 /* pilot weeks */
 .wk{display:flex;gap:4px;margin-top:4px}.wk i{flex:1;height:8px;border-radius:4px;background:#ebe8e0;transition:background .3s}.wk i.on{background:#3f8f84}.wk i.now{background:#2f5d46;box-shadow:0 0 0 3px rgba(63,143,132,.2)}
 /* health */
@@ -140,7 +142,7 @@ const SC=[
  {tab:'Follow-up',pb:'Follow-up',t:'12:05',co:'Hooli',sub:'Call ended 5 minutes ago',
   f:[F('They said',[{lg:'gong'},'“Hooli XYZ owns the budget now.”']),F('Renewal status',[{tg:'Authority Gap',c:'a'}]),F('Next step',['Meet the new budget owner at Hooli XYZ']),F('Ready for you',[{rd:['gmail','Recap and intro email drafted, nothing sent']}])]},
  {tab:'Pilot',pb:'Pilot Playbook',t:'12:30',co:'Dunder Mifflin',sub:'Dwight Schrute · week 6 of 8',weeks:6,
-  f:[F('What changed',[{lg:'slack'},'Dwight asked for three more seats for Schrute Farms']),F('Pilot status',[{tg:'Decision Ready',c:'g'}]),F('Deal if it wins',[{num:17000,money:1},' + Schrute Farms']),F('Ready for you',[{rd:['excel','Proof page and seat quote built']}])]},
+  f:[F('What changed',[{lg:'slack'},'Dwight: “Michael wants the whole Scranton branch on it.”']),F('Pilot status',[{tg:'Decision Ready',c:'g'}]),F('Deal if it wins',[{num:17000,money:1},' + 12 Scranton seats']),F('Ready for you',[{rd:['excel','Proof page and seat quote built']}])]},
  {tab:'Commits',pb:'Commits',t:'13:00',co:'Aviato',sub:'Erlich Bachman · 2 promises open',
   f:[F('They promised',['Erlich: “The card is fine. Charge it again.”']),F('What happened',[{lg:'chargebee'},'Declined. Again.']),F('Status',[{tg:'Payment Failed',c:'d'}]),F('You promised',['A pricing call, not a renewal paid in equity']),F('Ready for you',[{rd:['gmail','Card update link and pricing brief drafted']}])]}];
 document.querySelectorAll('[data-scr]').forEach(v=>{const body=v.querySelector('.body'),tabs=v.querySelector('.tabs'),pb=v.querySelector('.pb'),clk=v.querySelector('.clk span');
@@ -150,10 +152,10 @@ document.querySelectorAll('[data-scr]').forEach(v=>{const body=v.querySelector('
   if(cur>=0){scrs[cur].classList.remove('on');scrs[cur].classList.add('out');const o=scrs[cur];setTimeout(()=>o.classList.remove('out'),460)}
   cur=i;bs.forEach((b,k)=>{b.classList.toggle('on',k===i);b.querySelector('i').style.animation='none';b.offsetWidth;b.querySelector('i').style.animation=''});pb.textContent=s.pb;clk.textContent=s.t;
   const el=scrs[i];
-  if(s.kind=='morning'){el.innerHTML=`<div class="ml"><div class="big"></div>${s.rows.map(r=>`<div class="r"><span class="t">${r[0]}</span><span class="v">${r[1]}</span><span class="x"></span></div>`).join('')}</div>`}
+  if(s.kind=='morning'){el.innerHTML=`<div class="ml"><div class="big"></div>${s.rows.map(r=>`<div class="r"><span class="t"></span><span class="v"></span><span class="x"></span></div>`).join('')}</div>`}
   else el.innerHTML=`<div class="acct">${co(s.co)}<span><b>${s.co}</b><small>${s.sub}</small></span><span class="tm">${s.t}</span></div>`+(s.weeks?`<div class="f"><span class="lbl">Pilot week</span><span class="v"><span class="wk">${Array.from({length:8},(_,k)=>`<i></i>`).join('')}</span></span></div>`:'')+(s.health?`<div class="f"><span class="lbl">Health</span><span class="v hl"><span class="num" data-h>${s.health[0]}</span><span data-hd style="font:500 13px Manrope;color:#6b756f"></span></span></div>`:'')+s.f.map(x=>`<div class="f"><span class="lbl">${x.label}</span><span class="v"></span></div>`).join('');
   await W(80);el.classList.add('on');await W(350);
-  if(s.kind=='morning'){await play(el.querySelector('.big'),s.head,30,my);for(const [k,r] of s.rows.entries()){if(my.dead)return;await play(el.querySelectorAll('.r .x')[k],[r[2]],10,my)}return}
+  if(s.kind=='morning'){await play(el.querySelector('.big'),s.head,30,my);await W(350);const rs=[...el.querySelectorAll('.ml .r')];for(const [k,r] of s.rows.entries()){if(my.dead)return;const R=rs[k];R.classList.add('in');await W(220);await play(R.querySelector('.t'),[r[0]],30,my);await play(R.querySelector('.v'),[r[1]],30,my);await W(160);await play(R.querySelector('.x'),[r[2]],10,my);await W(420)}return}
   if(s.weeks){const w=[...el.querySelectorAll('.wk i')];for(let k=0;k<s.weeks;k++){if(my.dead)return;w[k].className=k==s.weeks-1?'now':'on';await W(120)}}
   if(s.health){const h=el.querySelector('[data-h]'),hd=el.querySelector('[data-hd]');const t0=performance.now();while(!my.dead){const p=Math.min(1,(performance.now()-t0)/900);const n=Math.round(s.health[0]+(s.health[1]-s.health[0])*p);h.textContent=n;h.className='num'+(n<55?' r':'');if(p>=1)break;await W(30)}hd.textContent='down from '+s.health[0]+' last week'}
   const vs=[...el.querySelectorAll('.f .v')].slice((s.weeks||s.health)?1:0);

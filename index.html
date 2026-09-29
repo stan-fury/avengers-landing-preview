@@ -667,6 +667,8 @@ html,body{overflow-x:clip}
 #calls .vbar{display:none}
 .sheetnote{margin-top:14px!important;color:#e6efe9!important}.sheetnote b{color:#fff}
 @media (max-width:700px){.cpseg button{padding:10px 16px;font-size:14px}}
+.lens.big .glass{top:6px!important}
+.tier .was{display:flex;align-items:center;gap:10px;margin:22px 0 2px;font:500 16px Geist}.tier .was s{opacity:.55;text-decoration-thickness:1.5px}.tier .was span{font:700 12px Geist;padding:4px 10px;border-radius:999px;background:#2f7a4b;color:#fff;letter-spacing:.01em}.tier.hi .was span{background:#fbf8f1;color:#2f5d46}@media (max-width:900px){.tier .was[style*=hidden]{display:none}}
 </style>
 </head>
 <body>
@@ -751,11 +753,11 @@ html,body{overflow-x:clip}
 <section id="pricing"><i class="sun" style="left:10%;top:-20%"></i><div class="wrap">
   <div class="shead"><div><div class="eyebrow"><i></i>Pricing</div><h2>Priced per seat. Grow with your book.</h2></div><p class="lead">Every plan reads your tools, writes your morning and preps your calls. <b>Grow into the playbooks when your book grows.</b></p></div>
   <div class="tiers">
-    <div class="tier"><span class="tag" style="color:#3f8f84">Self-serve</span><h3>Starter</h3><div class="who">One seat, sign up and start today. For a first CSM or a founder.</div><div class="price">$49<small>per seat / month</small></div><ul><li>Morning Routine</li><li>AI CSM, Call prep and follow-ups</li><li>Up to 5 integrations</li><li>Import from Excel, Airtable or Notion</li></ul><a class="go" href="#demo">Sign up</a></div>
-    <div class="tier hi"><span class="tag">Most teams</span><h3>Team</h3><div class="who">From 5 seats. For a CS team with a book to protect.</div><div class="price">$99<small>per seat / month</small></div><ul><li>Everything in Starter</li><li>Renewal and Pilot Playbooks</li><li>All integrations</li><li>Team books and access</li><li>Automations</li></ul><a class="go" href="#demo">Book a demo</a></div>
-    <div class="tier"><h3>Scale</h3><div class="who">For larger teams, custom data and custom builds.</div><div class="price">Custom</div><div style="font:500 15px Geist;opacity:.7;margin-top:8px">from $1,500 / month</div><ul><li>Everything in Team</li><li>Custom development by our team</li><li>Custom connectors and playbooks</li><li>SSO, SAML and audit log</li><li>Dedicated onboarding</li></ul><a class="go" href="#demo">Talk to us</a></div>
+    <div class="tier"><span class="tag" style="color:#3f8f84">Self-serve</span><h3>Starter</h3><div class="who">One seat, sign up and start today. For a first CSM or a founder.</div><div class="was"><s>$65</s><span>25% off</span></div><div class="price">$49<small>per seat / month</small></div><ul><li>Morning Routine</li><li>AI CSM, Call prep and follow-ups</li><li>Up to 5 integrations</li><li>Import from Excel, Airtable or Notion</li></ul><a class="go" href="#demo">Sign up</a></div>
+    <div class="tier hi"><span class="tag">Most teams</span><h3>Team</h3><div class="who">From 5 seats. For a CS team with a book to protect.</div><div class="was"><s>$132</s><span>25% off</span></div><div class="price">$99<small>per seat / month</small></div><ul><li>Everything in Starter</li><li>Renewal and Pilot Playbooks</li><li>All integrations</li><li>Team books and access</li><li>Automations</li></ul><a class="go" href="#demo">Book a demo</a></div>
+    <div class="tier"><h3>Scale</h3><div class="who">For larger teams, custom data and custom builds.</div><div class="was" style="visibility:hidden"><s>&nbsp;</s><span>&nbsp;</span></div><div class="price">Custom</div><div style="font:500 15px Geist;opacity:.7;margin-top:8px">from <s style="opacity:.75">$2,000</s> $1,500 / month</div><ul><li>Everything in Team</li><li>Custom development by our team</li><li>Custom connectors and playbooks</li><li>SSO, SAML and audit log</li><li>Dedicated onboarding</li></ul><a class="go" href="#demo">Talk to us</a></div>
   </div>
-  <div class="switch">Switching from a spreadsheet? <b>We move your data in for free.</b></div>
+  <div class="switch"><b>Launch pricing: 25% off every plan.</b> Switching from a spreadsheet? <b>We move your data in for free.</b></div>
 </div></section>
 
 <section class="final" id="demo"><i class="sun" style="left:20%;top:-30%"></i><div class="wrap">
@@ -1702,22 +1704,22 @@ const P={clock:'<circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width
  coin:'<ellipse cx="10" cy="6" rx="6" ry="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 6v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6M4 10v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4" stroke="currentColor" stroke-width="1.6"/>'};
 const ic=(k,bg,fg)=>`<span class="ic" style="background:${bg};color:${fg}"><svg viewBox="0 0 20 20" fill="none">${P[k]}</svg></span>`;
 const R=[
- {id:'csm',av:'L',c:'#3f8f84',n:'For the CSM',t:'The person running the book',h:'More time with clients. Less time between spreadsheets.',p:'Your morning is already sorted when you open it, every call has a brief, every follow-up is drafted. The hours you used to spend finding out what is on fire go back to your clients, and to the renewals you own.',k:['Hours saved a week','Churn risk on your book','Renewals on time'],
-  mv:[['Churn risk','down','dn'],['Renewals on time','up','up'],['Hours with clients','up','up']],ba:['Find out a client is leaving from the cancellation email.','See the risk weeks earlier, with the reason and the next step.'],rib:'Lower churn risk on the book you own',
+ {id:'csm',av:'L',c:'#3f8f84',n:'For CSM',t:'The person running the book',h:'More time with clients. Less time between spreadsheets.',p:'Your morning is already sorted when you open it, every call has a brief, every follow-up is drafted. The hours you used to spend finding out what is on fire go back to your clients, and to the renewals you own.',k:['Hours saved a week','Churn risk on your book','Renewals won'],
+  mv:[['Churn risk','down','dn'],['Renewals won','up','up'],['Upsell opportunities','up','up']],ba:['Find out a client is leaving from the cancellation email.','See the risk weeks earlier, with the reason and the next step.'],rib:'Lower churn risk on the book you own',
   o:[['shield','#fbece8','#b13e2a','Spot churn risk on your book early','Health from payments, replies, usage, support and calls, with the reason for every drop.','Churn risk','↓ lower'],
    ['renew','#e2f1ee','#23685f','No renewal slips past you','Every renewal has a status and a next step, and it shows up the morning it needs you.','Renewals','on time'],
    ['clock','#e6f2ea','#2f5d46','About 10 hours back, every week','Ranked morning, call briefs and follow-up drafts.','Hours saved','~10 h / week'],
    ['phone','#fbf2df','#9a6512','Walk into every call ready','The brief names the risk and the ask, in a two-minute read.','Call prep','40 → 10 min']]},
- {id:'head',av:'H',c:'#c98a1e',n:'For the Head of CS',t:'The person who owns retention',h:'Retention you can see coming.',p:'Every account is checked every morning from real signals, every renewal carries a status, and every move is on the record. You protect retention and grow NRR from the book, instead of finding out about churn in the cancellation email.',k:['Retention rate (GRR)','Net revenue retention (NRR)','Churned ARR','Renewal forecast'],
+ {id:'head',av:'H',c:'#c98a1e',n:'For Head of CS',t:'The person who owns retention',h:'Retention you can see coming.',p:'Every account is checked every morning from real signals, every renewal carries a status, and every move is on the record. You protect retention and grow NRR from the book, instead of finding out about churn in the cancellation email.',k:['Retention rate (GRR)','Net revenue retention (NRR)','Churned ARR','Renewal forecast'],
   mv:[['Retention (GRR)','up','up'],['NRR','up','up'],['Churned ARR','down','dn']],ba:['Churn shows up at the quarterly review.','Every at-risk account is visible every morning, with its owner.'],rib:'Higher retention and NRR, visible every morning',
   o:[['shield','#fbece8','#b13e2a','Protect your retention rate','A drop in usage, replies or payments is flagged while the account can still be saved.','Retention (GRR)','↑ higher'],
    ['up','#e6f2ea','#2f5d46','Grow NRR from the book','Renewals closed on time plus expansion moments in healthy accounts.','NRR','↑ higher'],
    ['renew','#e2f1ee','#23685f','Renewals forecast by status, not by gut','14 renewal statuses, "Renewal won" only after payment.','Forecast','by status'],
    ['eye','#e9f0fa','#2f64a8','See the whole team\'s book','Who is behind, which accounts nobody touched, what every CSM did today.','Coverage','every account']]},
- {id:'ceo',av:'C',c:'#2f5d46',n:'For the Founder / CEO',t:'The person who owns the number',h:'Grow NRR without hiring ahead of it.',p:'In a mid-size company the customer base is the business. Avengers protects it every morning, surfaces the expansion in it, and lets the team you have cover more of it.',k:['Net revenue retention (NRR)','ARR at risk','ARR per CSM','Payback'],
+ {id:'ceo',av:'C',c:'#2f5d46',n:'For Founder / CEO',t:'The person who owns the number',h:'Grow NRR without hiring ahead of it.',p:'In a mid-size company the customer base is the business. Avengers protects it every morning, surfaces the expansion in it, and lets the team you have cover more of it.',k:['Net revenue retention (NRR)','ARR at risk','ARR per CSM','Payback'],
   mv:[['NRR','up','up'],['ARR at risk','down','dn'],['ARR per CSM','up','up']],ba:['More accounts means another CSM hire.','The same team covers more of the book, and keeps it.'],rib:'Higher NRR without growing the headcount',
   o:[['shield','#fbece8','#b13e2a','Protect the base','ARR at risk is visible every morning, not at the quarterly review.','ARR at risk','↓ lower'],
-   ['up','#e6f2ea','#2f5d46','Grow NRR from the accounts you already have','Renewals on time plus expansion moments, the two halves of NRR.','NRR','↑ higher'],
+   ['up','#e6f2ea','#2f5d46','Grow NRR from the accounts you already have','Renewals won plus expansion moments, the two halves of NRR.','NRR','↑ higher'],
    ['team','#efebf8','#6a4fb0','Scale the book, not the headcount','More accounts per CSM in the same hours.','ARR per CSM','↑ higher'],
    ['coin','#fbf2df','#9a6512','It pays for itself with one renewal','One saved $20,000 renewal covers a year of Team for 16 people.','Payback','1 renewal']]}];
 
