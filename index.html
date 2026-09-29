@@ -396,7 +396,7 @@ section{padding:96px 0}
 .vcap:empty{display:none}
 .bal{display:inline-block;padding:.45em .9em;border-radius:.8em;background:rgba(22,32,28,.06);font:600 1.15em Geist;color:#5b675f}
 .bal.after{background:#2f5d46;color:#fbf8f1}
-.vbar .vseg button.on+button{box-shadow:0 0 0 2px rgba(63,143,132,.45);animation:nudge 2.2s ease-in-out infinite}
+
 @keyframes nudge{50%{box-shadow:0 0 0 5px rgba(63,143,132,.08)}}
 .bt{transition:opacity .7s .1s,transform .7s .1s,filter .7s .1s!important}
 .bh{transition:transform 1s cubic-bezier(.6,0,.2,1)!important}.bglow{transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1)!important}
@@ -1513,9 +1513,9 @@ ROOT.querySelectorAll('[data-v]').forEach(v=>{
  const reset=async()=>{await close(true);svg.innerHTML='';v.classList.remove('quiet');ns.forEach(n=>{n.className='n new'});ns.forEach((n,i)=>n.querySelector('small').textContent=N[i][1]);pl.querySelectorAll('.list .row').forEach(r=>r.className='row');bar.style.width='0';setF(0);cnt.textContent='0 new';grpUpd();sum.textContent='Reading…';cur.classList.remove('on')};
  const tickAll=async()=>{v.classList.add('quiet');svg.innerHTML='';let n=0;
   for(const k of order){await held();const r=rows(k);
-   if(!PH()){await moveTo(r.querySelector('.pvb'));await tap();await open(k);await WR(3200)}else await WR(900);await held();
-   if(!PH()){const tgt=mode=='D'?pl.querySelector('.lift .pvb'):r.querySelector('.pvb');await moveTo(tgt);await tap();await close()}
-   if(!PH()){await moveTo(r.querySelector('.ok'));await tap()}
+   await WR(900);await held();
+   
+   
    r.classList.add('did');n++;bar.style.width=(n/6*100)+'%';setF(n);grpUpd();await WR(500)}
   cur.classList.remove('on')};
  const settle=()=>{ns.forEach((n,i)=>{n.className='n '+(NOISE.includes(i)?'noise':'done')});pl.querySelectorAll('.list .row').forEach(r=>r.className='row on did');bar.style.width='100%';setF(6);cnt.textContent='47 new';grpUpd();sum.textContent='9 alerts became 6 moves, 3 needed nothing'};
