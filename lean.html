@@ -688,6 +688,11 @@ html,body{overflow-x:clip}
 @media (max-width:900px){.hero.hero2{padding:36px 0 40px}.hero2 .h2g{grid-template-columns:minmax(0,1fr);gap:30px;width:auto;padding:0 18px}.hero2 .h2g>*{min-width:0}.hero2 .lft{height:auto;gap:24px;padding:0}.hero2 h1{font-size:clamp(40px,11vw,56px);line-height:1}.hero2 .h2l{font-size:16.5px}.hero2 .ctas{flex-direction:row;flex-wrap:wrap}}
 /* lean variant */
 .bridge{display:none!important}
+.cust2.short{display:block;padding:44px 48px}
+.cust2.short .cl{display:grid;grid-template-columns:.9fr 1.1fr;column-gap:64px;align-items:center}
+.cust2.short .cl>.eyebrow,.cust2.short .cl>h3,.cust2.short .cl>p{grid-column:1}
+.cust2.short .steps{grid-column:2;grid-row:1/span 3;margin:0}
+@media (max-width:900px){.cust2.short{padding:26px 20px}.cust2.short .cl{display:block}.cust2.short .steps{margin-top:24px}}
 .fgrid{grid-template-columns:1.5fr 1fr 1fr 1fr}
 @media (min-width:701px){.fbot{padding-right:170px}}
 @media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
@@ -756,7 +761,13 @@ html,body{overflow-x:clip}
   <div class="lens big" id="lens"><div class="track" id="lt1"></div><div class="glass" tabindex="0" role="slider" aria-label="Integrations lens. Use the left and right arrow keys to move it" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div><div class="sharpwin"><div class="track" id="lt2" style="filter:none;opacity:1"></div></div></div>
   <p class="livenote sheetnote">Still in a spreadsheet? <b>Excel, Airtable and Notion move in for free,</b> into Avengers' own customer CRM.</p>
   <p class="livenote">Live today: Gmail, Google Calendar, HubSpot, Slack, Intercom, Jira, Chargebee, Airtable and Avoma. Every other tool is built on request.</p>
-  </section>
+  <div class="wrap"><div class="cust2 short">
+  <div class="cl"><div class="eyebrow"><i></i>Custom connectors</div><h3>Your data lives somewhere odd? We wire it in.</h3>
+   <p>Not every source has a logo. A database, an internal admin panel, a nightly CSV. Tell us where the truth lives and it shows up everywhere Avengers works.</p>
+   <ol class="steps"><li><b>Tell us where it lives</b><span>A database, an internal API, a CSV export or a webhook.</span></li><li><b>We build and test it</b><span>Read-only by default, mapped to your accounts, checked against real rows.</span></li><li><b>It shows up everywhere</b><span>In your Morning, every playbook and every AI CSM answer, usually within a week.</span></li></ol></div>
+  </div>
+</div></div>
+</section>
 
 <section id="wins" class="wins"><div class="wrap"><div id="winsHost"></div></div></section>
 <section id="over" class="over"><i class="sun" style="left:30%;top:-30%"></i><div class="wrap">
