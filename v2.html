@@ -1897,30 +1897,33 @@ document.querySelectorAll('.hero2 [data-lg]').forEach(e=>e.innerHTML=LOGO[e.data
   const fullness=(f,t)=>{let n=0;f.at.forEach(([,a,b])=>{if(t>=a&&t<b)n++});f.typ.forEach(([,a])=>{if(t>=a)n++});return n};
   /* entry point: the first moment the frame holds a third of its finished content */
   const richStart=f=>{const top=fullness(f,f.poster);for(let t=f.first;t<f.poster;t+=.25){if(fullness(f,t)>=top*.35)return t}return f.first};
-  all.forEach(f=>{f.first=firstBeat(f);f.poster=f.dur*.9;f.rich=richStart(f);f.play=false;paintF(f,f.poster)});
+  const FS=!!window.V_FROM_START;
+  all.forEach(f=>{f.first=firstBeat(f);f.poster=f.dur*.9;f.rich=FS?0:richStart(f);f.play=false;f.ratio=0;paintF(f,FS?0:f.poster)});
+  window.V_START=f=>{if(f.ratio>=.35&&!f.play){f.play=true;f.vis=true;f.t0=null;kick()}};
   io.disconnect();
   const io2=new IntersectionObserver(es=>{es.forEach(en=>{
     const fs=all.filter(f=>f.el.parentNode===en.target);
     const on=en.intersectionRatio>=.35;
-    fs.forEach(f=>{
-      if(on&&!f.play){f.play=true;f.vis=true;f.t0=null;f.cyc=performance.now()}
-      else if(en.intersectionRatio===0&&f.play){f.play=false;f.vis=false;f.t0=null;if(f.hold==null&&!f.manual)paintF(f,f.poster)}
+    fs.forEach(f=>{f.ratio=en.intersectionRatio;
+      if(on&&!f.play&&f.gate!==false){f.play=true;f.vis=true;f.t0=null;f.cyc=performance.now()}
+      else if(en.intersectionRatio===0&&f.play){f.play=false;f.vis=false;f.t0=null;if(f.hold==null&&!f.manual&&!FS)paintF(f,f.poster)}
     })});kick()},{threshold:[0,.35]});
   document.querySelectorAll('.stagebox').forEach(b=>io2.observe(b));
   const RMq=matchMedia('(prefers-reduced-motion: reduce)').matches;
   tick=function(now){let any=false;all.forEach(f=>{
     if(!f.active||!f.vis)return;any=true;
     if(RMq){if(!f._rm){f._rm=1;paintF(f,f.poster)}return}
+    if(f.done){if(!f.manual)paintF(f,f.poster);return}
     if(f.t0==null){f.t0=now;f.from=f.rich}
     let t;
     if(f.hold!=null){t=Math.min(f.hold+(now-f.t0)/1000,f.hold+7.95)}
     else{const e=(now-f.t0)/1000,run=(f.poster-f.from)/SP;
-      t=e<run?f.from+e*SP:f.poster}
+      t=e<run?f.from+e*SP:f.poster;if(FS&&e>=run)f.done=true}
     if(!f.manual)paintF(f,t);
     f.chats.forEach(c=>{if(c._u){if(c._h==null)c._h=c.scrollHeight;if(c.scrollHeight>c._h+8){c._u=0;c._h=null}else return}const tg=c.scrollHeight-c.clientHeight;c.scrollTop+=(tg-c.scrollTop)*.12})});
     if(any&&!document.hidden)requestAnimationFrame(tick);else TICKING=false};
   /* a tab switch restarts its film from the first beat */
-  document.addEventListener('click',e=>{if(!e.target.closest('.vseg button,.pbt,.cpseg button'))return;setTimeout(()=>{all.forEach(f=>{if(f.active&&f.hold==null){f.t0=null;if(!f.vis)paintF(f,f.poster)}});kick()},0)});
+  document.addEventListener('click',e=>{if(!e.target.closest('.vseg button,.pbt,.cpseg button'))return;setTimeout(()=>{all.forEach(f=>{if(f.active&&f.hold==null){f.t0=null;f.done=false;if(FS){paintF(f,0);f.gate=false;f.play=false;f.vis=false;f.el.closest('[data-films]')._rev=performance.now()-600}else if(!f.vis)paintF(f,f.poster)}});kick()},0)});
   kick();
 })();
 </script>
