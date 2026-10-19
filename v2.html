@@ -1923,7 +1923,7 @@ document.querySelectorAll('.hero2 [data-lg]').forEach(e=>e.innerHTML=LOGO[e.data
     f.chats.forEach(c=>{if(c._u){if(c._h==null)c._h=c.scrollHeight;if(c.scrollHeight>c._h+8){c._u=0;c._h=null}else return}const tg=c.scrollHeight-c.clientHeight;c.scrollTop+=(tg-c.scrollTop)*.12})});
     if(any&&!document.hidden)requestAnimationFrame(tick);else TICKING=false};
   /* a tab switch restarts its film from the first beat */
-  document.addEventListener('click',e=>{if(!e.target.closest('.vseg button,.pbt,.cpseg button'))return;setTimeout(()=>{all.forEach(f=>{if(f.active&&f.hold==null){f.t0=null;f.done=false;if(FS){paintF(f,0);f.gate=false;f.play=false;f.vis=false;f.el.closest('[data-films]')._rev=performance.now()-600}else if(!f.vis)paintF(f,f.poster)}});kick()},0)});
+  document.addEventListener('click',e=>{const tb=e.target.closest('.vseg button,.pbt,.cpseg button');if(!tb)return;const sec=tb.closest('section')||document;setTimeout(()=>{all.forEach(f=>{if(f.active&&f.hold==null&&sec.contains(f.el)){f.t0=null;f.done=false;if(FS){paintF(f,0);f.gate=false;f.play=false;f.vis=false;f.el.closest('[data-films]')._rev=performance.now()-600}else if(!f.vis)paintF(f,f.poster)}});kick()},0)});
   kick();
 })();
 </script>

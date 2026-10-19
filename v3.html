@@ -1938,7 +1938,7 @@ document.querySelectorAll('.hero2 [data-lg]').forEach(e=>e.innerHTML=LOGO[e.data
     f.chats.forEach(c=>{if(c._u){if(c._h==null)c._h=c.scrollHeight;if(c.scrollHeight>c._h+8){c._u=0;c._h=null}else return}const tg=c.scrollHeight-c.clientHeight;c.scrollTop+=(tg-c.scrollTop)*.12})});
     if(any&&!document.hidden)requestAnimationFrame(tick);else TICKING=false};
   /* a tab switch restarts its film from the first beat */
-  document.addEventListener('click',e=>{if(!e.target.closest('.vseg button,.pbt,.cpseg button'))return;setTimeout(()=>{all.forEach(f=>{if(f.active&&f.hold==null){f.t0=null;f.done=false;if(FS){paintF(f,0);f.gate=false;f.play=false;f.vis=false;f.el.closest('[data-films]')._rev=performance.now()-600}else if(!f.vis)paintF(f,f.poster)}});kick()},0)});
+  document.addEventListener('click',e=>{const tb=e.target.closest('.vseg button,.pbt,.cpseg button');if(!tb)return;const sec=tb.closest('section')||document;setTimeout(()=>{all.forEach(f=>{if(f.active&&f.hold==null&&sec.contains(f.el)){f.t0=null;f.done=false;if(FS){paintF(f,0);f.gate=false;f.play=false;f.vis=false;f.el.closest('[data-films]')._rev=performance.now()-600}else if(!f.vis)paintF(f,f.poster)}});kick()},0)});
   kick();
 })();
 </script>
@@ -1949,14 +1949,19 @@ document.querySelectorAll('.hero2 [data-lg]').forEach(e=>e.innerHTML=LOGO[e.data
   /* calm reveal: each block fades up once when it comes into view and then stays put */
   const els=[...document.querySelectorAll('section:not(#top) .shead,.pbtabs,.cpseg,.tiers,.cust2,.ovlead,.livenote,section:not(#top) [data-films]:not(.cppane:not(.on) [data-films]):not(.pbp:not(.on) [data-films]),#mrE,#ovCalc')];
   const filmsOf=el=>typeof all==='undefined'?[]:all.filter(f=>el.contains(f.el));
-  /* reveal: each block fades up once (1.3 to 1.6 s) when it comes into view */
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('v3in');el._rev=performance.now();io.unobserve(el)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-  els.forEach(el=>{if(el.getBoundingClientRect().top<innerHeight){el._rev=-1e9;return}el.classList.add('v3r');filmsOf(el).forEach(f=>{f.gate=false});io.observe(el)});
+  /* reveal: each block fades up once (1.3 to 1.6 s) when it comes into view; measured
+     directly, not via observer events, so it cannot be missed */
+  const pending=[];
+  /* demos in tabs that are not open yet wait at second 0 until their tab is opened */
+  if(typeof all!=='undefined')all.forEach(f=>{if(f.el.closest('.cppane:not(.on),.pbp:not(.on)')){f.gate=false;paintF(f,0)}});
+  els.forEach(el=>{if(el.getBoundingClientRect().top<innerHeight){el._rev=-1e9;return}el.classList.add('v3r');filmsOf(el).forEach(f=>{f.gate=false});pending.push(el)});
+  const reveal=()=>{const now=performance.now();for(let i=pending.length-1;i>=0;i--){const el=pending[i],r=el.getBoundingClientRect();
+    if(r.top<innerHeight*.94&&r.bottom>0){el.classList.add('v3in');el._rev=now;pending.splice(i,1)}}};
   /* a demo starts from second 0 only when its frame has finished fading in AND
      at least a third of it is on screen; checked on scroll and every 0.2 s, so
      the order of browser events can never skip or pre-empt the start */
-  if(typeof all==='undefined')return;
-  const check=()=>{const now=performance.now();all.forEach(f=>{
+  if(typeof all==='undefined'){setInterval(reveal,200);addEventListener('scroll',()=>requestAnimationFrame(reveal),{passive:true});return}
+  const check=()=>{reveal();const now=performance.now();all.forEach(f=>{
     if(f.gate!==false||f.play||f.done||!f.active)return;
     const h=f.el.closest('[data-films]');if(!h._rev||now-h._rev<1500)return;
     const r=f.el.parentNode.getBoundingClientRect();if(r.height<10)return;
